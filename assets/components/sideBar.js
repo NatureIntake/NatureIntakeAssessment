@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "./navbar";
+// import Navbar from "./navbar";
 import SidebarContext from "../context/SidebarContext";
-import SideBar_list from "../assests/Sidebar/Sidebar_list";
-import useMediaQuery from "../assests/hooks/useMediaQuery";
+import SideBar_list from "../Sidebar/Sidebar_list";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 export default function SideBar() {
   const { Open, setOpen } = React.useContext(SidebarContext);
@@ -111,9 +111,9 @@ export default function SideBar() {
           </div>
         </div>
       </aside>
-      <div>
-        <Navbar Open={Open} onChange={() => setOpen(!Open)} />
-      </div>
+      {/* <div>
+        <Navbar  />
+      </div> */}
     </div>
   );
 }

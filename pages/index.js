@@ -1,18 +1,8 @@
 import React from "react";
-import DashBoard from "./components/Dashboard";
-import SideBar from "./components/SideBar";
-import { ThemeProvider } from "./context/ThemeContext";
-import SidebarState from "./context/SidebarState";
+import DashBoard from "./dashboard";
 
 function App() {
-  return (
-      <SidebarState>
-        <ThemeProvider>
-          <SideBar />
-          <DashBoard />
-        </ThemeProvider>
-      </SidebarState>
-  );
+  return <DashBoard />;
 }
 
 export default App;

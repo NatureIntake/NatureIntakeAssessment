@@ -1,7 +1,7 @@
 import React, { isValidElement } from "react";
-import Toggle from "./Toggle";
+import Toggle from "../Navbar/Toggle";
 import SidebarContext from "../context/SidebarContext";
-import useMediaQuery from "../assests/hooks/useMediaQuery";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 const Navbar = () => {
   const { Open, setOpen } = React.useContext(SidebarContext);

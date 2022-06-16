@@ -1,8 +1,8 @@
 import React from "react";
-import SidebarContext from "../context/SidebarContext";
-import useMediaQuery from "../assests/hooks/useMediaQuery";
-import Card from "../assests/Dashboard/Card";
-import Middle from "../assests/Dashboard/Middle";
+import SidebarContext from "../assets/context/SidebarContext";
+import useMediaQuery from "../assets/hooks/useMediaQuery";
+import Card from "../assets/Dashboard/Card";
+import Middle from "../assets/Dashboard/Middle";
 
 export default function DashBoard(props) {
   const { Open } = React.useContext(SidebarContext);

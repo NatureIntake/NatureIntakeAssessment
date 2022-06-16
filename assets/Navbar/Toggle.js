@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
-import useMediaQuery from "../assests/hooks/useMediaQuery";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 const Toggle = () => {
   const { theme, setTheme } = useContext(ThemeContext);

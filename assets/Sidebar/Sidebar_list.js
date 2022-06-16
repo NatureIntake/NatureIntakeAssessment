@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarContext from "../../context/SidebarContext";
+import SidebarContext from "../context/SidebarContext";
 import useMediaQuery from "../hooks/useMediaQuery";
 
 import Menu from "./Sidebar_menu";
