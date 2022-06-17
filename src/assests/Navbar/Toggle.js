@@ -3,7 +3,7 @@ import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 import useMediaQuery from "../hooks/useMediaQuery";
 
-const Toggle = () => {
+function Toggle () {
   const { theme, setTheme } = useContext(ThemeContext);
   const isTablet = useMediaQuery("(min-width: 768px )");
 

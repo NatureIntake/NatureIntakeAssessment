@@ -1,5 +1,7 @@
 import React from "react";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { CircularProgress, Box } from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const gradeSchema = [
   {
@@ -21,10 +23,10 @@ const gradeSchema = [
 ];
 const Color = ["from-black to-gray-900"];
 
-const Card = (props) => {
+function Card(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
-
+  const percentage = 60;
   return (
     <div
       className={`${isLaptop ? "flex flex-row px-1 " : " flex flex-col"} ${
@@ -46,7 +48,24 @@ const Card = (props) => {
             </span>
           </div>
           {/* ranking */}
-         <div className=""></div>
+          <div className=''>
+            <Box  display='flex' justifyContent='center' alignItems='center'>
+              <CircularProgress
+                variant='determinate'
+                value={40}
+                position='absolute'
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  borderRadius: "100%",
+                  boxShadow: "inset 0 0 0px 11px gray",
+                  backgroundColor: "transparent",
+                }}
+                thickness={5}
+              />
+              <CheckCircleIcon position='absolute' />
+            </Box>
+          </div>
         </div>
       </div>
       {/* Completion */}
@@ -116,6 +135,6 @@ const Card = (props) => {
       </div>
     </div>
   );
-};
+}
 
 export default Card;

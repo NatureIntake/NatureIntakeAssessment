@@ -1,13 +1,8 @@
 import React from "react";
-import DashBoard from "../components/Dashboard";
-
+import DashBoard from "../components/dashboard";
 
 function App() {
-  return (
-      
-          <DashBoard />
-    
-  );
+  return <DashBoard />;
 }
 
 export default App;

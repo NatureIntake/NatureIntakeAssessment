@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "../assests/context/ThemeContext";
 import SidebarState from "../assests/context/SidebarState";
-import SideBar from "../components/SideBar";
+import SideBar from "../components/sideBar";
 import Navbar from "../components/navbar";
 
 function MyApp({ Component, pageProps }) {
