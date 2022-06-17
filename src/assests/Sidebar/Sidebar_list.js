@@ -10,7 +10,7 @@ export default function SideBar_list(props) {
   const isTablet = useMediaQuery("(min-width: 768px )");
 
   function srink() {
-    return Open ? "space-y-6" : "space-y-10";
+    return Open ? "space-y-7" : "space-y-10";
   }
   function hide() {
     return !Open && "hidden";
@@ -20,7 +20,7 @@ export default function SideBar_list(props) {
     <ul
       className={`${
         isLaptop ? srink() : hide()
-      }  space-y-6 tracking-wide `}
+      }  space-y-4 tracking-wide `}
     >
       {Menu.filter((Menu) => Menu.index < 6).map((Menu) => (
         <li>
@@ -34,17 +34,21 @@ export default function SideBar_list(props) {
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className={`${Open ? "w-6 h-6" : "w-8 h-8"}`}
+              className={`${Open ? "w-7 h-7" : "w-8 h-8"}`}
               viewBox='0 0 20 20'
               fill='currentColor'
             >
               <path
                 className=' text-skin-svg-accent  group-hover:text-skin-svg-hover dark:theme-dark transition ease-in duration-100'
+                fill-rule="evenodd"
                 d={Menu.path1}
+                clip-rule="evenodd"
               />
               <path
                 className=' text-skin-svg-muted group-hover:text-skin-svg-hover-muted dark:theme-dark transition ease-in duration-100'
+                fill-rule="evenodd"
                 d={Menu.path2}
+                clip-rule="evenodd"
               />
             </svg>
             <span
