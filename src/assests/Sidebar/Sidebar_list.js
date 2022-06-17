@@ -17,15 +17,11 @@ export default function SideBar_list(props) {
   }
 
   return (
-    <ul
-      className={`${
-        isLaptop ? srink() : hide()
-      }  space-y-4 tracking-wide `}
-    >
+    <ul className={`${isLaptop ? srink() : hide()}  space-y-4 tracking-wide `}>
       {Menu.filter((Menu) => Menu.index < 6).map((Menu) => (
         <li>
           <a
-            href='#'
+            href={Menu.link}
             className={` ${
               Open ? "px-5 justify-start" : "px-4 justify-center"
             }  rounded-3xl py-3 flex justify-start items-center space-x-4  group hover:bg-skin-btn-muted transition ease-in duration-100 hover:shadow-lg font-semibold text-xl dark:theme-dark   ${
@@ -40,15 +36,15 @@ export default function SideBar_list(props) {
             >
               <path
                 className=' text-skin-svg-accent  group-hover:text-skin-svg-hover dark:theme-dark transition ease-in duration-100'
-                fill-rule="evenodd"
+                fill-rule='evenodd'
                 d={Menu.path1}
-                clip-rule="evenodd"
+                clip-rule='evenodd'
               />
               <path
                 className=' text-skin-svg-muted group-hover:text-skin-svg-hover-muted dark:theme-dark transition ease-in duration-100'
-                fill-rule="evenodd"
+                fill-rule='evenodd'
                 d={Menu.path2}
-                clip-rule="evenodd"
+                clip-rule='evenodd'
               />
             </svg>
             <span

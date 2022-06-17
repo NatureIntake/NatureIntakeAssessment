@@ -64,7 +64,7 @@ export default function DashBoard(props) {
               <span
                 className={` text-3xl text-skin-base dark:theme-dark font-bold capitalize  `}
               >
-                neerav garg
+                prabhjot singh
               </span>
             </div>
             <span

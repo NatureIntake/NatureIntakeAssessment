@@ -1,25 +1,29 @@
 import React from "react";
 import useMediaQuery from "../hooks/useMediaQuery";
-import { CircularProgress, Box } from "@mui/material";
+import { CircularProgress, Box, Typography } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CircleIcon from "@mui/icons-material/Circle";
 
 const gradeSchema = [
   {
     title: "Unit 1",
-    grade: "A",
+    grade: "C",
+    marks: "16",
   },
   {
     title: "Unit 2",
-    grade: "A",
+    grade: "B",
+    marks: "18",
   },
   {
     title: "Unit 3",
-    grade: "A",
+    grade: "D",
+    marks: "10",
   },
   {
     title: "Final test",
-    grade: "A",
+    grade: "B",
+    marks: "14",
   },
 ];
 const Color = ["from-black to-gray-900"];
@@ -27,7 +31,7 @@ const Color = ["from-black to-gray-900"];
 function Card(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
-  const percentage = 100;
+  const percentage = 60;
 
   return (
     <div
@@ -69,44 +73,9 @@ function Card(props) {
                   style={{ position: "absolute", color: "#00c853" }}
                 />
               ) : (
-                <CircleIcon
-                  sx={{ fontSize: "160px" }}
-                  style={{ position: "absolute", color: "#69f0ae" }}
-                />
+                <Typography position='absolute' variant="h2" component="h2" color ="black" >{percentage}%</Typography>
               )}
             </Box>
-          </div>
-        </div>
-      </div>
-      {/* Completion */}
-
-      <div className=' flex-1 '>
-        <div
-          className={`flex flex-col transform hover:scale-105 h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark`}
-        >
-          {/* title */}
-          <div className='flex flex-row justify-between align-between px-4'>
-            <span className=' text-skin-base dark:theme-dark text-3xl font-bold pt-3 '>
-              Grades
-            </span>
-            <span className=' w-14  h-14 flex items-center justify-center  bg-teal-900 dark:theme-dark rounded-2xl bg-opacity-90 text-white text-center font-bold text-3xl shadow-md'>
-              A
-            </span>
-          </div>
-          {/* ranking */}
-          <div className='grid grid-rows-8 gap-4 bg-skin-dull dark:theme-dark px-4 py-4 rounded-2xl'>
-            {gradeSchema.map((Grade) => (
-              <div className=' shadow-sm border-skin-base rounded-2xl  bg-skin-base dark:theme-dark '>
-                <div className='grid grid-cols-3 grid-flow-row font-raleway'>
-                  <span className='h-8 py-1 col-span-2 rounded-2xl text-white text-center bg-skin-highlight  text-xl font-semibold '>
-                    {Grade.title}
-                  </span>
-                  <span className='h-8 py-1 text-center text-skin-base text-xl font-semibold '>
-                    {Grade.grade}
-                  </span>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
@@ -120,18 +89,51 @@ function Card(props) {
           {/* title */}
           <div className='flex flex-row justify-between align-between px-4'>
             <span className=' text-skin-base dark:theme-dark text-3xl font-bold pt-3 '>
-              Grades
+              Marks
             </span>
             <span className=' w-14  h-14 flex items-center justify-center  bg-teal-900 dark:theme-dark rounded-2xl bg-opacity-90 text-white text-center font-bold text-3xl shadow-md'>
-              A
+              58
             </span>
           </div>
           {/* ranking */}
           <div className='grid grid-rows-8 gap-4 bg-skin-dull dark:theme-dark px-4 py-4 rounded-2xl'>
             {gradeSchema.map((Grade) => (
-              <div className=' shadow-sm border-skin-base rounded-2xl  bg-skin-base dark:theme-dark '>
+              <div className=' shadow-sm border-skin-base rounded-lg  bg-skin-base dark:theme-dark '>
                 <div className='grid grid-cols-3 grid-flow-row font-raleway'>
-                  <span className='h-8 py-1 col-span-2 rounded-2xl text-white text-center bg-skin-highlight  text-xl font-semibold '>
+                  <span className='h-8 py-1 col-span-2 rounded-lg text-white text-center bg-skin-highlight  text-xl font-semibold '>
+                    {Grade.title}
+                  </span>
+                  <span className='h-8 py-1 text-center text-skin-base text-xl font-semibold '>
+                    {Grade.marks}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Grades */}
+
+      <div className=' flex-1 '>
+        <div
+          className={`flex flex-col transform hover:scale-105 h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark`}
+        >
+          {/* title */}
+          <div className='flex flex-row justify-between align-between px-4'>
+            <span className=' text-skin-base dark:theme-dark text-3xl font-bold pt-3 '>
+              Grades
+            </span>
+            <span className=' w-14  h-14 flex items-center justify-center  bg-teal-900 dark:theme-dark rounded-lg bg-opacity-90 text-white text-center font-bold text-3xl shadow-md'>
+              C
+            </span>
+          </div>
+          {/* ranking */}
+          <div className='grid grid-rows-8 gap-4 bg-skin-dull dark:theme-dark px-4 py-4 rounded-2xl'>
+            {gradeSchema.map((Grade) => (
+              <div className=' shadow-sm border-skin-base rounded-lg  bg-skin-base dark:theme-dark '>
+                <div className='grid grid-cols-3 grid-flow-row font-raleway'>
+                  <span className='h-8 py-1 col-span-2 rounded-lg text-white text-center bg-skin-highlight  text-xl font-semibold '>
                     {Grade.title}
                   </span>
                   <span className='h-8 py-1 text-center text-skin-base text-xl font-semibold '>

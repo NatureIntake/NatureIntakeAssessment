@@ -17,7 +17,7 @@ const Menu = [
 ];
 
 function Middle () {
-  const [Completion, setCompletion] = useState(2);
+  const [Completion, setCompletion] = useState(0);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
 
