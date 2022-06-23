@@ -60,9 +60,9 @@ function Card(props) {
                 style={{
                   width: "200px",
                   height: "200px",
-                  color: "#006600",
+                  color: "#00bfa5",
                   borderRadius: "100%",
-                  boxShadow: "inset 0 0 0px 22px #9e9e9e",
+                  boxShadow: "inset 0 0 0px 22px #f5f5f5",
                   backgroundColor: "transparent",
                 }}
                 thickness={5}
@@ -73,7 +73,25 @@ function Card(props) {
                   style={{ position: "absolute", color: "#00c853" }}
                 />
               ) : (
-                <Typography position='absolute' variant="h2" component="h2" color ="black" >{percentage}%</Typography>
+                <Box
+                  position='absolute'
+                  display='flex'
+                  justifyContent='center'
+                  alignItems='center'
+                >
+                  <CircleIcon
+                    sx={{ fontSize: "170px" }}
+                    style={{ position: "absolute", color: "#006600" }}
+                  />
+                  <Typography
+                    position='absolute'
+                    variant='h2'
+                    component='h2'
+                    color='white'
+                  >
+                    {percentage}%
+                  </Typography>
+                </Box>
               )}
             </Box>
           </div>
@@ -87,23 +105,20 @@ function Card(props) {
           className={`flex flex-col transform hover:scale-105 h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark`}
         >
           {/* title */}
-          <div className='flex flex-row justify-between align-between px-4'>
-            <span className=' text-skin-base dark:theme-dark text-3xl font-bold pt-3 '>
+          <div className='flex flex-row justify-center px-4 '>
+            <span className=' text-skin-base dark:theme-dark text-3xl font-bold '>
               Marks
-            </span>
-            <span className=' w-14  h-14 flex items-center justify-center  bg-teal-900 dark:theme-dark rounded-2xl bg-opacity-90 text-white text-center font-bold text-3xl shadow-md'>
-              58
             </span>
           </div>
           {/* ranking */}
-          <div className='grid grid-rows-8 gap-4 bg-skin-dull dark:theme-dark px-4 py-4 rounded-2xl'>
+          <div className='grid grid-rows-8 gap-4 bg-skin-dull dark:theme-dark px-4 py-5 rounded-2xl'>
             {gradeSchema.map((Grade) => (
-              <div className=' shadow-sm border-skin-base rounded-lg  bg-skin-base dark:theme-dark '>
+              <div className=' shadow-sm  rounded-lg  bg-skin-base dark:theme-dark '>
                 <div className='grid grid-cols-3 grid-flow-row font-raleway'>
-                  <span className='h-8 py-1 col-span-2 rounded-lg text-white text-center bg-skin-highlight  text-xl font-semibold '>
+                  <span className='h-9 py-1 col-span-2 rounded-lg text-white text-center bg-skin-highlight  text-xl font-semibold '>
                     {Grade.title}
                   </span>
-                  <span className='h-8 py-1 text-center text-skin-base text-xl font-semibold '>
+                  <span className='h-9 py-1 text-center text-skin-base text-xl font-semibold '>
                     {Grade.marks}
                   </span>
                 </div>
@@ -120,28 +135,27 @@ function Card(props) {
           className={`flex flex-col transform hover:scale-105 h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark`}
         >
           {/* title */}
-          <div className='flex flex-row justify-between align-between px-4'>
-            <span className=' text-skin-base dark:theme-dark text-3xl font-bold pt-3 '>
+          <div className='flex flex-row justify-center px-4'>
+            <span className=' text-skin-base dark:theme-dark text-3xl font-bold '>
               Grades
-            </span>
-            <span className=' w-14  h-14 flex items-center justify-center  bg-teal-900 dark:theme-dark rounded-lg bg-opacity-90 text-white text-center font-bold text-3xl shadow-md'>
-              C
             </span>
           </div>
           {/* ranking */}
-          <div className='grid grid-rows-8 gap-4 bg-skin-dull dark:theme-dark px-4 py-4 rounded-2xl'>
-            {gradeSchema.map((Grade) => (
-              <div className=' shadow-sm border-skin-base rounded-lg  bg-skin-base dark:theme-dark '>
-                <div className='grid grid-cols-3 grid-flow-row font-raleway'>
-                  <span className='h-8 py-1 col-span-2 rounded-lg text-white text-center bg-skin-highlight  text-xl font-semibold '>
-                    {Grade.title}
-                  </span>
-                  <span className='h-8 py-1 text-center text-skin-base text-xl font-semibold '>
-                    {Grade.grade}
-                  </span>
-                </div>
-              </div>
-            ))}
+          <div className=' h-full flex flex-col gap-2  px-3 py-3 rounded-2xl'>
+            <div className='  flex flex-row justify-center gap-8 px-3 py-3 shadow-sm  rounded-3xl  bg-skin-dull dark:theme-dark dark:border-2 dark:border-skin-muted'>
+              <span className=' w-[5.5rem]  h-[5.5rem] flex items-center justify-center  bg-skin-btn-hover dark:theme-dark rounded-3xl bg-opacity-90 text-white text-center font-bold text-5xl shadow-md'>
+                58
+              </span>
+              <span class="flex-none h-full w-2 bg-skin-inverted rotate-12 rounded-3xl shadow-md"></span>
+              <span className=' w-[5.5rem]  h-[5.5rem] flex items-center justify-center bg-skin-btn-hover dark:theme-dark rounded-3xl bg-opacity-90 text-white text-center font-bold text-5xl shadow-md'>
+                58
+              </span>
+            </div>
+            <div className='flex  justify-center shadow-sm  rounded-3xl  bg-skin-dull dark:theme-dark py-3 '>
+            <span className='w-[4.5rem] h-[4.5rem] flex items-center justify-center bg-skin-btn-accent rounded-2xl bg-opacity-90 text-white text-center font-bold text-5xl shadow-md'>
+                A
+              </span>
+            </div>
           </div>
         </div>
       </div>

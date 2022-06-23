@@ -1,13 +1,14 @@
-import React, { isValidElement } from "react";
+import React from "react";
 import Toggle from "../assests/Navbar/Toggle";
 import SidebarContext from "../assests/context/SidebarContext";
 import useMediaQuery from "../assests/hooks/useMediaQuery";
-
+import { useRouter } from "next/router";
 const Navbar = () => {
   const { Open, setOpen } = React.useContext(SidebarContext);
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isLaptop = useMediaQuery("(min-width: 1024px)");
-
+const router = useRouter()
+  
   return (
     <div
       className={`w-full fixed top-0 inset-x-0 z-50 ml-auto font-heebo font-semibold shadow-md dark:shadow-none border-b border-skin-base dark:theme-dark`}
@@ -83,7 +84,7 @@ const Navbar = () => {
               <span
                 className={` md:text-lg lg:text-2xl text-skin-base dark:theme-dark font-medium  `}
               >
-                Dashboard
+                {router.pathname}
               </span>
             </div>
           )}

@@ -34,6 +34,7 @@ module.exports = {
           muted: withOpacity("--color-muted"),
           hue: withOpacity("--color-green-hue"),
           dull: withOpacity("--color-dull"),
+          inverted: withOpacity("--color-inverted"),
           highlight: withOpacity("--color-highlight-base"),
           "btn-accent": withOpacity("--color-button-accent"),
           "btn-hover": withOpacity("--color-button-hover"),

@@ -8,6 +8,7 @@
     --color-muted: 242, 242, 242;
     --color-dull: 210, 210, 210;
     --color-green-hue: 243, 249, 249;
+    --color-inverted: 50, 50, 50;
     /* Text */
     --color-text-base: 0, 0, 0;
     --color-text-muted: 55, 65, 81;
@@ -41,6 +42,7 @@
     --color-muted: 34, 34, 36;
     --color-dull: 50, 50, 50;
     --color-green-hue: 0, 0, 0;
+    --color-inverted: 160, 160, 160;
     /* Text */
     --color-text-base: 255, 255, 255;
     --color-text-muted: 200, 200, 200;

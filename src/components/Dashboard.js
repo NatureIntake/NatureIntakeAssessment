@@ -4,6 +4,7 @@ import useMediaQuery from "../assests/hooks/useMediaQuery";
 import Card from "../assests/Dashboard/Card";
 import Middle from "../assests/Dashboard/Middle";
 
+
 export default function DashBoard(props) {
   const { Open } = React.useContext(SidebarContext);
   const isLarge = useMediaQuery("(min-width: 1440px)");
@@ -17,8 +18,9 @@ export default function DashBoard(props) {
         [22, "Studying late,"],
         [18, "Good evening,"],
         [12, "Good afternoon,"],
-        [5, "Good morning,"],
-        [0, "Whoa, early bird,"],
+        [8, "Good morning,"],
+        [4, "Whoa, early bird,"],
+        
       ],
       hr = new Date().getHours();
     for (var i = 0; i < data.length; i++) {
@@ -28,7 +30,7 @@ export default function DashBoard(props) {
     }
   }
   function srink() {
-    return Open ? "pl-[17rem] px-5" : "pl-[7rem] px-5";
+    return Open ? "pl-[17rem] px-6" : "pl-[7rem] px-6";
   }
 
   return (

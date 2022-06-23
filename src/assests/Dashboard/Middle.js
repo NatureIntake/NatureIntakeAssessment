@@ -60,7 +60,7 @@ function Middle () {
         {Menu.map((menu) => (
           <div className=' flex-1  '>
             <div
-              className={`flex flex-col transform hover:scale-105 h-48 cursor-pointer transition duration-200 ease-in-out px-4 py-4 shadow-md dark:theme-dark  rounded-3xl gap-7 
+              className={`flex flex-col transform hover:scale-105 h-48 cursor-pointer transition duration-200 ease-in-out px-3 py-4 shadow-md dark:theme-dark  rounded-3xl gap-7 
               ${theme_btn()}`}
             >
               {/* title */}
@@ -72,9 +72,9 @@ function Middle () {
               {/* state */}
 
               <button
-                className={`${theme_grad()} bg-skin-btn-accent hover:bg-skin-btn-hover  px-4 py-4 rounded-3xl shadow-md `}
+                className={`${theme_grad()} bg-skin-btn-accent hover:bg-skin-btn-hover  px-2 py-3 rounded-3xl shadow-md `}
               >
-                <div className='flex flex-row gap-4 justify-center '>
+                <div className='flex flex-row gap-2 justify-center '>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     class='h-9 w-9 text-skin-base  mt-1'
