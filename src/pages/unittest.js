@@ -26,7 +26,7 @@ export default function UnitTest() {
         className={`flex flex-col rounded-3xl bg-skin-base dark:theme-dark shadow-md   py-3 px-3 h-52 w-full items-center justify-end text-center  gap-4 pb-10`}
       >
         <span
-          className={` text-3xl text-skin-base bg-skin-muted px-3 py-3 w-8/12 rounded-xl shadow-sm  dark:bg-zinc-700 font-bold capitalize `}
+          className={` text-3xl text-skin-base bg-zinc-100 px-3 py-3 w-8/12 rounded-xl shadow-sm  dark:bg-zinc-700 font-bold capitalize `}
         >
           UNIT TEST
         </span>
