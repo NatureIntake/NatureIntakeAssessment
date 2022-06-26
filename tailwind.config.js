@@ -21,6 +21,7 @@ module.exports = {
         skin: {
           base: withOpacity("--color-text-base"),
           muted: withOpacity("--color-text-muted"),
+          accent: withOpacity("--color-text-accent"),
           inverted: withOpacity("--color-text-inverted"),
           "svg-accent": withOpacity("--color-svg-accent"),
           "svg-muted": withOpacity("--color-svg-accent-muted"),

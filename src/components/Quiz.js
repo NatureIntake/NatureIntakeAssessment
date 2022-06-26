@@ -48,10 +48,10 @@ export default function Quiz() {
       ) : (
         <>
           <div className='flex flex-col items-start w-full'>
-            <h4 className='mt-10 text-xl text-white/60'>
+            <h4 className='mt-10 text-xl text-skin-muted dark:theme-dark'>
               Question {currentQuestion + 1} of {questions.length}
             </h4>
-            <div className='mt-4 text-2xl text-white'>
+            <div className='mt-4 text-2xl text-center text-skin-base dark:theme-dark'>
               {questions[currentQuestion].question}
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function Quiz() {
             {questions[currentQuestion].options.map((answer, index) => (
               <div
                 key={index}
-                className='flex items-center w-full py-4 pl-5 m-2 ml-0 space-x-2 border-2 cursor-pointer border-white/10 rounded-xl bg-white/5'
+                className='flex items-center w-full py-4 pl-5 m-2 ml-0 space-x-2 border-2 cursor-pointer border-white/10 rounded-2xl bg-white/5 hover:bg-skin-btn-hover-muted'
                 onClick={(e) => handleAnswerOption(answer.answer)}
               >
                 <input
@@ -77,10 +77,10 @@ export default function Quiz() {
               </div>
             ))}
           </div>
-          <div className='flex justify-between w-full mt-4 text-white'>
+          <div className='flex justify-between w-full mt-4 text-white px-5 gap-6 '>
             <button
               onClick={handlePrevious}
-              className='w-[49%] py-3 bg-indigo-600 rounded-lg'
+              className='w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md'
             >
               Previous
             </button>
@@ -90,7 +90,7 @@ export default function Quiz() {
                   ? handleSubmitButton
                   : handleNext
               }
-              className='w-[49%] py-3 bg-indigo-600 rounded-lg'
+              className='w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md'
             >
               {currentQuestion + 1 === questions.length ? "Submit" : "Next"}
             </button>

@@ -37,12 +37,12 @@ function Card(props) {
     <div
       className={`${isLaptop ? "flex flex-row px-1 " : " flex flex-col"} ${
         isTablet && "px-10"
-      } gap-5  `}
+      } px-3 gap-5  `}
     >
       {/* Progress radial */}
       <div className=' flex-1 '>
         <div
-          className={`flex flex-col transform hover:scale-105 h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark`}
+          className={`flex flex-col transform  h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark ${isLaptop && "hover:scale-105"}`}
         >
           {/* title */}
           <div className='flex flex-row justify-center px-4'>
@@ -102,7 +102,7 @@ function Card(props) {
 
       <div className=' flex-1 '>
         <div
-          className={`flex flex-col transform hover:scale-105 h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark`}
+          className={`flex flex-col transform h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark ${isLaptop && "hover:scale-105"}`}
         >
           {/* title */}
           <div className='flex flex-row justify-center px-4 '>
@@ -132,7 +132,7 @@ function Card(props) {
 
       <div className=' flex-1 '>
         <div
-          className={`flex flex-col transform hover:scale-105 h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark`}
+          className={`flex flex-col  h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${Color[0]}  gap-4 dark:theme-dark ${isLaptop && "hover:scale-105"}`}
         >
           {/* title */}
           <div className='flex flex-row justify-center px-4'>
@@ -142,7 +142,7 @@ function Card(props) {
           </div>
           {/* ranking */}
           <div className=' h-full flex flex-col gap-2  px-3 py-3 rounded-2xl'>
-            <div className='  flex flex-row justify-center gap-8 px-3 py-3 shadow-sm  rounded-3xl  bg-skin-dull dark:theme-dark dark:border-2 dark:border-skin-muted'>
+            <div className='  flex flex-row justify-center gap-8 px-3 py-3 shadow-sm  rounded-3xl  bg-skin-dull dark:theme-dark dark:border-2 dark:border-skin-base'>
               <span className=' w-[5.5rem]  h-[5.5rem] flex items-center justify-center  bg-skin-btn-hover dark:theme-dark rounded-3xl bg-opacity-90 text-white text-center font-bold text-5xl shadow-md'>
                 58
               </span>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useMediaQuery from "../hooks/useMediaQuery";
+import indicator from "./indicator.json"
 
 const Menu = [
   {
@@ -17,6 +18,7 @@ const Menu = [
 ];
 
 function Middle () {
+
   const [Completion, setCompletion] = useState(0);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
@@ -47,20 +49,28 @@ function Middle () {
     else if (Completion === 2)
       return "M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z";
   }
+  function theme_provider(){
+    if (state === 0) return "theme-orange";
+    else if (state === 1) return "theme-green";
+    else if (state === 2) return "theme-red";
+  }
 
   return (
     <div
-      className={`px-3 py-8 border-2 border-skin-muted dark:theme-dark  rounded-3xl bg-skin-base dark:bg-gradient-to-bl from-gray-900 to-gray  `}
+      className={` flex  border-2 border-skin-muted dark:theme-dark  rounded-3xl bg-skin-base dark:bg-gradient-to-bl from-gray-900 to-gray justify-center  px-1 py-5  ${
+        isTablet && "px-5 py-10"
+      } ${
+        isLaptop && " px-10 "
+      }`}
     >
       <div
-        className={`${isLaptop ? "flex flex-row px-4 " : " flex flex-col"} ${
-          isTablet && "px-10"
-        } gap-5`}
+        className={`${isLaptop ? "grid grid-cols-2 " : "grid grid-rows-2"} w-11/12 gap-8`}
       >
         {Menu.map((menu) => (
+        
           <div className=' flex-1  '>
             <div
-              className={`flex flex-col transform hover:scale-105 h-48 cursor-pointer transition duration-200 ease-in-out px-3 py-4 shadow-md dark:theme-dark  rounded-3xl gap-7 
+              className={`flex flex-col transform  h-48 cursor-pointer transition duration-200 ease-in-out px-3 py-4 shadow-md dark:theme-dark  rounded-3xl gap-7 ${isLaptop && "hover:scale-105"}
               ${theme_btn()}`}
             >
               {/* title */}
@@ -77,7 +87,7 @@ function Middle () {
                 <div className='flex flex-row gap-2 justify-center '>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
-                    class='h-9 w-9 text-skin-base  mt-1'
+                    class='h-9 w-9 text-skin-accent   mt-1'
                     viewBox='0 0 20 20'
                     fill='currentColor'
                   >

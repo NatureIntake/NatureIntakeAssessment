@@ -84,11 +84,11 @@ export default function SideBar() {
             <button
               className={` ${
                 !isLaptop && !Open && "hidden"
-              } px-4 py-4 w-full text-lg justify-center flex items-center bg-skin-btn-accent hover:bg-skin-btn-hover space-x-2 rounded-3xl  transition ease-in duration-100 hover:shadow-md `}
+              } px-4 py-4 w-full text-lg justify-center flex items-center bg-skin-btn-accent hover:bg-skin-btn-hover theme-orange space-x-2 rounded-3xl  transition ease-in duration-100 shadow-md `}
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                className='h-7 w-7 text-skin-inverted group-hover:text-white'
+                className='h-7 w-7 text-skin-base'
                 viewBox='0 0 20 20'
                 fill='currentColor'
               >
@@ -100,7 +100,7 @@ export default function SideBar() {
                 />
               </svg>
               <span
-                className={`font-raleway font-bold text-skin-inverted group-hover:text-white  ${
+                className={`font-raleway font-bold text-skin-base ${
                   !Open && "hidden"
                 } `}
               >

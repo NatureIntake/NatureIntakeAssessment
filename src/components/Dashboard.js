@@ -4,7 +4,6 @@ import useMediaQuery from "../assests/hooks/useMediaQuery";
 import Card from "../assests/Dashboard/Card";
 import Middle from "../assests/Dashboard/Middle";
 
-
 export default function DashBoard(props) {
   const { Open } = React.useContext(SidebarContext);
   const isLarge = useMediaQuery("(min-width: 1440px)");
@@ -20,7 +19,6 @@ export default function DashBoard(props) {
         [12, "Good afternoon,"],
         [8, "Good morning,"],
         [4, "Whoa, early bird,"],
-        
       ],
       hr = new Date().getHours();
     for (var i = 0; i < data.length; i++) {
@@ -37,12 +35,11 @@ export default function DashBoard(props) {
     <div
       className={` ${isLaptop && srink()} ${
         isTablet && "px-10"
-      } px-2 mt-16 pt-5 min-h-screen min-w-screen  flex  justify-center   `}
+      } px-2 pb-10 mt-16 pt-5 min-h-screen min-w-screen  flex  justify-center   `}
     >
       <div
-        className={`flex flex-col  min-h-screen w-screen ${
-          isTablet && "gap-10 "
-        } ${isLaptop && "gap-14"} gap-12  `}
+        className={`flex flex-col  min-h-screen w-screen 
+        ${isTablet && "gap-10 "} ${isLaptop && "gap-14"} gap-12  `}
       >
         {/* profile badge */}
         <div
