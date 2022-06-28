@@ -1,6 +1,6 @@
 [
     {
-
+      "index" : "1",
       "label": "Take test",
       "grad": "bg-gradient-to-tr from-skin-base1 to-skin-base2",
       "theme": "theme-orange",
@@ -8,7 +8,7 @@
       
     },
     {
-
+      "index" : "2",
       "label": "Completed",
       "grad": "bg-gradient-to-tr from-skin-complete1 to-skin-complete2",
       "theme": "theme-green",
@@ -16,7 +16,7 @@
       
     },
     {
-
+      "index" : "3",
       "label": "Retake",
       "grad": "bg-gradient-to-tr from-skin-wrong1 to-skin-wrong2",
       "theme": "theme-red",

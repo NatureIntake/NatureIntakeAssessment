@@ -3,8 +3,8 @@ import TestContext from "./TestContext";
 
 const TestProvider = (props) => {
 
-  const [Unit1, setUnit1] = useState(0);
-  const [Unit2, setUnit2] = useState(1);
+  const [Unit1, setUnit1] = useState(1);
+  const [Unit2, setUnit2] = useState(2);
   const [Unit3, setUnit3] = useState(0);
   const [Finaltest, setFinaltest] = useState(0);
  
