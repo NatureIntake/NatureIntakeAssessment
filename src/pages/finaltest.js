@@ -3,12 +3,12 @@ import Quiz from "../components/Quiz";
 import SidebarContext from "../assests/context/SidebarContext";
 import TestContext from "../assests/context/TestContext";
 import useMediaQuery from "../assests/hooks/useMediaQuery";
-import indicator from "../assests/Dashboard/indicator.json";
+import indicator from "../assests/Dashboard/indicator";
 
 export default function Finaltest() {
-  const { Finaltest } = useContext(TestContext);
+  const { FinalUnit } = useContext(TestContext);
   const stateMenu = [
-    { states: Finaltest, titles: "Final test" },
+    { states: FinalUnit, titles: "Final test" },
     
   ];
   const [mainPage, setmainPage] = useState(1);

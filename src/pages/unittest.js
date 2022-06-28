@@ -1,18 +1,11 @@
 import React, { useState, useContext } from "react";
-import Quiz from "../components/Quiz";
+import Quiz from "./quiz";
 import SidebarContext from "../assests/context/SidebarContext";
-import TestContext from "../assests/context/TestContext";
 import useMediaQuery from "../assests/hooks/useMediaQuery";
-import indicator from "../assests/Dashboard/indicator.json";
+import IndicatorCards from "../components/indicatorCards";
 
 export default function UnitTest() {
-  const { Unit1, setUnit1, Unit2, setUnit2, Unit3, setUnit3 } =
-    useContext(TestContext);
-  const stateMenu = [
-    { states: Unit1, titles: "Unit 1" },
-    { states: Unit2, titles: "Unit 2" },
-    { states: Unit3, titles: "Unit 3" },
-  ];
+  
   const [mainPage, setmainPage] = useState(1);
 
   const { Open } = React.useContext(SidebarContext);
@@ -68,48 +61,9 @@ export default function UnitTest() {
             ${isTablet && "w-10/12"} ${isLaptop && "w-8/12"}`}
             >
               {/* card */}
-              {stateMenu.map((menu) => (
-                <div className=' flex-1  '>
-                  <div
-                    className={`flex flex-col transform  h-48 cursor-pointer transition duration-200 ease-in-out px-3 py-4 shadow-md dark:theme-dark  rounded-3xl gap-7 ${
-                      isLaptop && "hover:scale-105"
-                    }
-                     ${indicator[menu.states].grad}`}
-                  >
-                    {/* title */}
-
-                    <span className=' text-skin-black jus text-3xl font-bold py-3 text-center'>
-                      {menu.titles}
-                    </span>
-
-                    {/* state */}
-
-                    <button
-                      className={`${
-                        indicator[menu.states].theme
-                      } bg-skin-btn-accent hover:bg-skin-btn-hover  px-2 py-3 rounded-3xl shadow-md `}
-                    >
-                      <div className='flex flex-row gap-2 justify-center '>
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          class='h-9 w-9 text-skin-accent   mt-1'
-                          viewBox='0 0 20 20'
-                          fill='currentColor'
-                        >
-                          <path
-                            fill-rule='evenodd'
-                            d={`${indicator[menu.states].svg}`}
-                            clip-rule='evenodd'
-                          />
-                        </svg>
-                        <span className='text-skin-base text-xl font-semibold py-2'>
-                          {indicator[menu.states].label}
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              ))}
+              <IndicatorCards value="3"/>
+               
+              
             </div>
           </div>
         </div>

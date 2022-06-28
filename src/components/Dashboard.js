@@ -6,9 +6,9 @@ import Middle from "../assests/Dashboard/Middle";
 
 export default function DashBoard(props) {
   const { Open } = React.useContext(SidebarContext);
-  const isLarge = useMediaQuery("(min-width: 1440px)");
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
+  const isLarge = useMediaQuery("(min-width: 1440px)");
   const isPhone = useMediaQuery("(min-width: 375px)");
   const isSmall = useMediaQuery("(min-width: 374px)");
 
@@ -35,7 +35,7 @@ export default function DashBoard(props) {
     <div
       className={` ${isLaptop && srink()} ${
         isTablet && "px-10"
-      } px-2 pb-10 mt-16 pt-5 min-h-screen min-w-screen  flex  justify-center   `}
+      } px-2  mt-16 py-10 min-h-screen min-w-screen  flex  justify-center  `}
     >
       <div
         className={`flex flex-col  min-h-screen w-screen 
