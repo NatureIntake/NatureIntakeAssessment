@@ -1,14 +1,11 @@
 import React, { useState, useContext } from "react";
-import Quiz from "./quiz";
 import SidebarContext from "../assests/context/SidebarContext";
 import useMediaQuery from "../assests/hooks/useMediaQuery";
 import IndicatorCards from "../components/indicatorCards";
 
 export default function UnitTest() {
   
-  const [mainPage, setmainPage] = useState(1);
-
-  const { Open } = React.useContext(SidebarContext);
+  const { Open } = useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
 
@@ -24,7 +21,7 @@ export default function UnitTest() {
     >
       {/* main page */}
 
-      {mainPage ? (
+     
         <div
           className={`flex flex-col  w-screen  gap-12 pb-10 px-1 items-center
         ${isTablet && "gap-10 "} ${isLaptop && "gap-14  min-h-screen"} `}
@@ -67,11 +64,6 @@ export default function UnitTest() {
             </div>
           </div>
         </div>
-      ) : (
-        <Quiz />
-      )}
-
-      {/* quiz */}
     </div>
   );
 }
