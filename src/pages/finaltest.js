@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import SidebarContext from "../assests/context/SidebarContext";
 import TestContext from "../assests/context/TestContext";
 import useMediaQuery from "../assests/hooks/useMediaQuery";
 import indicator from "../assests/Dashboard/indicator";
 
 export default function Finaltest() {
-  const { FinalUnit } = useContext(TestContext);
-  const stateMenu = [{ states: FinalUnit, titles: "Final test" }];
+  const { FinalTest } = useContext(TestContext);
+  const stateMenu = [{ states: FinalTest, titles: "Final-Test" }];
 
   const { Open } = React.useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
@@ -36,7 +36,7 @@ export default function Finaltest() {
           <span
             className={`text-3xl text-skin-base bg-skin-muted border-2 border-skin-base px-3 py-3 w-9/12 rounded-xl shadow-sm dark:bg-zinc-700 font-bold capitalize `}
           >
-            FINAL TEST
+            FINAL-TEST
           </span>
 
           <span
@@ -54,7 +54,7 @@ export default function Finaltest() {
         >
           {/* selection card */}
           <div
-            className={` grid grid-rows-2  gap-8 w-full 
+            className={` flex gap-8 w-full 
             ${isTablet && "w-10/12"} ${isLaptop && "w-8/12"}`}
           >
             {/* card */}

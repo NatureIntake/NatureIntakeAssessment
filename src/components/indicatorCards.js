@@ -6,17 +6,28 @@ import useMediaQuery from "../assests/hooks/useMediaQuery";
 
 export default function IndicatorCards(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");
-  const { Unit1, setUnit1, Unit2, setUnit2, Unit3, setUnit3, FinalUnit } =
-    useContext(TestContext);
+  const {
+    Practice1,
+    Practice2,
+    Practice3,
+    FinalTest,
+    setTestState,
+    setTestTitle,
+  } = useContext(TestContext);
   const stateMenu = [
-    { index: "1", link: "/quizUnit1", states: Unit1, titles: "Unit 1" },
-    { index: "2", link: "/quizUnit2", states: Unit2, titles: "Unit 2" },
-    { index: "3", link: "/quizUnit3", states: Unit3, titles: "Unit 3" },
-    { index: "4", link: "/quizFT", states: FinalUnit, titles: "Final test" },
+    { index: "1", link: "/practice1", states: Practice1, titles: "Practice-1" },
+    { index: "2", link: "/practice2", states: Practice2, titles: "Practice-2" },
+    { index: "3", link: "/practice3", states: Practice3, titles: "Practice-3" },
+    { index: "4", link: "/final", states: FinalTest, titles: "Final-Test" },
   ];
 
-  const handleLock = (state, link) => {
-    return state !== 0 ? link : "" ;
+  const handleLock = (state, link, title) => {
+    setTestTitle(title)
+    return state !== 0 ? link : "";
+  };
+  const handleStateChange = (state, title) => {
+    setTestState(state)
+    setTestTitle(title)
   };
   return (
     <>
@@ -36,8 +47,9 @@ export default function IndicatorCards(props) {
               </span>
 
               {/* state */}
-              <Link href={handleLock(menu.states, menu.link)}>
+              <Link href={handleLock(menu.states, menu.link, menu.titles)}>
                 <button
+                // onClick={handleStateChange(menu.states, menu.titles)}
                   className={`${
                     indicator[menu.states].theme
                   } bg-skin-btn-accent hover:bg-skin-btn-hover  px-2 py-3 rounded-3xl shadow-md `}

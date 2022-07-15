@@ -1,19 +1,38 @@
 import React, { useState } from "react";
 import TestContext from "./TestContext";
-import  QnaUnit1 from "../QnA/QnaUnit1.json"
+import QnaUnit1 from "../QnA/QnaUnit1.json";
 
 const TestProvider = (props) => {
-
-  const [Unit1, setUnit1] = useState(1);
-  const [Unit2, setUnit2] = useState(1);
-  const [Unit3, setUnit3] = useState(0);
-  const [FinalUnit, setFinalUnit] = useState(0);
-
+  const [Practice1, setPractice1] = useState(2);
+  const [Practice2, setPractice2] = useState(1);
+  const [Practice3, setPractice3] = useState(0);
+  const [FinalTest, setFinalTest] = useState(0);
+  const [ClassState, setClassState] = useState(1);
   const [QuestionState, setQuestionState] = useState(QnaUnit1);
+  const [TestState, setTestState] = useState(Practice1);
+  const [TestTitle, setTestTitle] = useState(Practice1);
 
- 
   return (
-    <TestContext.Provider value={{Unit1, setUnit1, Unit2, setUnit2,Unit3, setUnit3, FinalUnit, setFinalUnit, QuestionState, setQuestionState }}>
+    <TestContext.Provider
+      value={{
+        Practice1,
+        setPractice1,
+        Practice2,
+        setPractice2,
+        Practice3,
+        setPractice3,
+        FinalTest,
+        setFinalTest,
+        QuestionState,
+        setQuestionState,
+        TestState,
+        setTestState,
+        ClassState,
+        setClassState,
+        TestTitle,
+        setTestTitle,
+      }}
+    >
       {props.children}
     </TestContext.Provider>
   );

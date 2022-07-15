@@ -12,7 +12,7 @@ const Menu = [
   {
     index: "2",
     title: "Unit test",
-    link: "/unittest",
+    link: "/practiceTest",
     path1:
       "M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z",
     path2:
@@ -23,7 +23,7 @@ const Menu = [
   {
     index: "3",
     title: "Final test",
-    link: "/finaltest",
+    link: "/finalTest",
     path1:
       "M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z",
     path2: "M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z",

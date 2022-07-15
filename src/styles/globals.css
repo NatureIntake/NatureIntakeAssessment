@@ -40,8 +40,8 @@
   .theme-dark {
     /* Background */
     --color-base: 31, 31, 33;
-    --color-muted: 34, 34, 36;
-    --color-dull: 50, 50, 50;
+    --color-muted: 57,57,59;
+    --color-dull: 47,47,49;
     --color-green-hue: 0, 0, 0;
     --color-inverted: 160, 160, 160;
     /* Text */
@@ -60,7 +60,7 @@
     --color-svg-hover-muted: 6, 182, 212;
     /* border */
     --color-border-base: 65, 65, 66;
-    --color-border-muted: 99, 99, 99;
+    --color-border-muted: 89, 89, 89;
     /* Highlight */
     --color-highlight-base: 0, 80, 0;
     
