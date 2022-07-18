@@ -21,14 +21,10 @@ export default function IndicatorCards(props) {
     { index: "4", link: "/final", states: FinalTest, titles: "Final-Test" },
   ];
 
-  const handleLock = (state, link, title) => {
-    setTestTitle(title)
+  const handleLock = (state, link) => {
     return state !== 0 ? link : "";
   };
-  const handleStateChange = (state, title) => {
-    setTestState(state)
-    setTestTitle(title)
-  };
+
   return (
     <>
       {stateMenu
@@ -47,9 +43,8 @@ export default function IndicatorCards(props) {
               </span>
 
               {/* state */}
-              <Link href={handleLock(menu.states, menu.link, menu.titles)}>
+              <Link href={handleLock(menu.states, menu.link)}>
                 <button
-                // onClick={handleStateChange(menu.states, menu.titles)}
                   className={`${
                     indicator[menu.states].theme
                   } bg-skin-btn-accent hover:bg-skin-btn-hover  px-2 py-3 rounded-3xl shadow-md `}

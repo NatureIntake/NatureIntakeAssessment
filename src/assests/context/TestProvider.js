@@ -10,7 +10,6 @@ const TestProvider = (props) => {
   const [ClassState, setClassState] = useState(1);
   const [QuestionState, setQuestionState] = useState(QnaUnit1);
   const [TestState, setTestState] = useState(Practice1);
-  const [TestTitle, setTestTitle] = useState(Practice1);
 
   return (
     <TestContext.Provider
@@ -29,8 +28,6 @@ const TestProvider = (props) => {
         setTestState,
         ClassState,
         setClassState,
-        TestTitle,
-        setTestTitle,
       }}
     >
       {props.children}

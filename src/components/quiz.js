@@ -13,17 +13,8 @@ export default function Quiz(props) {
   const [showScore, setShowScore] = useState(false);
   const {
     QuestionState,
-    TestState,
-    TestTitle,
   } = useContext(TestContext);
 
-  // const handleLabel = () => {
-  //   if (TestState === Practice1) return "Practice-1";
-  //   if (TestState === Practice2) return "Practice-2";
-  //   if (TestState === Practice3) return "Practice-3";
-  //   if (TestState === FinalTest) return "Final-Test";
-    
-  // };
 
   const handleAnswerOption = (answer) => {
     setSelectedOptions([
