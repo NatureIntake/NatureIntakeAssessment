@@ -11,10 +11,7 @@ export default function Quiz(props) {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  const {
-    QuestionState,
-  } = useContext(TestContext);
-
+  const { QuestionState } = useContext(TestContext);
 
   const handleAnswerOption = (answer) => {
     setSelectedOptions([

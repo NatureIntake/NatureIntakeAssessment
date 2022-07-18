@@ -11,8 +11,6 @@ export default function IndicatorCards(props) {
     Practice2,
     Practice3,
     FinalTest,
-    setTestState,
-    setTestTitle,
   } = useContext(TestContext);
   const stateMenu = [
     { index: "1", link: "/practice1", states: Practice1, titles: "Practice-1" },
