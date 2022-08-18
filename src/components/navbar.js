@@ -72,7 +72,7 @@ const router = useRouter()
           <div className='flex-none justify-between'>
             <a href='#' title='Nature Intake'>
               <img
-                src='images/logo_2.png'
+                src='images/logo.png'
                 className={`${isTablet && "w-36 h-22"} w-32 h-24 `}
                 alt='Nature Intake logo'
               />

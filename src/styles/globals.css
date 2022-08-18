@@ -36,6 +36,8 @@
     --color-gradient-completed2: 176, 255, 242;
     --color-gradient-wrong1: 252, 177, 191;
     --color-gradient-wrong2: 255, 117, 143;
+    --color-gradient-login1: 2,2,2,.7;
+    --color-gradient-login2: 0,0,0,.7;
   }
   .theme-dark {
     /* Background */

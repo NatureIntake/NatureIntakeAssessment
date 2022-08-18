@@ -4,21 +4,23 @@ import SidebarProvider from "../assests/context/SidebarProvider";
 import TestProvider from "../assests/context/TestProvider";
 import SideBar from "../components/sideBar";
 import Navbar from "../components/navbar";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, session }) {
   return (
-    <div className='font-raleway bg-skin-muted dark:bg-gradient-to-r from-[#141414] to-[#2c2c2e]'>
+    <SessionProvider session={session}>
+      <div className='font-raleway bg-skin-muted dark:bg-gradient-to-r from-[#141414] to-[#2c2c2e]'>
         <SidebarProvider>
-      <TestProvider>
-          <ThemeProvider>
-            <SideBar />
-            <Navbar />
-            <Component {...pageProps} />
-          </ThemeProvider>
-      </TestProvider>
+          <TestProvider>
+            <ThemeProvider>
+              <SideBar />
+              <Navbar />
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </TestProvider>
         </SidebarProvider>
-    </div>
+      </div>
+    </SessionProvider>
   );
 }
-
 export default MyApp;

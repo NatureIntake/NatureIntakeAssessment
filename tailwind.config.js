@@ -56,8 +56,13 @@ module.exports = {
           complete2: withOpacity("--color-gradient-completed2"),
           wrong1: withOpacity("--color-gradient-wrong1"),
           wrong2: withOpacity("--color-gradient-wrong2"),
+          login1: withOpacity("--color-gradient-login1"),
+          login2: withOpacity("--color-gradient-login2"),
         },
       },
+      // backgroundImage: {
+      //   "login-bg": "url('../public/images/bg.jpg')",
+      // },
     },
   },
   plugins: [],

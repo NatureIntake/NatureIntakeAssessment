@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Quiz from "../components/quiz";
-import QnaUnit1 from "../assests/QnA/QnaUnit1.json";
+import Qna1 from "../assests/QnA/Qna1.json";
 import TestContext from "../assests/context/TestContext";
 
 export default function quizUnit1() {
@@ -9,7 +9,7 @@ export default function quizUnit1() {
   if (Unit1 !== 0) {
     return (
       <>
-        {setQuestionState(QnaUnit1)}
+        {setQuestionState(Qna1)}
         <Quiz value = "Practice-1" />
       </>
     )
