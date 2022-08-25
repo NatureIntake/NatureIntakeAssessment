@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
-import { signIn, useSession } from "next-auth/react";
-import Router from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useEffect } from "react";
+import { requireAuth } from "../../pages/utils/requireAuth";
 
-import BtnLogin from "./btnLogin";
+export default function LoginPage() {
+  const { data: session } = useSession();
 
-const LoginPage = () => {
-  const { data: session, status } = useSession()
-  useEffect(() => {
-    if (session) return Router.push("/");
-  }, [session]);
 
-  if (session) return null;
   return (
     <div className='flex-1'>
       <div className='text-center'>
@@ -23,24 +18,30 @@ const LoginPage = () => {
         </p>
       </div>
       <div className='border border-1 max-auto p-4 shadow'>
-        {/* <BtnLogin provider={"Google"} bgColor='[#f2573f]' />
-        <BtnLogin provider={"Facebook"} bgColor='[#0404be]' /> */}
-        <button
-          className={`mt-6 w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50 `}
-          onClick={() => signIn()}
-        >
-          Continue with
-        </button>
+        {session ?(
+          <button
+            className={`mt-6 w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50 `}
+            onClick={() => signOut()}
+          >
+            Sign out
+          </button>
+        ):(
+          <button
+            className={`mt-6 w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50 `}
+            onClick={() => signIn()}
+          >
+            Sign in
+          </button>
+        )}
       </div>
     </div>
   );
-};
+}
 
-LoginPage.getInitialProps = async (context) => {
-  return {
-    providers: await providers(context),
-    session: await getSession(context),
-  };
-};
-
-export default LoginPage;
+export async function getServerSideProps(context) {
+  return requireAuth(context, ({ session }) => {
+    return {
+      props: { session },
+    };
+  });
+}

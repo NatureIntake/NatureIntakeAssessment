@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
-import SidebarContext from "../assests/context/SidebarContext";
-import TestContext from "../assests/context/TestContext";
-import useMediaQuery from "../assests/hooks/useMediaQuery";
-import indicator from "../assests/Dashboard/indicator";
+import SidebarContext from "../components/context/SidebarContext";
+import TestContext from "../components/context/TestContext";
+import useMediaQuery from "../components/hooks/useMediaQuery";
+import indicator from "../components/Dashboard/indicator";
+import { requireAuth } from "./utils/requireAuth";
 
 export default function Finaltest() {
   const { FinalTest } = useContext(TestContext);
   const stateMenu = [{ states: FinalTest, titles: "Final-Test" }];
 
-  const { Open } = React.useContext(SidebarContext);
+  const { Open } = useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
 
@@ -20,7 +21,8 @@ export default function Finaltest() {
     <div
       className={` ${isLaptop && srink()} ${
         isTablet && "px-10"
-      } px-2  mt-16 pt-10 min-h-screen min-w-screen  flex  justify-center`}>
+      } px-2  mt-16 pt-10 min-h-screen min-w-screen  flex  justify-center`}
+    >
       {/* main page */}
       <div
         className={`flex flex-col  w-screen  gap-12 pb-10 px-1 items-center
@@ -105,4 +107,12 @@ export default function Finaltest() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  return requireAuth(context, ({ session }) => {
+    return {
+      props: { session },
+    };
+  });
 }

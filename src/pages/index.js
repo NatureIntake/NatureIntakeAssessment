@@ -1,8 +1,17 @@
 import React from "react";
-import DashBoard from "../components/dashboard";
+import DashBoard from "../components/Dashboard/dashboard";
+import { requireAuth } from "./utils/requireAuth";
 
-function App() {
+export default function App() {
   return <DashBoard />;
 }
 
-export default App;
+export async function getServerSideProps(context) {
+  return requireAuth(context, ({ session }) => {
+    return {
+      props: { session },
+    };
+  });
+}
+
+

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Link from "next/link";
-import indicator from "../assests/Dashboard/indicator";
-import TestContext from "../assests/context/TestContext";
-import useMediaQuery from "../assests/hooks/useMediaQuery";
+import indicator from "./Dashboard/indicator";
+import TestContext from "./context/TestContext";
+import useMediaQuery from "./hooks/useMediaQuery";
 
 export default function IndicatorCards(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");

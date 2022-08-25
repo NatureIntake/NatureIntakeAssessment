@@ -1,9 +1,9 @@
 import "../styles/globals.css";
-import { ThemeProvider } from "../assests/context/ThemeContext";
-import SidebarProvider from "../assests/context/SidebarProvider";
-import TestProvider from "../assests/context/TestProvider";
-import SideBar from "../components/sideBar";
-import Navbar from "../components/navbar";
+import { ThemeProvider } from "../components/context/ThemeContext";
+import SidebarProvider from "../components/context/SidebarProvider";
+import TestProvider from "../components/context/TestProvider";
+import SideBar from "../components/Sidebar/sideBar";
+import Navbar from "../components/Navbar/navbar";
 import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps, session }) {
