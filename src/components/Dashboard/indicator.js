@@ -1,17 +1,17 @@
 const indicator = [
   {
     index: "1",
-    grad: "bg-gradient-to-tr from-skin-wrong1 to-skin-wrong2",
-    label: "Locked",
-    theme: "theme-red",
-    svg: "M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z",
+    grad: "bg-gradient-to-tr from-skin-base1 to-skin-base2",
+    label: "Take test",
+    theme: "theme-amber",
+    svg: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
   },
   {
     index: "2",
     grad: "bg-gradient-to-tr from-skin-base1 to-skin-base2",
-    label: "Take test",
-    theme: "theme-orange",
-    svg: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
+    label: "Locked",
+    theme: "theme-locked",
+    svg: "M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z",
   },
   {
     index: "3",
@@ -22,12 +22,11 @@ const indicator = [
   },
   {
     index: "4",
-    grad: "bg-gradient-to-tr from-skin-wrong1 to-skin-wrong2",
+    grad: "bg-gradient-to-tr from-skin-base1 to-skin-base2",
     label: "Retake",
     theme: "theme-red",
-    svg: "M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z",
+    svg: "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z",
   },
- 
 ];
 
 export default indicator;

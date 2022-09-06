@@ -3,7 +3,7 @@ import TestContext from "./TestContext";
 import Qna1 from "../QnA/Qna1.json";
 
 const TestProvider = (props) => {
-  const [Practice1, setPractice1] = useState(2);
+  const [Practice1, setPractice1] = useState(3);
   const [Practice2, setPractice2] = useState(1);
   const [Practice3, setPractice3] = useState(0);
   const [FinalTest, setFinalTest] = useState(0);

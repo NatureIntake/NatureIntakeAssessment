@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import SidebarContext from "../assests/context/SidebarContext";
-import TestContext from "../assests/context/TestContext";
-import useMediaQuery from "../assests/hooks/useMediaQuery";
+import SidebarContext from "../components/context/SidebarContext";
+import TestContext from "../components/context/TestContext";
+import useMediaQuery from "../components/hooks/useMediaQuery";
 
 export default function Quiz(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");

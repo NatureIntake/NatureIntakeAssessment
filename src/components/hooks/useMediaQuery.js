@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+
 
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(false);
+  const { data: session } = useSession();
 
   useEffect(() => {
     const media = window.matchMedia(query);

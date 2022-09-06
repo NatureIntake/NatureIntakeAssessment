@@ -12,7 +12,7 @@ export default function SideBar() {
     return Open ? "translate-x-0 w-70 px-2" : "-translate-x-full w-0 px-1";
   }
   function srink() {
-    return Open ? "w-70 px-4 " : "w-20 px-2";
+    return Open ? "w-70 px-4" : "w-20 px-2";
   }
 
   return (
@@ -57,7 +57,7 @@ export default function SideBar() {
         {/* Profile pic & button */}
 
         <div className=' flex-none'>
-          {Open && (
+          {/* {Open && (
             <div
               className={` ${
                 Open && "px-2 py-4 pb-6 "
@@ -77,14 +77,14 @@ export default function SideBar() {
                 neerav garg
               </span>
             </div>
-          )}
+          )} */}
 
           {/* Take test */}
           <div className='  flex justify-between items-center'>
             <button
               className={` ${
                 !isLaptop && !Open && "hidden"
-              } px-4 py-4 w-full text-lg justify-center flex items-center bg-skin-btn-accent hover:bg-skin-btn-hover theme-orange space-x-2 rounded-3xl  transition ease-in duration-100 shadow-md `}
+              } px-4 py-4 w-full text-lg justify-center flex items-center bg-skin-btn-accent hover:bg-skin-btn-hover theme-amber space-x-2 rounded-3xl  transition ease-in duration-100 shadow-md `}
             >
               <svg
                 xmlns='http://www.w3.org/2000/svg'

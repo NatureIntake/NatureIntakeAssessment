@@ -3,12 +3,14 @@ import Toggle from "./Toggle";
 import SidebarContext from "../context/SidebarContext";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { useRouter } from "next/router";
+import Title from "./navbarTitle";
+
 const Navbar = () => {
   const { Open, setOpen } = React.useContext(SidebarContext);
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isLaptop = useMediaQuery("(min-width: 1024px)");
-const router = useRouter()
-  
+  const router = useRouter();
+
   return (
     <div
       className={`w-full fixed top-0 inset-x-0 z-50 ml-auto font-heebo font-semibold shadow-md dark:shadow-none border-b border-skin-base dark:theme-dark`}
@@ -72,9 +74,9 @@ const router = useRouter()
           <div className='flex-none justify-between'>
             <a href='#' title='Nature Intake'>
               <img
-                src='images/logo.png'
-                className={`${isTablet && "w-36 h-22"} w-32 h-24 `}
-                alt='Nature Intake logo'
+                src='images/logo2.png'
+                className={`${isTablet && "w-36 h-30"} w-32 h-24 `}
+                alt=''
               />
             </a>
           </div>
@@ -84,12 +86,14 @@ const router = useRouter()
               <span
                 className={` md:text-lg lg:text-2xl text-skin-base dark:theme-dark font-medium  `}
               >
-                {router.pathname}
+                {Title[router.pathname]}
               </span>
             </div>
           )}
           <div
-            className={`flex flex-row flex-none ${isTablet && "gap-7 pr-5"} gap-3 `}
+            className={`flex flex-row flex-none ${
+              isTablet && "gap-7 pr-5"
+            } gap-3 `}
           >
             {/* Dark mode  */}
             <Toggle />

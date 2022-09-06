@@ -1,110 +1,143 @@
-import { useState, useContext, useRef } from "react";
-import SidebarContext from "../../components/context/SidebarContext";
-import useMediaQuery from "../../components/hooks/useMediaQuery";
-import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import FormContext from "../../components/context/FormContext";
+import Field from "../../components/Form/field";
+import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import schema from "../../components/Form/yupSchema";
+import Submitted from "../../components/Form/submitted";
+import SidebarBehave from "../utils/sidebarBehave";
+import addForm from "../utils/addForm";
+import { getSession } from "next-auth/react";
 
-const schema = yup.object().shape({
-  firstName: yup.string().required("First Name is required"),
-  lastName: yup.string().required(),
-  email: yup.string().email().required(),
-  age: yup.number().positive().integer().required(),
-  password: yup.string().min(4).max(15).required(),
-  confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
-});
 
-export default function Form() {
-  
+export default function Form(props) {
+  const { isForm, setUserData, setIsForm } = useContext(FormContext);
+  const errorStyle = "text-[0.7rem]  text-red-500";
+  const methods = useForm({
+    resolver: yupResolver(schema),
+    mode: "all",
+  });
   const {
-    register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = methods;
 
-  const submitForm = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    localStorage.setItem("isForm", true);
+    setIsForm(true);
+    // addForm(data);
+  
+    console.log(props.session)
+    
   };
 
-  const { Open } = useContext(SidebarContext);
-  const isLaptop = useMediaQuery("(min-width: 1024px)");
-  const isTablet = useMediaQuery("(min-width: 768px )");
-
-  function srink() {
-    return Open ? "pl-[14rem] px-6" : "pl-[4rem] px-6";
-  }
   return (
-    <div
-      className={` ${isLaptop && srink()} ${
-        isTablet && "px-10"
-      } px-2  mt-16 pt-10 min-h-screen min-w-screen  flex  justify-center`}
-    >
+    <SidebarBehave>
       {/* main page */}
-      <div class='w-full h-screen font-sans bg-cover bg-landscape'>
-        <div class='container flex items-center justify-center flex-1 h-full mx-auto'>
-          <div class='w-full max-w-lg'>
-            <div class='leading-loose'>
-              <form
-                class='max-w-sm p-10 m-auto bg-white bg-opacity-25 rounded shadow-xl'
-                onSubmit={handleSubmit(submitForm)}
-              >
-                <p class='mb-8 text-2xl font-light text-center text-white'>
-                  Login
-                </p>
-                <div class='mb-2'>
-                  <div class=' relative '>
-                    <input
-                      type='text'
-                      name='firstName'
-                      {...register("message", {
-                        required: "Required",
-                      })}
-                      placeholder='First Name...'
-                      
-                      class=' rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
-                    />
-                  </div>
-                </div>
-              <p> {errors.firstName?.message} </p>
-
-                <div class='mb-2'>
-                  <div class=' relative '>
-                    <input
-                      type='text'
-                      name='firstName'
-                      {...register("message", {
-                        required: "Required",
-                      })}
-                      placeholder='First Name...'
-                   
-                      class=' rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
-                    />
-                  </div>
-                </div>
-                
-                <div class='flex items-center justify-between mt-4'>
-                  <button>
-                  <input 
-                    type='submit'
-                    id='submit'
-                    class='py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
+      {isForm ? (
+        <Submitted />
+      ) : (
+        <FormProvider {...methods}>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            class='container max-w-2xl mx-auto  md:w-3/4'
+          >
+            <div class='p-4  border-t-2 border-amber-400 rounded-lg bg-opacity-5 shadow-sm dark:theme-dark'>
+              <div class=' md:w-full text-center'>
+                {/* <div class='inline-flex items-center space-x-4'>
+                  <img
+                    alt='profil'
+                    src=''
+                    class='mx-auto object-cover rounded-full h-16 w-16 '
                   />
-                     
-                  
-                  </button>
-                </div>
-                <div class='text-center'>
-                  <a class='right-0 inline-block text-sm font-light align-baseline text-500 hover:text-gray-800'>
-                    Create an account
-                  </a>
-                </div>
-              </form>
+                </div> */}
+                <span className='text-xl text-skin-base dark:theme-dark'>
+                  Please fill the required fields{" "}
+                </span>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            <div class=' flex-auto space-y-1 bg-skin-base dark:bg-gray-800 rounded-lg'>
+              <div class='items-center w-full p-4 space-y-1 text-gray-500 md:inline-flex md:space-y-0'>
+                <h2 class='max-w-sm mx-auto md:w-1/3 text-skin-muted text-2xl dark:theme-dark'>
+                  Account
+                </h2>
+                <div class='max-w-sm mx-auto space-y-1 md:w-2/3'>
+                  <Field
+                    type='text'
+                    name='firstname'
+                    placeholder='First name'
+                  />
+                  <p className={errorStyle}>{errors.firstname?.message}</p>
+                  <Field
+                    type='text'
+                    name='lastname'
+                    placeholder='Last name (optional)'
+                  />
+                  <p className={errorStyle}>{errors.lastname?.message} </p>
+                </div>
+              </div>
+              <hr />
+              <div class='items-center w-full p-4 space-y-1 text-gray-500 md:inline-flex md:space-y-0'>
+                <h2 class='max-w-sm mx-auto md:w-1/3 text-skin-muted text-2xl dark:theme-dark'>
+                  Personal info
+                </h2>
+                <div class='max-w-sm mx-auto space-y-1 md:w-2/3'>
+                  <Field
+                    type='text'
+                    name='parentname'
+                    placeholder='Father/ Mother/ Guardian'
+                  />
+                  <p className={errorStyle}>{errors.parentname?.message}</p>
+
+                  <Field
+                    type='tel'
+                    name='phonenumber'
+                    placeholder='Phone number'
+                  />
+                  <p className={errorStyle}>{errors.phonenumber?.message}</p>
+                </div>
+              </div>
+              <hr className='' />
+              <div class='items-center w-full p-8 space-y-1 text-gray-500 md:inline-flex md:space-y-0'>
+                <h2 class='max-w-sm mx-auto md:w-1/3 text-skin-muted text-2xl dark:theme-dark'>
+                  Education
+                </h2>
+                <div class='max-w-sm mx-auto space-y-1 md:w-2/3'>
+                  <Field type='text' name='city' placeholder='City' />
+                  <p className={errorStyle}>{errors.city?.message}</p>
+
+                  <Field type='text' name='school' placeholder='School name' />
+                  <p className={errorStyle}>{errors.school?.message}</p>
+                  <Field
+                    type='text'
+                    name='class'
+                    placeholder='Class / example : 6th, 7th etc'
+                  />
+                  <p className={errorStyle}>{errors.class?.message}</p>
+
+                  {/* <SelectBar /> */}
+                </div>
+              </div>
+              <hr />
+              <div class='w-full px-4 py-3 ml-auto text-gray-500 md:w-1/3'>
+                <button
+                  type='submit'
+                  class='py-2 px-4  bg-emerald-600 hover:bg-emerald-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg disabled:cursor-not-allowed cursor-pointer'
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </FormProvider>
+      )}
+    </SidebarBehave>
   );
+}
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      session: await getSession(context),
+    },
+  };
 }

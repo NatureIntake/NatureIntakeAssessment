@@ -1,9 +1,15 @@
 import React from "react";
 import DashBoard from "../components/Dashboard/dashboard";
+import FormAuth from "./utils/formAuth";
 import { requireAuth } from "./utils/requireAuth";
 
 export default function App() {
-  return <DashBoard />;
+  return (
+    <>
+      <FormAuth />
+      <DashBoard />;
+    </>
+  );
 }
 
 export async function getServerSideProps(context) {
@@ -13,5 +19,3 @@ export async function getServerSideProps(context) {
     };
   });
 }
-
-

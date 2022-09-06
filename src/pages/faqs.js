@@ -1,25 +1,16 @@
-import React, { useState, useContext } from "react";
-import SidebarContext from "../assests/context/SidebarContext";
-import useMediaQuery from "../assests/hooks/useMediaQuery";
+import React from "react";
+import SidebarBehave from "./utils/sidebarBehave";
+import useMediaQuery from "../components/hooks/useMediaQuery";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
-import faq from "../assests/FAQ/faq.json";
+import faq from "../components/FAQ/faq.json";
 
 export default function UnitTest() {
-  const { Open } = useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
 
-  function srink() {
-    return Open ? "pl-[14rem] px-6" : "pl-[4rem] px-6";
-  }
-
   return (
-    <div
-      className={` ${isLaptop && srink()} ${
-        isTablet && "px-10"
-      } px-2  mt-16 pt-10 min-h-screen min-w-screen  flex  justify-center`}
-    >
+    <SidebarBehave>
       {/* main page */}
       <div
         className={`flex flex-col  w-screen  gap-12 pb-10 px-1 items-center
@@ -52,22 +43,24 @@ export default function UnitTest() {
               ${isLaptop && "px-14 w-9/12"}`}
         >
           {/* selection card */}
-          <div className={`flex flex-col gap-3 w-full`}>
+          <div className={`flex flex-col gap-4 w-full`}>
             {/* card */}
             {faq.map((menu) => (
               <Disclosure>
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className={`flex w-full h-12 justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}>
-                      <span>{menu.question}</span>
+                    <Disclosure.Button
+                      className={`flex w-full h-12 justify-between rounded-lg bg-amber-100 px-5 py-2  hover:bg-amber-200 focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75 `}
+                    >
+                      <span className="text-lg text-black ">{menu.question}</span>
                       <ChevronUpIcon
                         className={`${
                           open ? "rotate-180 transform" : ""
-                        } h-5 w-5 text-purple-500`}
+                        } h-5 w-5 text-skin-base`}
                       />
                     </Disclosure.Button>
-                    <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                     {menu.answer}
+                    <Disclosure.Panel className='px-4 pt-4 pb-2 text-md text-skin-base dark:theme-dark'>
+                      {menu.answer}
                     </Disclosure.Panel>
                   </>
                 )}
@@ -76,6 +69,6 @@ export default function UnitTest() {
           </div>
         </div>
       </div>
-    </div>
+    </SidebarBehave>
   );
 }

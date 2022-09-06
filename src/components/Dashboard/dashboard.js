@@ -3,22 +3,25 @@ import SidebarContext from "../context/SidebarContext";
 import useMediaQuery from "../hooks/useMediaQuery";
 import Card from "./Card";
 import Middle from "./Middle";
+import { useSession } from "next-auth/react";
 
 export default function DashBoard(props) {
+  const { data: session } = useSession();
   const { Open } = React.useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
-  const isLarge = useMediaQuery("(min-width: 1440px)");
-  const isPhone = useMediaQuery("(min-width: 375px)");
-  const isSmall = useMediaQuery("(min-width: 374px)");
+  const userName = () => {
+    if (session) return session.user.name;
+    // else return "User"
+  };
 
   function greet() {
     var data = [
-        [22, "Studying late,"],
+        [0, "Studying late,"],
         [18, "Good evening,"],
         [12, "Good afternoon,"],
         [8, "Good morning,"],
-        [4, "Whoa, early bird,"],
+        [4, "Studying early,"],
       ],
       hr = new Date().getHours();
     for (var i = 0; i < data.length; i++) {
@@ -39,14 +42,14 @@ export default function DashBoard(props) {
     >
       <div
         className={`flex flex-col  min-h-screen w-screen 
-        ${isTablet && "gap-10 "} ${isLaptop && "gap-14"} gap-12  `}
+        ${isTablet && "gap-10 "} ${isLaptop && "gap-14"} gap-10  `}
       >
         {/* profile badge */}
         <div
           className={` pl-3 flex flex-row flex-none rounded-3xl bg-skin-base shadow-md dark:bg-gradient-to-r from-[#323232] to-[#292929] py-3 w-full justify-center align-middle gap-4 `}
         >
           <img
-            src='images/profile.jpeg'
+            src='images/defaultUser.jpg'
             alt=''
             className={` w-20 h-20 shadow-sm border border-skin-base dark:theme-dark justify-center align-middle rounded-full object-cover`}
           />
@@ -63,7 +66,7 @@ export default function DashBoard(props) {
               <span
                 className={` text-3xl text-skin-base dark:theme-dark font-bold capitalize  `}
               >
-                prabhjot singh
+                {userName()}
               </span>
             </div>
             <span

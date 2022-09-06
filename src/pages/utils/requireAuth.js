@@ -11,5 +11,6 @@ export const requireAuth = async (context, cb) => {
       },
     };
   }
+  
   return cb({session});
 };

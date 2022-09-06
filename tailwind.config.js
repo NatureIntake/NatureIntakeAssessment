@@ -50,7 +50,7 @@ module.exports = {
       },
       gradientColorStops: {
         skin: {
-          base1: withOpacity("--color-gradient-base1"),
+          base1: withOpacity("--color-gradient-base1 "),
           base2: withOpacity("--color-gradient-base2"),
           complete1: withOpacity("--color-gradient-completed1"),
           complete2: withOpacity("--color-gradient-completed2"),
@@ -60,9 +60,7 @@ module.exports = {
           login2: withOpacity("--color-gradient-login2"),
         },
       },
-      // backgroundImage: {
-      //   "login-bg": "url('../public/images/bg.jpg')",
-      // },
+      
     },
   },
   plugins: [],
