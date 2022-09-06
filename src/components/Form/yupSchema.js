@@ -16,9 +16,9 @@ const schema = yup.object().shape({
 
   city: yup.string().required("City info can't be Empty").min(3).max(15),
   school: yup.string().required("School info can't be Empty").min(3).max(35),
-  class: yup
+  className: yup
     .string()
-    .required("class info can't be Empty")
+    .required("className info can't be Empty")
     .matches(/^[5-9]+$/, "Must be from 5th to 8th")
     .min(1, "Must be exactly 1 digits")
     .max(1, "Must be exactly 1 digits"),

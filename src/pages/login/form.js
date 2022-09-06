@@ -27,7 +27,7 @@ export default function Form(props) {
     setIsForm(true);
     // addForm(data);
   
-    console.log(props.session)
+    console.log(props.session.user.id)
     
   };
 

@@ -5,7 +5,7 @@ export default function Field(props) {
   const {register, formState: {isSubmitSuccessful} } = useFormContext();
  
   return (
-    <div class=' relative '>
+    <div className=' relative '>
       <div className='my-2 flex rounded p-1'>
         <input
           type={props.type}

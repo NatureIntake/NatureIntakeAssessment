@@ -36,14 +36,14 @@ const Navbar = () => {
                   } text-skin-inverted`}
                   viewBox='0 0 20 20'
                   fill='currentColor'
-                  stroke-width='2'
+                  strokeWidth='2'
                 >
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    fill-rule='evenodd'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    fillRule='evenodd'
                     d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-                    clip-rule='evenodd'
+                    clipRule='evenodd'
                   />
                 </svg>
               )}
@@ -57,14 +57,14 @@ const Navbar = () => {
                   }  text-skin-inverted `}
                   viewBox='0 0 20 20'
                   fill='currentColor'
-                  stroke-width='2'
+                  strokeWidth='2'
                 >
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    fill-rule='evenodd'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    fillRule='evenodd'
                     d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                    clip-rule='evenodd'
+                    clipRule='evenodd'
                   />
                 </svg>
               )}
@@ -112,8 +112,8 @@ const Navbar = () => {
                 stroke='currentColor'
               >
                 <path
-                  fill-rule='evenodd'
-                  clip-rule='evenodd'
+                  fillRule='evenodd'
+                  clipRule='evenodd'
                   strokeWidth={2}
                   d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
                 />

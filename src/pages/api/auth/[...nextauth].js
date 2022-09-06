@@ -6,7 +6,7 @@ import FacebookProvider from "next-auth/providers/facebook";
 
 export default NextAuth({
   adapter: MongoDBAdapter(clientPromise),
-  
+
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
@@ -17,6 +17,13 @@ export default NextAuth({
       clientSecret: process.env.FACEBOOK_SECRET,
     }),
   ],
-  secret : process.env.JWT_SECRET
-  
+  secret: process.env.JWT_SECRET,
+  callbacks: {
+    session: async ({ session, user }) => {
+      return {
+        ...session,
+        user: user,
+      };
+    },
+  },
 });

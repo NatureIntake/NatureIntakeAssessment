@@ -55,9 +55,9 @@ function Card(props) {
               <span className=' text-skin-base dark:theme-dark text-xl font-bold '>
                 Unit Test
               </span>
-              <div class='w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700'>
+              <div className='w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700'>
                 <div
-                  class='h-6 bg-blue-600 rounded-full dark:bg-blue-500'
+                  className='h-6 bg-blue-600 rounded-full dark:bg-blue-500'
                   style={{ width: "45%" }}
                 />
               </div>
@@ -66,9 +66,9 @@ function Card(props) {
               <span className=' text-skin-base dark:theme-dark text-xl font-bold '>
                 Final Test
               </span>
-              <div class='w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700'>
+              <div className='w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700'>
                 <div
-                  class='h-6 bg-blue-600 rounded-full dark:bg-blue-500'
+                  className='h-6 bg-blue-600 rounded-full dark:bg-blue-500'
                   style={{ width: "45%" }}
                 />
               </div>

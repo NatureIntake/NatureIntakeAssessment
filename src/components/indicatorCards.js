@@ -61,7 +61,7 @@ export default function IndicatorCards(props) {
                   <div className='flex flex-row gap-2 justify-center '>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
-                      class='h-9 w-9 text-skin-accent mt-1'
+                      className='h-9 w-9 text-skin-accent mt-1'
                       viewBox='0 0 20 20'
                       fill='currentColor'
                     >

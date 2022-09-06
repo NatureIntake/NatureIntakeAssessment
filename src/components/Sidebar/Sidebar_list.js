@@ -35,15 +35,15 @@ export default function SideBar_list(props) {
             >
               <path
                 className=' text-skin-svg-accent  group-hover:text-skin-svg-hover dark:theme-dark transition ease-in duration-100'
-                fill-rule='evenodd'
+                fillRule='evenodd'
                 d={Menu.path1}
-                clip-rule='evenodd'
+                clipRule='evenodd'
               />
               <path
                 className=' text-skin-svg-muted group-hover:text-skin-svg-hover-muted dark:theme-dark transition ease-in duration-100'
-                fill-rule='evenodd'
+                fillRule='evenodd'
                 d={Menu.path2}
-                clip-rule='evenodd'
+                clipRule='evenodd'
               />
             </svg>
             <span
