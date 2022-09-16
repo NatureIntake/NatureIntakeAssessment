@@ -1,17 +1,26 @@
-import { useContext, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import FormContext  from "../../components/context/FormContext";
-import Router from "next/router";
+// import { getSession } from "next-auth/react";
 
+// export const requireAuth = async (context,cb) => {
+//   const session = await getSession(context);
 
-export default function FormAuth() {
+//    if (session) {
+//     const res = getid(session.user.id);
+//     if (!res) {
+//       return {
+//         redirect: {
+//           destination: "/login/form",
+//           permanent: false,
+//         },
+//       };
+//     }
+//   }
   
-  const { isForm } = useContext(FormContext);
-  useEffect(() => {
-    if (isForm === false) {
-      Router.push("/login/form");
-      console.log(isForm)
-    }
-  });
-  return ;
-}
+//   return cb({session});
+// };
+
+// const getid = async (id) => {
+//   id = id.toString()
+//   const path = "/api/getForm";
+//   const res = await fetch(`${process.env.NEXTAUTH_URL}${path}"/"${id}`);
+//   return res;
+// };

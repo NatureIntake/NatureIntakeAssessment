@@ -1,10 +1,10 @@
 import React, {useContext} from "react";
 import Quiz from "../components/quiz";
-import QnaFT from "../assests/QnA/QnaFT.json";
-import TestContext from "../assests/context/TestContext";
+import QnaFT from "../components/QnA/QnaFT.json";
+import TestContext from "../components/context/TestContext";
 
 
-export default function quizFT() {
+export default function QuizFT() {
   const {FinalUnit, setQuestionState } = useContext(TestContext);
 
   if (FinalUnit !== 0) {

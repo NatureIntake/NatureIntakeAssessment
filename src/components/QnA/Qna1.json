@@ -1,23 +1,222 @@
 [
-    {
-      "index": "1",
-      "question": "unit 222222222222222222222",
-      "options": [
-        { "answer": "1" },
-        { "answer": "2" },
-        { "answer": "3" },
-        { "answer": "4" }
-      ]
-    },
-    {
-      "index": "2 ",
-      "question": "what is this?",
-      "options": [
-        { "answer": "1" },
-        { "answer": "2" },
-        { "answer": "3" },
-        { "answer": "4" }
-      ]
-    }
-  ]
-  
+  {
+    "testType" : "1",
+    "index": "1",
+    "question": "_______ provides us with the energy we need to work, study, and play.",
+    "options": [
+      { "answer": "Beverages" },
+      { "answer": "Food", "isCorrect": true },
+      { "answer": "Both the above" },
+      { "answer": "None of the above" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "2",
+    "question": "There are ______ different types of nutrients in the food we eat.",
+    "options": [
+      { "answer": "Four" },
+      { "answer": "Five", "isCorrect": true },
+      { "answer": "Six" },
+      { "answer": "Seven" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "3",
+    "question": "_______ in the diet provide our bodies with fast energy.",
+    "options": [
+      { "answer": "Carbohydrates", "isCorrect": true },
+      { "answer": "Proteins" },
+      { "answer": "Vitamins" },
+      { "answer": "Minerals" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "4",
+    "question": "_______ aid in the restoration of injured body parts.",
+    "options": [
+      { "answer": "Carbohydrates " },
+      { "answer": "Proteins ", "isCorrect": true },
+      { "answer": "Vitamins" },
+      { "answer": "Minerals" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "5",
+    "question": "__________ assist in keeping our body warm.",
+    "options": [
+      { "answer": "Carbohydrates" },
+      { "answer": "Fats ", "isCorrect": true },
+      { "answer": "Proteins" },
+      { "answer": "Vitamins" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "6",
+    "question": "__________ aid our bodies in fighting sickness and maintaining good health.",
+    "options": [
+      { "answer": "Vitamins and minerals", "isCorrect": true },
+      { "answer": "Carbohydrates and Proteins" },
+      { "answer": "Proteins and Fats" },
+      { "answer": "Fats and Vitamins" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "7",
+    "question": "___________ is a complete source of empty calories",
+    "options": [
+      { "answer": "Starch" },
+      { "answer": "Fiber" },
+      { "answer": "Sugar", "isCorrect": true },
+      { "answer": "Fat" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "8",
+    "question": "Caffeine shows harmful effects on health by causing ___________",
+    "options": [
+      { "answer": "Anemia" },
+      { "answer": "Insomnia ", "isCorrect": true },
+      { "answer": "Goiter" },
+      { "answer": "Heart attack" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "9",
+    "question": "_________ is found in good amounts in fruits and vegetables.",
+    "options": [
+      { "answer": "Fiber ", "isCorrect": true },
+      { "answer": "Protein" },
+      { "answer": "Carbohydrates" },
+      { "answer": "Fats" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "10",
+    "question": "Which of the following is not the consequence of consumption of Trans fats?",
+    "options": [
+      { "answer": "Obesity" },
+      { "answer": "Elevated cholesterol levels" },
+      { "answer": "Heart disease" },
+      { "answer": "Anemia ", "isCorrect": true }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "11",
+    "question": "Which of the following is unpalatable food for the people in this generation?",
+    "options": [
+      { "answer": "Bland foo", "isCorrect": true },
+      { "answer": "Fried food" },
+      { "answer": "Spicy food" },
+      { "answer": "Fatty meats" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "12",
+    "question": "A ____________ contains all the nutrients in the correct quantities. ",
+    "options": [
+      { "answer": "Fried meal" },
+      { "answer": "Balanced diet", "isCorrect": true },
+      { "answer": "Fruits and vegetables" },
+      { "answer": "Milk and Milk products" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "13",
+    "question": "What does the lowest level of the Food pyramid indicate?",
+    "options": [
+      { "answer": "Bread, Cereal and Rice group", "isCorrect": true },
+      { "answer": "Fruits and vegetable group" },
+      { "answer": "Milk and Meat" },
+      { "answer": "Fats and sweets" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "14",
+    "question": "What does the top level of the Food pyramid indicate?",
+    "options": [
+      { "answer": "Bread, Cereal and Rice Group" },
+      { "answer": "Fruits and vegetable group" },
+      { "answer": "Milk and Meat" },
+      { "answer": "Fats and sweets", "isCorrect": true }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "15",
+    "question": "Tofu and beans are plant-based sources of ________.",
+    "options": [
+      { "answer": "Carbohydrates" },
+      { "answer": "Fats" },
+      { "answer": "Proteins ", "isCorrect": true },
+      { "answer": "Vitamins" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "16",
+    "question": "Which of the following food should not be avoided?",
+    "options": [
+      { "answer": "High fat, sugar and salt foods" },
+      { "answer": "Highly processed foods" },
+      { "answer": "Grains/Cereals", "isCorrect": true },
+      { "answer": "Added sugar and salt" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "17",
+    "question": "How much water should be consumed by Children?",
+    "options": [
+      { "answer": "1-2 glasses" },
+      { "answer": "2-4 glasses" },
+      { "answer": "4-6 glasses ", "isCorrect": true },
+      { "answer": "6-8 glasses" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "18",
+    "question": "A _______ tells us what to eat to make our diet a healthy one.",
+    "options": [
+      { "answer": "Food pyramid ", "isCorrect": true },
+      { "answer": "Food group" },
+      { "answer": "Food meal" },
+      { "answer": "Food plate" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "19",
+    "question": "The food items at the bottom of the pyramid are meant to be eaten in much __________ quantity",
+    "options": [
+      { "answer": "Larger ", "isCorrect": true },
+      { "answer": "Smaller" },
+      { "answer": "Moderate" },
+      { "answer": "None of the above" }
+    ]
+  },
+  {
+    "testType" : "1",
+    "index": "20",
+    "question": "People who follow a vegetarian diet focus entirely on _______ foods.",
+    "options": [
+      { "answer": "Animal-based" },
+      { "answer": "Plant-based", "isCorrect": true },
+      { "answer": "Milk-based" },
+      { "answer": "Fruit-based" }
+    ]
+  }
+]

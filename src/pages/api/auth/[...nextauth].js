@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import clientPromise from "./mongodb";
+import clientPromise from "../../../middleware/connectDb";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 
@@ -19,11 +19,10 @@ export default NextAuth({
   ],
   secret: process.env.JWT_SECRET,
   callbacks: {
-    session: async ({ session, user }) => {
-      return {
-        ...session,
-        user: user,
-      };
-    },
+    async session(session, user){
+        if(user && user.id)
+        session.user.id = user.id
+        return session
+    }
   },
 });

@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
 import Quiz from "../components/quiz";
-import QnaUnit3 from "../assests/QnA/QnaUnit3.json";
-import TestContext from "../assests/context/TestContext";
+import QnaUnit3 from "../components/QnA/Qna3.json";
+import TestContext from "../components/context/TestContext";
 
-export default function quizUnit3() {
+export default function QuizUnit3() {
   const {Unit3, setQuestionState } = useContext(TestContext);
 
   if (Unit3 !== 0) {

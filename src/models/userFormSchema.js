@@ -29,14 +29,10 @@ const UserFormSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    slug: {
-      type: String,
-      required: false,
-      unique : true,
-    },
-    // isSubmitted: {
-    //  type : Boolean,
+    // userid: {
+    //   type: String,
     //   required: true,
+    //   unique : true,
     // },
   },
   { timestamps: true }

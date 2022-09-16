@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import useMediaQuery from "../components/hooks/useMediaQuery";
 import IndicatorCards from "../components/indicatorCards";
 import { requireAuth } from "./utils/requireAuth";
 import SidebarBehave from "./utils/sidebarBehave";
 import FormAuth from "./utils/formAuth";
+import TestContext from "../components/context/TestContext";
 
 export default function PracticeTest() {
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
+  const { Practice1, Practice2, Practice3 } = useContext(TestContext);
 
   return (
     <>
@@ -51,7 +53,7 @@ export default function PracticeTest() {
             ${isTablet && "w-10/12"} ${isLaptop && "w-8/12"}`}
             >
               {/* card */}
-              <IndicatorCards value='3' />
+              <IndicatorCards value = '3'/>
             </div>
           </div>
         </div>

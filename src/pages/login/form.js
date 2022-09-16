@@ -6,12 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "../../components/Form/yupSchema";
 import Submitted from "../../components/Form/submitted";
 import SidebarBehave from "../utils/sidebarBehave";
-import addForm from "../utils/addForm";
 import { getSession } from "next-auth/react";
 
-
-export default function Form(props) {
-  const { isForm, setUserData, setIsForm } = useContext(FormContext);
+export default function Form({ session }) {
+  const { isForm, setIsForm, formData } = useContext(FormContext);
   const errorStyle = "text-[0.7rem]  text-red-500";
   const methods = useForm({
     resolver: yupResolver(schema),
@@ -22,13 +20,25 @@ export default function Form(props) {
     formState: { errors },
   } = methods;
 
-  const onSubmit = async (data) => {
-    localStorage.setItem("isForm", true);
+  const onSubmit = async (data, e) => {
+    e.preventDefault();
     setIsForm(true);
-    // addForm(data);
-  
-    console.log(props.session.user.id)
-    
+
+    // const path = "/api/UserForm";
+     await fetch("http://localhost:3000/api/UserForm", {
+      method: "POST",
+      body: JSON.stringify({
+        firstname: data.firstname,
+        lastname: data.lastname,
+        parentname: data.parentname,
+        phonenumber: data.phonenumber,
+        city: data.city,
+        school: data.school,
+        class: data.class,
+        slug: session.user.id,
+      }),
+    })
+
   };
 
   return (
@@ -56,9 +66,9 @@ export default function Form(props) {
                 </span>
               </div>
             </div>
-            <div class=' flex-auto space-y-1 bg-skin-base dark:bg-gray-800 rounded-lg'>
-              <div class='items-center w-full p-4 space-y-1 text-gray-500 md:inline-flex md:space-y-0'>
-                <h2 class='max-w-sm mx-auto md:w-1/3 text-skin-muted text-2xl dark:theme-dark'>
+            <div className=' flex-auto space-y-1 bg-skin-base dark:bg-gray-800 rounded-lg'>
+              <div className='items-center w-full p-4 space-y-1 text-gray-500 md:inline-flex md:space-y-0'>
+                <h2 className='max-w-sm mx-auto md:w-1/3 text-skin-muted text-2xl dark:theme-dark'>
                   Account
                 </h2>
                 <div class='max-w-sm mx-auto space-y-1 md:w-2/3'>

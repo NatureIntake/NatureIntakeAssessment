@@ -1,17 +1,28 @@
 import { useEffect , useContext} from "react";
-import { useSession} from "next-auth/react";
 import LoginPage from "../../components/Login/loginPage";
 import Router from "next/router";
 import FormContext from "../../components/context/FormContext"
+import { getSession } from "next-auth/react";
+import Cookies from "js-cookie";
 
-export default function login() {
+export default function Login({session}) {
   const { isForm } = useContext(FormContext);
-  const { data: session } = useSession();
-
+ 
   useEffect(() => {
-    if (session && !isForm) {
-      Router.push("/login/form");
-    }
+    Cookies.set("userId", session.user.id, { expires: 2^32 - 1 })
+    // if (session && !isForm) {
+    //   Router.push("/login/form");
+    // }
+  });
+  useEffect(() => {
+  const id = Cookies.get("userId");
+   async function fetchForm() {
+    if (id !== "") {
+      const res = await fetch(`http://localhost:3000/api/getForm/${id}`);
+      const data = await res.json();
+      setformData(data);
+    } 
+  }
   });
   return (
     <>
@@ -31,3 +42,12 @@ export default function login() {
     </>
   );
 }
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      session: await getSession(context),
+    },
+  };
+}
+

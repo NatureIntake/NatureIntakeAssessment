@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import Quiz from "../components/quiz";
-import QnaUnit2 from "../assests/QnA/QnaUnit2.json";
-import TestContext from "../assests/context/TestContext";
+import QnaUnit2 from "../components/QnA/Qna2.json";
+import TestContext from "../components/context/TestContext";
 
 
 

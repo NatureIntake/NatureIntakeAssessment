@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TestContext from "./TestContext";
-import Qna1 from "../QnA/Qna1.json";
+
 
 const TestProvider = (props) => {
   const [Practice1, setPractice1] = useState(3);
@@ -8,7 +8,7 @@ const TestProvider = (props) => {
   const [Practice3, setPractice3] = useState(0);
   const [FinalTest, setFinalTest] = useState(0);
   const [ClassState, setClassState] = useState(1);
-  const [QuestionState, setQuestionState] = useState(Qna1);
+  // const [QuestionState, setQuestionState] = useState(Qna1);
   const [TestState, setTestState] = useState(Practice1);
 
   return (
@@ -22,8 +22,7 @@ const TestProvider = (props) => {
         setPractice3,
         FinalTest,
         setFinalTest,
-        QuestionState,
-        setQuestionState,
+      
         TestState,
         setTestState,
         ClassState,
