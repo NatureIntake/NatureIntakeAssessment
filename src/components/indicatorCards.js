@@ -11,23 +11,23 @@ export default function IndicatorCards(props) {
   const stateMenu = [
     {
       index: "1",
-      link: "/1",
+      link: "/quiz/1",
       states: Practice1,
       titles: "UnitTest-1",
     },
     {
       index: "2",
-      link: "/2",
+      link: "/quiz/2",
       states: Practice2,
       titles: "UnitTest-2",
     },
     {
       index: "3",
-      link: "/3",
+      link: "/quiz/3",
       states: Practice3,
       titles: "UnitTest-3",
     },
-    { index: "4", link: "/4", states: FinalTest, titles: "Final-Test" },
+    { index: "4", link: "/quiz/4", states: FinalTest, titles: "Final-Test" },
   ];
 
   const handleLock = (state, link) => {

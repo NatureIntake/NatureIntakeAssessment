@@ -1,57 +1,59 @@
 import React, { useState, useEffect } from "react";
 import FormContext from "./FormContext";
 import Cookies from "js-cookie";
+import { useSession } from "next-auth/react";
 
 export default function FormProvider(props) {
+  const { data: session } = useSession();
   const [isForm, setIsForm] = useState(false);
   const [formData, setformData] = useState([]);
-  const id = Cookies.get("userId");
+  let id;
+
+  useEffect(() => {
+     id = JSON.parse(localStorage.getItem("userId"));
+  }, []);
 
   useEffect(() => {
     // const path = "/api/isForm";
-    fetch(`http://localhost:3000/api/getForm/${id}`)
-      .then((newData) => newData.json())
-      .then((data) => {
-        setformData(data);
-      });
-
-    // fetchForm()
-  }, []);
-  useEffect(() => {
-    const cartData = JSON.parse(localStorage.getItem("cart"));
-    if (cartData) {
-      setCart(cartData);
-    }
+    // if (session) {
+      fetch(`http://localhost:3000/api/isForm/${id}`)
+        .then((newData) => newData.json())
+        .then((data) => {
+          localStorage.setItem("isForm", JSON.stringify(data));
+        });
+    // }
   }, []);
 
   useEffect(() => {
-    if (cart !== initialState) {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
-  }, [cart]);
+    // if (session) {
+      const data = JSON.parse(localStorage.getItem("isForm"));
+      setIsForm(data);
+      // if (data) 
+      
+    // }
+  }, []);
 
-  // useEffect(() => {
+  useEffect(() => {
+    // if (isForm) {
+      // const path = "/api/isForm";
+      fetch(`http://localhost:3000/api/getForm/${id}`)
+        .then((newData) => newData.json())
+        .then((data) => {
+          // Cookies.set("userForm", data, { expires: 2 ^ (32 - 1) });
+          localStorage.setItem("userForm", JSON.stringify(data));
 
-  //     // const path = "/api/isForm";
-  //     fetch(`http://localhost:3000/api/getForm/${id}`)
-  //       .then((newData) => newData.json())
-  //       .then((data) => {
-  //         setformData(data);
-  //       });
-
-  //   // fetchForm()
-  // }, []);
-  // async function fetchForm() {
-  //   if (id !== "") {
-  //     const res = await fetch(`http://localhost:3000/api/getForm/${id}`);
-  //     const data = await res.json();
-  //     setformData(data);
-  //   }
-  //   // else return res.status(401).json({ message: "Invalid Token" });
-  // }
+        });
+    // }
+  }, []);
+  useEffect(() => {
+    const data2 = JSON.parse(localStorage.getItem("userForm"));
+    setformData(data2);
+    // if (data2) {
+    // }
+  }, []);
 
   return (
-    <FormContext.Provider value={{ isForm, setIsForm, formData }}>
+    <FormContext.Provider value={{ isForm, formData }}>
       {props.children}
     </FormContext.Provider>
   );

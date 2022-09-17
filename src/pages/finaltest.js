@@ -4,7 +4,7 @@ import useMediaQuery from "../components/hooks/useMediaQuery";
 import indicator from "../components/Dashboard/indicator";
 import { requireAuth } from "./utils/requireAuth";
 import SidebarBehave from "./utils/sidebarBehave";
-import FormAuth from "./utils/formAuth";
+// import FormAuth from "./utils/formAuth";
 
 export default function Finaltest() {
   const { FinalTest } = useContext(TestContext);
@@ -14,7 +14,7 @@ export default function Finaltest() {
 
   return (
     <>
-      <FormAuth />
+      {/* <FormAuth /> */}
       <SidebarBehave>
         {/* main page */}
         <div

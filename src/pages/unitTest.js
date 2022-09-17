@@ -3,7 +3,7 @@ import useMediaQuery from "../components/hooks/useMediaQuery";
 import IndicatorCards from "../components/indicatorCards";
 import { requireAuth } from "./utils/requireAuth";
 import SidebarBehave from "./utils/sidebarBehave";
-import FormAuth from "./utils/formAuth";
+// import FormAuth from "./utils/formAuth";
 import TestContext from "../components/context/TestContext";
 
 export default function PracticeTest() {
@@ -13,7 +13,7 @@ export default function PracticeTest() {
 
   return (
     <>
-      <FormAuth />
+      {/* <FormAuth /> */}
       <SidebarBehave>
         {/* main page */}
 

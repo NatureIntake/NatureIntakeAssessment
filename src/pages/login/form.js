@@ -22,10 +22,10 @@ export default function Form({ session }) {
 
   const onSubmit = async (data, e) => {
     e.preventDefault();
-    setIsForm(true);
+    // setIsForm(true);
 
     // const path = "/api/UserForm";
-     await fetch("http://localhost:3000/api/UserForm", {
+    await fetch("http://localhost:3000/api/UserForm", {
       method: "POST",
       body: JSON.stringify({
         firstname: data.firstname,
@@ -37,8 +37,7 @@ export default function Form({ session }) {
         class: data.class,
         slug: session.user.id,
       }),
-    })
-
+    });
   };
 
   return (
