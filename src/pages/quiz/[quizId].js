@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 export default function Quiz() {
   const Router = useRouter();
   const QuizId = Router.query.quizId;
-  // const { formData } = useContext(FormContext);
+  const { formData, isForm } = useContext(FormContext);
 
   const { Open } = useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
@@ -20,7 +20,7 @@ export default function Quiz() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
-
+  console.log('isForm', isForm)
   useEffect(() => {
     // const path = "/api/QuestionBank";
 
@@ -28,7 +28,8 @@ export default function Quiz() {
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("Questions", JSON.stringify(data));
-        // setQuestionState(JSON.parse(data))
+        console.log('data', data)
+        setQuestionState(data)
       });
   }, []);
   const getInitial = () => {
@@ -38,11 +39,8 @@ export default function Quiz() {
       return storedPrefs;
     }
   };
-  const [QuestionState, setQuestionState] = useState(getInitial());
+  const [QuestionState, setQuestionState] = useState([]);
 
-  console.log('QuestionState',QuestionState)
-  console.log('getInitial', getInitial())
-  console.log('hi')
 
   const handleAnswerOption = (answer) => {
     setSelectedOptions([

@@ -19,19 +19,18 @@ export default function FormProvider(props) {
       fetch(`http://localhost:3000/api/isForm/${id}`)
         .then((newData) => newData.json())
         .then((data) => {
-          localStorage.setItem("isForm", JSON.stringify(data));
+          setIsForm(data);
         });
     // }
   }, []);
 
-  useEffect(() => {
-    // if (session) {
-      const data = JSON.parse(localStorage.getItem("isForm"));
-      setIsForm(data);
-      // if (data) 
+  // useEffect(() => {
+  //   // if (session) {
+  //     const data = JSON.parse(localStorage.getItem("isForm"));
+  //     // if (data) 
       
-    // }
-  }, []);
+  //   // }
+  // }, []);
 
   useEffect(() => {
     // if (isForm) {
@@ -39,8 +38,8 @@ export default function FormProvider(props) {
       fetch(`http://localhost:3000/api/getForm/${id}`)
         .then((newData) => newData.json())
         .then((data) => {
-          // Cookies.set("userForm", data, { expires: 2 ^ (32 - 1) });
-          localStorage.setItem("userForm", JSON.stringify(data));
+          setformData(data);
+
 
         });
     // }
