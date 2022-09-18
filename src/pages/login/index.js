@@ -3,18 +3,20 @@ import LoginPage from "../../components/Login/loginPage";
 import Router from "next/router";
 import FormContext from "../../components/context/FormContext";
 import { getSession } from "next-auth/react";
+import Cookies from "js-cookie";
 
 export default function Login({ session }) {
   const { isForm, formData } = useContext(FormContext);
 
   useEffect(() => {
     if (session) {
-      localStorage.setItem("userId", JSON.stringify(session.user.id));
-      // console.log(Cookies.get("userId"));
+      // localStorage.setItem("userId", JSON.stringify(session.user.id));
+      Cookies.set("userId", JSON.stringify(session.user.id))
+      // console.log(JSON.parse(Cookies.get("userId")));
     }
   });
   useEffect(() => {
-    if (session && !isForm ) {
+    if (session && !isForm) {
       Router.push("/login/form");
     }
   });

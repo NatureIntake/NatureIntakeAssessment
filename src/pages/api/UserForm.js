@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       let myPost = await db.collection("forms").insertOne(bodyObject);
       res.json(myPost);
       break;
-    case "GET":
+    case "PUT":
       const allPosts = await db.collection("forms").find({slug : Cookies.get()}).toArray();
       res.json(allPosts);
       break;

@@ -6,7 +6,7 @@ import useMediaQuery from "../../components/hooks/useMediaQuery";
 import FormContext from "../../components/context/FormContext";
 import TestContext from "../../components/context/TestContext";
 
-export default function Quiz() {
+export default function Quiz({session}) {
   const Router = useRouter();
   const QuizId = Router.query.quizId;
   const { formData, isForm } = useContext(FormContext);
@@ -19,14 +19,13 @@ export default function Quiz() {
   const [showScore, setShowScore] = useState(false);
   const [QuestionState, setQuestionState] = useState([]);
   
-  console.log("class", formData[0]?.class);
+ 
   useEffect(() => {
+    const form = JSON.parse(localStorage.getItem("formData"))
     // const path = "/api/QuestionBank";
-
-    fetch(`http://localhost:3000/api/getQuestion/4/${QuizId}/10`)
+    fetch(`http://localhost:3000/api/getQuestion/${form[0]?.class}/${QuizId}/10`)
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem("Questions", JSON.stringify(data));
         setQuestionState(data);
       });
   }, []);

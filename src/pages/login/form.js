@@ -9,7 +9,7 @@ import SidebarBehave from "../utils/sidebarBehave";
 import { getSession } from "next-auth/react";
 
 export default function Form({ session }) {
-  const { isForm, setIsForm, formData } = useContext(FormContext);
+  const { isForm } = useContext(FormContext);
   const errorStyle = "text-[0.7rem]  text-red-500";
   const methods = useForm({
     resolver: yupResolver(schema),
@@ -22,9 +22,7 @@ export default function Form({ session }) {
 
   const onSubmit = async (data, e) => {
     e.preventDefault();
-    // setIsForm(true);
 
-    // const path = "/api/UserForm";
     await fetch("http://localhost:3000/api/UserForm", {
       method: "POST",
       body: JSON.stringify({
@@ -35,6 +33,26 @@ export default function Form({ session }) {
         city: data.city,
         school: data.school,
         class: data.class,
+        slug: session.user.id,
+      }),
+    });
+    await fetch("http://localhost:3000/api/UserState", {
+      method: "POST",
+      body: JSON.stringify({
+        unitTest_1: "0",
+        unitTest_2: "1",
+        unitTest_3: "1",
+        finalTest_1: "1",
+        slug: session.user.id,
+      }),
+    });
+    await fetch("http://localhost:3000/api/UserScore", {
+      method: "POST",
+      body: JSON.stringify({
+        unitTest_1_score: "",
+        unitTest_2_score: "",
+        unitTest_3_score: "",
+        finalTest_1_score: "",
         slug: session.user.id,
       }),
     });

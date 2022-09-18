@@ -6,32 +6,36 @@ import useMediaQuery from "./hooks/useMediaQuery";
 
 export default function IndicatorCards(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");
-  const { Practice1, Practice2, Practice3, FinalTest } =
+  const { UnitTest1, UnitTest2, UnitTest3, FinalTest } =
     useContext(TestContext);
   const stateMenu = [
     {
       index: "1",
       link: "/quiz/1",
-      states: Practice1,
+      states: UnitTest1,
       titles: "UnitTest-1",
     },
     {
       index: "2",
       link: "/quiz/2",
-      states: Practice2,
+      states: UnitTest2,
       titles: "UnitTest-2",
     },
     {
       index: "3",
       link: "/quiz/3",
-      states: Practice3,
+      states: UnitTest3,
       titles: "UnitTest-3",
     },
-    { index: "4", link: "/quiz/4", states: FinalTest, titles: "Final-Test" },
+    { index: "4", 
+    link: "/quiz/4",
+     states: FinalTest,
+      titles: "Final-Test" 
+    },
   ];
 
   const handleLock = (state, link) => {
-    return state !== 0 ? link : "";
+    return state === 1 ? "" : link;
   };
 
   return (
@@ -62,7 +66,7 @@ export default function IndicatorCards(props) {
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-9 w-9 text-skin-accent mt-1'
-                      viewBox='0 0 20 20'
+                      viewBox={`${indicator[menu.states].viewBox}`}
                       fill='currentColor'
                     >
                       <path
