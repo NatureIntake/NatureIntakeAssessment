@@ -10,7 +10,6 @@ export default async function handler(req, res) {
     .aggregate([
       { $match: { testType: getQuestion[1] } },
       { $sample: { size: parseInt(getQuestion[2]) } },
-      // { $project: { age: 1, status: 1, name: 1 } },
     ])
     .toArray();
   res.json(allPosts);

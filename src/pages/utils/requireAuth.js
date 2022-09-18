@@ -1,12 +1,9 @@
 import { getSession } from "next-auth/react";
 
 export const requireAuth = async (context, cb) => {
-  console.log('call auth')
   const session = await getSession(context);
 
-  try{
-    return cb({ session });
-  } catch(err) {
+  if (!session) {
     return {
       redirect: {
         destination: session ? "/" : "/login",
@@ -14,4 +11,5 @@ export const requireAuth = async (context, cb) => {
       },
     };
   }
+  return cb({ session });
 };

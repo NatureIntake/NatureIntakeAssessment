@@ -1,18 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
+import { requireAuth } from "../utils/requireAuth";
 import SidebarContext from "../../components/context/SidebarContext";
 import useMediaQuery from "../../components/hooks/useMediaQuery";
-import { requireAuth } from "../utils/requireAuth";
-import Qna2 from "../../components/QnA/Qna2.json";
-import TestContext from "../../components/context/TestContext";
 import FormContext from "../../components/context/FormContext";
-import Cookies from "js-cookie";
+import TestContext from "../../components/context/TestContext";
 
 export default function Quiz() {
   const Router = useRouter();
   const QuizId = Router.query.quizId;
   const { formData, isForm } = useContext(FormContext);
-
   const { Open } = useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px)");
@@ -20,7 +17,9 @@ export default function Quiz() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  console.log('isForm', isForm)
+  const [QuestionState, setQuestionState] = useState([]);
+  
+  console.log("class", formData[0]?.class);
   useEffect(() => {
     // const path = "/api/QuestionBank";
 
@@ -28,19 +27,10 @@ export default function Quiz() {
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("Questions", JSON.stringify(data));
-        console.log('data', data)
-        setQuestionState(data)
+        setQuestionState(data);
       });
   }, []);
-  const getInitial = () => {
-    if (typeof window !== "undefined" && window.localStorage) {
-      const storedPrefs = JSON.parse(window.localStorage.getItem("Questions"));
-
-      return storedPrefs;
-    }
-  };
-  const [QuestionState, setQuestionState] = useState([]);
-
+ 
 
   const handleAnswerOption = (answer) => {
     setSelectedOptions([
@@ -126,26 +116,29 @@ export default function Quiz() {
                 </div>
               </div>
               <div className='flex flex-col w-full '>
-                {(QuestionState?.length > 0) && QuestionState[currentQuestion]?.options?.map((answer, index) => (
-                  <div
-                    key={index}
-                    className='flex items-center w-full py-4 pl-5 m-2 ml-0 space-x-2 border-2 cursor-pointer border-skin-muted rounded-2xl bg-skin-muted dark:theme-dark shadow-sm hover:bg-skin-btn-hover-muted'
-                    onClick={(e) => handleAnswerOption(answer.answer)}
-                  >
-                    <input
-                      type='radio'
-                      name={answer.answer}
-                      value={answer.answer}
-                      checked={
-                        answer.answer ===
-                        selectedOptions[currentQuestion]?.answerByUser
-                      }
-                      onChange={(e) => handleAnswerOption(answer.answer)}
-                      className='w-6 h-6 bg-black'
-                    />
-                    <p className='ml-6 text-skin-base '>{answer.answer}</p>
-                  </div>
-                ))}
+                {QuestionState?.length > 0 &&
+                  QuestionState[currentQuestion]?.options?.map(
+                    (answer, index) => (
+                      <div
+                        key={index}
+                        className='flex items-center w-full py-4 pl-5 m-2 ml-0 space-x-2 border-2 cursor-pointer border-skin-muted rounded-2xl bg-skin-muted dark:theme-dark shadow-sm hover:bg-skin-btn-hover-muted'
+                        onClick={(e) => handleAnswerOption(answer.answer)}
+                      >
+                        <input
+                          type='radio'
+                          name={answer.answer}
+                          value={answer.answer}
+                          checked={
+                            answer.answer ===
+                            selectedOptions[currentQuestion]?.answerByUser
+                          }
+                          onChange={(e) => handleAnswerOption(answer.answer)}
+                          className='w-6 h-6 bg-black'
+                        />
+                        <p className='ml-6 text-skin-base '>{answer.answer}</p>
+                      </div>
+                    )
+                  )}
               </div>
               <div className='flex justify-between w-full mt-4 text-white px-5 gap-6 '>
                 <button

@@ -2,9 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/api/getQuestion/[[...getQuestion]]": "pages/api/getQuestion/[[...getQuestion]].js",
   "/quiz/[quizId]": "pages/quiz/[quizId].js",
-  "/": "pages/index.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/api/isForm/[[...isForm]]": "pages/api/isForm/[[...isForm]].js",
-  "/api/getForm/[[...getForm]]": "pages/api/getForm/[[...getForm]].js"
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
 }
