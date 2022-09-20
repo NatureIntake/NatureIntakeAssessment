@@ -4,7 +4,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import Menu from "./Sidebar_menu";
 
 export default function SideBar_list(props) {
-  const { Open, setOpen } = React.useContext(SidebarContext);
+  const { Open} = React.useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
 

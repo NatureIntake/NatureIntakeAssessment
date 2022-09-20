@@ -5,7 +5,7 @@ import FormContext from "../../components/context/FormContext";
 import { getSession } from "next-auth/react";
 
 export default function Login({ session }) {
-  const { isForm, formData } = useContext(FormContext);
+  const { isForm } = useContext(FormContext);
 
   useEffect(() => {
     if (session) {

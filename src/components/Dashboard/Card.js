@@ -42,9 +42,9 @@ function Card() {
   const isTablet = useMediaQuery("(min-width: 768px )");
   let unitPercentage = () => {
     let count = 0;
-    if (UnitTest1 === "2") count + 1;
-    if (UnitTest2 === "2") count + 1;
-    if (UnitTest3 === "2") count + 1;
+    if (UnitTest1 === "2") count++;
+    if (UnitTest2 === "2") count++;
+    if (UnitTest3 === "2") count++;
     return (count / 3) * 100;
   };
   let finalPercentage = () => {

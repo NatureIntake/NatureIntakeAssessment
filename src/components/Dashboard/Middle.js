@@ -1,16 +1,9 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import useMediaQuery from "../hooks/useMediaQuery";
 import IndicatorCards from "../../components/indicatorCards";
-import TestContext from "../context/TestContext";
 
 function Middle() {
-  const { Unit1, Unit2, Unit3, FinalUnit } = useContext(TestContext);
-  const stateMenu = [
-    { states: Unit1, titles: "Unit 1" },
-    { states: Unit2, titles: "Unit 2" },
-    { states: Unit3, titles: "Unit 3" },
-    { states: FinalUnit , titles: "Final test" },
-  ];
+  
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
 

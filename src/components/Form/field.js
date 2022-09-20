@@ -2,7 +2,7 @@ import React from "react";
 import { useFormContext } from "react-hook-form";
 
 export default function Field(props) {
-  const {register, formState: {isSubmitSuccessful} } = useFormContext();
+  const {register } = useFormContext();
  
   return (
     <div className=' relative '>

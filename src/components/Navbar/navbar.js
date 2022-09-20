@@ -73,7 +73,7 @@ const Navbar = () => {
           )}
           {/* logo */}
           <div className='flex-none justify-between'>
-            <a href='#' title='Nature Intake'>
+            <a href='/' title='Nature Intake'>
               <img
                 src='/images/logo2.png'
                 className={`${isTablet && "w-36 h-30"} w-32 h-24 `}

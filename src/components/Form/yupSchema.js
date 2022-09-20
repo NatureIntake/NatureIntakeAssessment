@@ -19,7 +19,7 @@ const schema = yup.object().shape({
   class: yup
     .string()
     .required("class info can't be Empty")
-    .matches(/^[5-9]+$/, "Must be from 5th to 8th")
+    .matches(/^[4-8]+$/, "Must be from 4th to 8th")
     .min(1, "Must be exactly 1 digits")
     .max(1, "Must be exactly 1 digits"),
 });
