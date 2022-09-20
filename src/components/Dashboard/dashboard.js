@@ -5,7 +5,7 @@ import Card from "./Card";
 import Middle from "./Middle";
 import { useSession } from "next-auth/react";
 
-export default function DashBoard(props) {
+export default function DashBoard() {
   const { data: session } = useSession();
   const { Open } = React.useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
@@ -14,7 +14,7 @@ export default function DashBoard(props) {
     if (session) return session.user.name;
     // else return "User"
   };
-
+  
   function greet() {
     var data = [
         [0, "Studying late,"],
@@ -49,9 +49,9 @@ export default function DashBoard(props) {
           className={` pl-3 flex flex-row flex-none rounded-3xl bg-skin-base shadow-md dark:bg-gradient-to-r from-[#323232] to-[#292929] py-3 w-full justify-center align-middle gap-4 `}
         >
           <img
-            src='images/defaultUser.jpg'
-            alt=''
-            className={` w-20 h-20 shadow-sm border border-skin-base dark:theme-dark justify-center align-middle rounded-full object-cover`}
+            src= {session?.user.image}
+            alt='user img'
+            className={` w-20 h-20 shadow-md dark:theme-dark justify-center align-middle rounded-full object-cover`}
           />
           {/* Greet text*/}
           <div className={` flex flex-col justify-center gap-1`}>

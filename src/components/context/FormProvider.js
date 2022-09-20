@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FormContext from "./FormContext";
-import Cookies from "js-cookie";
+
 
 export default function FormProvider(props) {
   const [isForm, setIsForm] = useState(false);
@@ -8,7 +8,8 @@ export default function FormProvider(props) {
   let id;
 
   useEffect(() => {
-    id = JSON.parse(Cookies.get("userId"));
+    id = JSON.parse(localStorage.getItem("userId"));
+
   }, []);
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import SidebarContext from "../context/SidebarContext";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { useRouter } from "next/router";
 import Title from "./navbarTitle";
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const { Open, setOpen } = React.useContext(SidebarContext);
@@ -74,9 +75,9 @@ const Navbar = () => {
           <div className='flex-none justify-between'>
             <a href='#' title='Nature Intake'>
               <img
-                src='images/logo2.png'
+                src='/images/logo2.png'
                 className={`${isTablet && "w-36 h-30"} w-32 h-24 `}
-                alt=''
+                alt='Nature Intake'
               />
             </a>
           </div>
@@ -99,6 +100,7 @@ const Navbar = () => {
             <Toggle />
             {/* logout */}
             <button
+              onClick={() => signOut()}
               aria-label='logout'
               className=' dark:theme-dark  dark:shadow-none  bg-skin-btn-accent hover:bg-skin-btn-hover active:bg-skin-btn-accent shadow-sm shadow-gray-400 p-2  focus:outline-none text-lg rounded-full  ring-transparent cursor-pointer transition duration-100 ease-in-out '
             >

@@ -3,13 +3,10 @@ import { useRouter } from "next/router";
 import { requireAuth } from "../utils/requireAuth";
 import SidebarContext from "../../components/context/SidebarContext";
 import useMediaQuery from "../../components/hooks/useMediaQuery";
-import FormContext from "../../components/context/FormContext";
-import TestContext from "../../components/context/TestContext";
 
-export default function Quiz({session}) {
+export default function Quiz({ session }) {
   const Router = useRouter();
   const QuizId = Router.query.quizId;
-  const { formData, isForm } = useContext(FormContext);
   const { Open } = useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px)");
@@ -18,18 +15,24 @@ export default function Quiz({session}) {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [QuestionState, setQuestionState] = useState([]);
-  
- 
+
   useEffect(() => {
-    const form = JSON.parse(localStorage.getItem("formData"))
+    const getQuestionLength = () => {
+      return QuizId > 3 ? 20 : 15;
+    };
+    const form = JSON.parse(window.localStorage.getItem("formData"));
+
     // const path = "/api/QuestionBank";
-    fetch(`http://localhost:3000/api/getQuestion/${form[0]?.class}/${QuizId}/10`)
+    fetch(
+      `http://localhost:3000/api/getQuestion/${
+        form[0]?.class
+      }/${QuizId}/${getQuestionLength()}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setQuestionState(data);
       });
   }, []);
- 
 
   const handleAnswerOption = (answer) => {
     setSelectedOptions([
@@ -48,7 +51,7 @@ export default function Quiz({session}) {
     nextQues < QuestionState?.length && setCurrentQuestion(nextQues);
   };
 
-  const handleSubmitButton = () => {
+  const handleSubmitButton = async () => {
     let newScore = 0;
     for (let i = 0; i < QuestionState?.length; i++) {
       QuestionState[i].options.map(
@@ -60,8 +63,33 @@ export default function Quiz({session}) {
     }
     setScore(newScore);
     setShowScore(true);
-    if (score >= (40 / QuestionState?.length) * 100) {
-    }
+
+    await fetch(`http://localhost:3000/api/updateScore/${session.user.id}`, {
+      method: "PUT",
+      body: JSON.stringify(getScore()),
+    });
+    await fetch(`http://localhost:3000/api/updateState/${session.user.id}`, {
+      method: "PUT",
+      body: JSON.stringify(getState()),
+    });
+  };
+  const getScore = () => {
+    if (QuizId === "1") return { unitTest_1_score: score.toString() };
+    else if (QuizId === "2") return { unitTest_2_score: score.toString() };
+    else if (QuizId === "3") return { unitTest_3_score: score.toString() };
+    else if (QuizId === "4") return { finalTest_1_score: score.toString() };
+  };
+
+  const getState = () => {
+    if (QuizId === "1") return { unitTest_1: scoreState() };
+    else if (QuizId === "2") return { unitTest_2: scoreState() };
+    else if (QuizId === "3") return { unitTest_3: scoreState() };
+    else if (QuizId === "4") return { finalTest_1: scoreState() };
+  };
+
+  const scoreState = () => {
+    if ((score / QuestionState?.length) * 100 >= 40) return "2";
+    else return "3";
   };
 
   function srink() {
@@ -81,7 +109,7 @@ export default function Quiz({session}) {
         ${isTablet && "gap-10 "} ${isLaptop && "gap-14  min-h-screen"} `}
       >
         <div
-          className={`flex h-52   rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-end text-center  gap-4  w-full  ${
+          className={`flex h-52   rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-center text-center  gap-4  w-full  ${
             isLaptop && "w-9/12"
           } 
             ${isTablet && "w-11/12"} 
@@ -90,7 +118,7 @@ export default function Quiz({session}) {
           <span
             className={` text-3xl text-skin-base bg-skin-muted border-2 border-skin-base px-3 py-3 w-9/12 rounded-xl shadow-sm  dark:theme-dark font-bold capitalize `}
           >
-            UNit 1
+            {QuizId <= 3 ? `Unit- ${QuizId}` : "Final-Test"}
           </span>
         </div>
         {showScore ? (

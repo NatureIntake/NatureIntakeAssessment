@@ -2,8 +2,11 @@ import React from "react";
 import SidebarContext from "../context/SidebarContext";
 import SideBar_list from "./Sidebar_list";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function SideBar() {
+  const { data: session } = useSession();
   const { Open, setOpen } = React.useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isSmall = useMediaQuery("(min-width: 320px)");
@@ -57,30 +60,32 @@ export default function SideBar() {
         {/* Profile pic & button */}
 
         <div className=' flex-none'>
-          {/* {Open && (
+          {Open && (
             <div
               className={` ${
                 Open && "px-2 py-4 pb-6 "
-              } border-t-2 border-skin-base border-rounded dark:theme-dark  flex flex-row `}
+              } border-t-2 border-skin-base border-rounded dark:theme-dark  flex flex-row items-center `}
             >
               <div className='flex-none'>
                 <img
-                  src='images/profile.jpeg'
-                  alt=''
-                  className={` w-10 h-10 shadow-lg  rounded-full object-cover `}
+                  src={session?.user.image}
+                  alt='user img'
+                  className={` w-12 h-12 shadow-md  rounded-full object-cover `}
                 />
               </div>
 
               <span
                 className={` mt-1 px-5 text-xl font-semibold text-skin-base  dark:theme-dark flex-auto text-center`}
               >
-                neerav garg
+                {session?.user.name}
               </span>
             </div>
-          )} */}
+          )}
 
           {/* Take test */}
-          <div className='  flex justify-between items-center'>
+          <div className='flex justify-between items-center'>
+          <Link href="/unitTest">
+
             <button
               className={` ${
                 !isLaptop && !Open && "hidden"
@@ -107,10 +112,10 @@ export default function SideBar() {
                 Take test
               </span>
             </button>
+            </Link>
           </div>
         </div>
       </aside>
-      
     </div>
   );
 }

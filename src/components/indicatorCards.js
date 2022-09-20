@@ -8,7 +8,7 @@ export default function IndicatorCards(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const { UnitTest1, UnitTest2, UnitTest3, FinalTest } =
     useContext(TestContext);
-  const stateMenu = [
+  const UnitMenu = [
     {
       index: "1",
       link: "/quiz/1",
@@ -27,27 +27,31 @@ export default function IndicatorCards(props) {
       states: UnitTest3,
       titles: "UnitTest-3",
     },
-    { index: "4", 
-    link: "/quiz/4",
-     states: FinalTest,
-      titles: "Final-Test" 
-    },
+    { index: "4", link: "/quiz/4", states: FinalTest, titles: "Final-Test" },
+  ];
+  const FinalMenu = [
+    { index: "4", link: "/quiz/4", states: FinalTest, titles: "Final-Test" },
   ];
 
+  const handleMenu = () => {
+    return props.value !== "4" ? UnitMenu : FinalMenu;
+  };
   const handleLock = (state, link) => {
-    return state === 1 ? "" : link;
+    return state !== "1" && "2" ? link : "";
   };
 
   return (
     <>
-      {stateMenu
+      {handleMenu()
         .filter((Menu) => Menu.index <= props.value)
         .map((menu) => (
           <div className=' flex-1  '>
             <div
               className={`flex flex-col transform  h-48 cursor-pointer transition duration-200 ease-in-out px-3 py-4 shadow-md rounded-3xl gap-7 ${
                 isLaptop && "hover:scale-105"
-              } ${indicator[menu.states].grad} ${indicator[menu.states].theme}`}
+              } ${indicator[menu.states]?.grad} ${
+                indicator[menu.states]?.theme
+              }`}
             >
               {/* title */}
 
@@ -59,24 +63,24 @@ export default function IndicatorCards(props) {
               <Link href={handleLock(menu.states, menu.link)}>
                 <button
                   className={`${
-                    indicator[menu.states].theme
+                    indicator[menu.states]?.theme
                   } bg-skin-btn-accent hover:bg-skin-btn-hover  px-2 py-3 rounded-3xl shadow-md `}
                 >
                   <div className='flex flex-row gap-2 justify-center '>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-9 w-9 text-skin-accent mt-1'
-                      viewBox={`${indicator[menu.states].viewBox}`}
+                      viewBox={indicator[menu.states]?.viewBox}
                       fill='currentColor'
                     >
                       <path
                         fillRule='evenodd'
-                        d={`${indicator[menu.states].svg}`}
+                        d={`${indicator[menu.states]?.svg}`}
                         clipRule='evenodd'
                       />
                     </svg>
                     <span className='text-skin-base text-xl font-semibold py-2'>
-                      {indicator[menu.states].label}
+                      {indicator[menu.states]?.label}
                     </span>
                   </div>
                 </button>

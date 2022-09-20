@@ -6,7 +6,7 @@ export const requireAuth = async (context, cb) => {
   if (!session) {
     return {
       redirect: {
-        destination: session ? "/" : "/login",
+        destination: "/login",
         permanent: false,
       },
     };
