@@ -1,34 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
 import useMediaQuery from "../hooks/useMediaQuery";
+import TestContext from "../context/TestContext";
 
-const gradeSchema = [
-  {
-    title: "Unit 1",
-    grade: "C",
-    marks: "16",
-  },
-  {
-    title: "Unit 2",
-    grade: "B",
-    marks: "18",
-  },
-  {
-    title: "Unit 3",
-    grade: "D",
-    marks: "10",
-  },
-  {
-    title: "Final test",
-    grade: "B",
-    marks: "14",
-  },
-];
 const Color = ["from-black to-gray-900"];
 
-function Card(props) {
+function Card() {
+  const {
+    UnitTest1,
+    UnitTest2,
+    UnitTest3,
+    FinalTest,
+    UnitScore1,
+    UnitScore2,
+    UnitScore3,
+    FinalScore,
+  } = useContext(TestContext);
+
+  const gradeSchema = [
+    {
+      title: "Unit 1",
+      grade: "a",
+      marks: `${UnitScore1}`,
+    },
+    {
+      title: "Unit 2",
+      grade: "B",
+      marks: `${UnitScore2}`,
+    },
+    {
+      title: "Unit 3",
+      grade: "D",
+      marks: `${UnitScore3}`,
+    },
+    {
+      title: "Final test",
+      grade: "B",
+      marks: `${FinalScore}`,
+    },
+  ];
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
-  const percentage = 60;
+  let unitPercentage = () => {
+    let count = 0;
+    if (UnitTest1 === "2") count + 1;
+    if (UnitTest2 === "2") count + 1;
+    if (UnitTest3 === "2") count + 1;
+    return (count / 3) * 100;
+  };
+  let finalPercentage = () => {
+    return FinalTest === "2" ? 100 : 0;
+  };
 
   return (
     <div className={` flex `}>
@@ -37,7 +58,7 @@ function Card(props) {
           isTablet && "px-10"
         } flex px-1  w-full mx-6 gap-6`}
       >
-        {/* Progress radial */}
+        {/* Progress */}
         <div className=' flex-1 '>
           <div
             className={`flex flex-col transform h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${
@@ -55,10 +76,10 @@ function Card(props) {
               <span className=' text-skin-base dark:theme-dark text-xl font-bold '>
                 Unit Test
               </span>
-              <div className='w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700'>
+              <div className='w-full h-6 bg-white rounded-full dark:bg-gray-700'>
                 <div
-                  className='h-6 bg-blue-600 rounded-full dark:bg-blue-500'
-                  style={{ width: "45%" }}
+                  className='h-6 bg-amber-500 shadow-sm rounded-full dark:bg-amber-400 '
+                  style={{ width: `${unitPercentage()}%` }}
                 />
               </div>
             </div>
@@ -66,10 +87,10 @@ function Card(props) {
               <span className=' text-skin-base dark:theme-dark text-xl font-bold '>
                 Final Test
               </span>
-              <div className='w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700'>
+              <div className='w-full h-6 bg-white rounded-full dark:bg-gray-700'>
                 <div
-                  className='h-6 bg-blue-600 rounded-full dark:bg-blue-500'
-                  style={{ width: "45%" }}
+                  className='h-6 bg-amber-500 shadow-sm rounded-full dark:bg-amber-400 '
+                  style={{ width: `${finalPercentage()}%` }}
                 />
               </div>
             </div>
@@ -95,7 +116,7 @@ function Card(props) {
               {gradeSchema.map((Grade) => (
                 <div className=' shadow-sm  rounded-lg  bg-skin-base dark:theme-dark '>
                   <div className='grid grid-cols-3 grid-flow-row font-raleway'>
-                    <span className='h-9 py-1 col-span-2 rounded-lg text-white text-center bg-skin-highlight  text-xl font-semibold '>
+                    <span className='h-9 py-1 col-span-2 rounded-lg text-white text-center bg-skin-btn-accent  text-xl font-semibold '>
                       {Grade.title}
                     </span>
                     <span className='h-9 py-1 text-center text-skin-base text-xl font-semibold '>

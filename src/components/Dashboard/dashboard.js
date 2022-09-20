@@ -10,10 +10,7 @@ export default function DashBoard() {
   const { Open } = React.useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
-  const userName = () => {
-    if (session) return session.user.name;
-    // else return "User"
-  };
+  
   
   function greet() {
     var data = [
@@ -66,7 +63,7 @@ export default function DashBoard() {
               <span
                 className={` text-3xl text-skin-base dark:theme-dark font-bold capitalize  `}
               >
-                {userName()}
+                {session?.user.name}
               </span>
             </div>
             <span

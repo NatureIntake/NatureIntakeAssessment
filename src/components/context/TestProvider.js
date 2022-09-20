@@ -6,16 +6,14 @@ const TestProvider = (props) => {
   const [UnitTest2, setUnitTest2] = useState("");
   const [UnitTest3, setUnitTest3] = useState("");
   const [FinalTest, setFinalTest] = useState("");
-  const [ClassState, setClassState] = useState("");
-
-  let id;
-
-  useEffect(() => {
-    id = JSON.parse(localStorage.getItem("userId"));
-  }, []);
+  const [UnitScore1, setUnitScore1] = useState("");
+  const [UnitScore2, setUnitScore2] = useState("");
+  const [UnitScore3, setUnitScore3] = useState("");
+  const [FinalScore, setFinalScore] = useState("");
 
   useEffect(() => {
-    async function fetchData() {
+    let id = JSON.parse(localStorage.getItem("userId"));
+    async function fetchState() {
       const res = await fetch(`http://localhost:3000/api/getState/${id}`);
       const data = await res.json();
       setUnitTest1(data[0].unitTest_1);
@@ -23,7 +21,16 @@ const TestProvider = (props) => {
       setUnitTest3(data[0].unitTest_3);
       setFinalTest(data[0].finalTest_1);
     }
-    fetchData();
+    async function fetchScore() {
+      const res = await fetch(`http://localhost:3000/api/getScore/${id}`);
+      const data = await res.json();
+      setUnitScore1(data[0].unitTest_1_score);
+      setUnitScore2(data[0].unitTest_2_score);
+      setUnitScore3(data[0].unitTest_3_score);
+      setFinalScore(data[0].finalTest_1_score);
+    }
+    fetchState();
+    fetchScore();
   }, []);
 
   return (
@@ -33,9 +40,10 @@ const TestProvider = (props) => {
         UnitTest2,
         UnitTest3,
         FinalTest,
-
-        ClassState,
-        setClassState,
+        UnitScore1,
+        UnitScore2,
+        UnitScore3,
+        FinalScore,
       }}
     >
       {props.children}

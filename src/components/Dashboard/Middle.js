@@ -25,7 +25,7 @@ function Middle() {
           isLaptop ? "grid grid-cols-2 " : "grid grid-rows-2"
         } w-11/12 gap-8`}
       >
-              <IndicatorCards value="3"/>
+              <IndicatorCards value="5"/>
         
       </div>
     </div>
