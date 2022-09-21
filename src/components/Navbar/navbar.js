@@ -99,7 +99,10 @@ const Navbar = () => {
             <Toggle />
             {/* logout */}
             <button
-              onClick={() => signOut()}
+              onClick={() => {
+                signOut();
+                window?.localStorage?.clear()
+              }}
               aria-label='logout'
               className=' dark:theme-dark  dark:shadow-none  bg-skin-btn-accent hover:bg-skin-btn-hover active:bg-skin-btn-accent shadow-sm shadow-gray-400 p-2  focus:outline-none text-lg rounded-full  ring-transparent cursor-pointer transition duration-100 ease-in-out '
             >

@@ -22,7 +22,7 @@ export default function Quiz({ session }) {
     };
     const form = JSON.parse(window.localStorage.getItem("formData"));
 
-    // const path = "/api/QuestionBank";
+    
     fetch(
       `http://localhost:3000/api/getQuestion/${
         form[0]?.class

@@ -11,12 +11,13 @@ export default function Login({ session }) {
     if (session) {
       localStorage.setItem("userId", JSON.stringify(session.user.id));
     }
-  });
+  }, []);
+
   useEffect(() => {
     if (session && !isForm) {
       Router.push("/login/form");
     }
-  });
+  }, []);
 
   return (
     <>

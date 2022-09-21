@@ -12,15 +12,15 @@ function MyApp({ Component, pageProps, session }) {
     <SessionProvider session={session}>
       <div className='font-raleway bg-skin-muted dark:bg-gradient-to-r from-[#141414] to-[#2c2c2e]'>
         <SidebarProvider>
-          <TestProvider>
-            <FormProvider>
+          <FormProvider>
+            <TestProvider>
               <ThemeProvider>
                 <SideBar />
                 <Navbar />
                 <Component {...pageProps} />
               </ThemeProvider>
-            </FormProvider>
-          </TestProvider>
+            </TestProvider>
+          </FormProvider>
         </SidebarProvider>
       </div>
     </SessionProvider>
