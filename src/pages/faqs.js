@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarBehave from "./utils/sidebarBehave";
+import SidebarBehave from "../components/utils/sidebarBehave";
 import useMediaQuery from "../components/hooks/useMediaQuery";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";

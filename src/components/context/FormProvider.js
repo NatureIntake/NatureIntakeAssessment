@@ -4,7 +4,7 @@ import FormContext from "./FormContext";
 export default function FormProvider(props) {
   const [isForm, setIsForm] = useState(false);
   const [formData, setformData] = useState([]);
-  
+
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("userId"));
 
@@ -12,7 +12,7 @@ export default function FormProvider(props) {
       .then((newData) => newData.json())
       .then((data) => {
         setIsForm(data);
-        localStorage.setItem("testisForm", JSON.stringify(data));
+        localStorage.setItem("isForm", JSON.stringify(data));
       });
   }, []);
 

@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import React,{ useContext } from "react";
 import FormContext from "../../components/context/FormContext";
 import Field from "../../components/Form/field";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { getSession } from "next-auth/react";
 import schema from "../../components/Form/yupSchema";
 import Submitted from "../../components/Form/submitted";
-import SidebarBehave from "../utils/sidebarBehave";
-import { getSession } from "next-auth/react";
+import SidebarBehave from "../../components/utils/sidebarBehave";
 
 export default function Form({ session }) {
   const { isForm } = useContext(FormContext);

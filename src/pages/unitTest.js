@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import useMediaQuery from "../components/hooks/useMediaQuery";
 import IndicatorCards from "../components/indicatorCards";
-import { requireAuth } from "./utils/requireAuth";
-import SidebarBehave from "./utils/sidebarBehave";
-import { formAuth } from "./utils/formAuth";
+import { requireAuth } from "../components/utils/requireAuth";
+import { formAuth } from "../components/utils/formAuth";
+import SidebarBehave from "../components/utils/sidebarBehave";
 
 export default function PracticeTest() {
   const isLaptop = useMediaQuery("(min-width: 1024px)");

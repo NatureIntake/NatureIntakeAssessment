@@ -2,8 +2,8 @@ import React from "react";
 import Toggle from "./Toggle";
 import SidebarContext from "../context/SidebarContext";
 import useMediaQuery from "../hooks/useMediaQuery";
-import { useRouter } from "next/router";
 import Title from "./navbarTitle";
+import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
 
 const Navbar = () => {
@@ -85,16 +85,15 @@ const Navbar = () => {
           {isLaptop && (
             <div className='flex-none mt-1 '>
               <span
-                className={` md:text-lg lg:text-2xl text-skin-base dark:theme-dark font-medium  `}
+                className={` md:text-lg lg:text-2xl text-skin-base dark:theme-dark font-bold  `}
               >
                 {Title[router.pathname]}
               </span>
             </div>
           )}
           <div
-            className={`flex flex-row flex-none ${
-              isTablet && "gap-7 pr-5"
-            } gap-3 `}
+            className={`flex flex-row flex-none ${isTablet &&
+              "gap-7 pr-5"} gap-3 `}
           >
             {/* Dark mode  */}
             <Toggle />

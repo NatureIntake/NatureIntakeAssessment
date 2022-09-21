@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
-import useMediaQuery from "../../components/hooks/useMediaQuery";
-import SidebarContext from "../../components/context/SidebarContext";
+import useMediaQuery from "../hooks/useMediaQuery";
+import SidebarContext from "../context/SidebarContext";
 
 export default function SidebarBehave(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");

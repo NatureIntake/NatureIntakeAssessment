@@ -1,10 +1,9 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import { requireAuth } from "../../pages/utils/requireAuth";
-
+import { requireAuth } from "../utils/requireAuth";
 
 export default function LoginPage() {
   const { data: session } = useSession();
- 
+
   return (
     <div className='flex-1'>
       <div className='text-center'>

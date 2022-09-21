@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
-import { requireAuth } from "../utils/requireAuth";
+import { requireAuth } from "../../components/utils/requireAuth";
 import SidebarContext from "../../components/context/SidebarContext";
 import useMediaQuery from "../../components/hooks/useMediaQuery";
 
@@ -55,10 +55,12 @@ export default function Quiz({ session }) {
     let newScore = 0;
     for (let i = 0; i < QuestionState?.length; i++) {
       QuestionState[i].options.map(
-        (answer) =>
+        (answer) =>{
+
           answer.isCorrect &&
           answer.answer === selectedOptions[i]?.answerByUser &&
-          (newScore += 1)
+          newScore++
+        }
       );
     }
     setScore(newScore);

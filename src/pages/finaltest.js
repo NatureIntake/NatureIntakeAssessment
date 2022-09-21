@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import useMediaQuery from "../components/hooks/useMediaQuery";
-import { requireAuth } from "./utils/requireAuth";
-import { formAuth } from "./utils/formAuth";
-import SidebarBehave from "./utils/sidebarBehave";
+import { requireAuth } from "../components/utils/requireAuth";
+import { formAuth } from "../components/utils/formAuth";
+import SidebarBehave from "../components/utils/sidebarBehave";
 import IndicatorCards from "../components/indicatorCards";
 
 export default function Finaltest() {
