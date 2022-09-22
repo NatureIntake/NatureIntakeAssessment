@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FormContext from "./FormContext";
+import { BASE_URL } from "../utils/BASE_URL";
 
 
 export default function FormProvider(props) {
@@ -9,7 +10,7 @@ export default function FormProvider(props) {
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("userId"));
     if (id) {
-      fetch(`${process.env.baseUrl}/api/isForm/${id}`)
+      fetch(`${process.env.NEXT_PUBLIC_URL}/api/isForm/${id}`)
         .then((newData) => newData.json())
         .then((data) => {
           setIsForm(data);
@@ -21,7 +22,7 @@ export default function FormProvider(props) {
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("userId"));
     if (id) {
-      fetch(`${process.env.baseUrl}/api/getForm/${id}`)
+      fetch(`${process.env.NEXT_PUBLIC_URL}/api/getForm/${id}`)
         .then((newData) => newData.json())
         .then((data) => {
           setformData(data);

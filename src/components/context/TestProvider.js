@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TestContext from "./TestContext";
-import { useSession } from "next-auth/react";
 import { BASE_URL } from "../utils/BASE_URL";
 
 const TestProvider = (props) => {
-  const { data: session } = useSession();
   const [UnitTest1, setUnitTest1] = useState("");
   const [UnitTest2, setUnitTest2] = useState("");
   const [UnitTest3, setUnitTest3] = useState("");
@@ -13,13 +11,14 @@ const TestProvider = (props) => {
   const [UnitScore2, setUnitScore2] = useState("");
   const [UnitScore3, setUnitScore3] = useState("");
   const [FinalScore, setFinalScore] = useState("");
-  const isSession = session ? true : false;
 
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("userId"));
     if (id) {
       async function fetchState() {
-        const res = await fetch(`${process.env.baseUrl}/api/getState/${id}`);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_URL}/api/getState/${id}`
+        );
         const data = await res.json();
         setUnitTest1(data[0].unitTest_1);
         setUnitTest2(data[0].unitTest_2);
@@ -27,13 +26,14 @@ const TestProvider = (props) => {
         setFinalTest(data[0].finalTest_1);
       }
       async function fetchScore() {
-        const res = await fetch(`${process.env.baseUrl}/api/getScore/${id}`);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_URL}/api/getScore/${id}`
+        );
         const data = await res.json();
         setUnitScore1(data[0].unitTest_1_score);
         setUnitScore2(data[0].unitTest_2_score);
         setUnitScore3(data[0].unitTest_3_score);
         setFinalScore(data[0].finalTest_1_score);
-        console.log(data);
       }
       fetchState();
       fetchScore();

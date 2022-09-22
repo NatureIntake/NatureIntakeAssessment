@@ -23,7 +23,7 @@ export default function Form({ session }) {
   const onSubmit = async (data, e) => {
     e.preventDefault();
 
-    await fetch(`http://localhost:3000/api/UserForm`, {
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/UserForm`, {
       method: "POST",
       body: JSON.stringify({
         firstname: data.firstname,
@@ -36,7 +36,7 @@ export default function Form({ session }) {
         slug: session.user.id,
       }),
     });
-    await fetch(`http://localhost:3000/api/UserState`, {
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/UserState`, {
       method: "POST",
       body: JSON.stringify({
         unitTest_1: "0",
@@ -46,7 +46,7 @@ export default function Form({ session }) {
         slug: session.user.id,
       }),
     });
-    await fetch(`http://localhost:3000/api/UserScore`, {
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/UserScore`, {
       method: "POST",
       body: JSON.stringify({
         unitTest_1_score: "",

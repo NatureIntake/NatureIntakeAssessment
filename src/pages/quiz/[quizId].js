@@ -24,7 +24,7 @@ export default function Quiz({ session }) {
 
     
     fetch(
-      `http://localhost:3000/api/getQuestion/${
+      `${process.env.NEXT_PUBLIC_URL}/api/getQuestion/${
         form[0]?.class
       }/${QuizId}/${getQuestionLength()}`
     )
@@ -66,11 +66,11 @@ export default function Quiz({ session }) {
     setScore(newScore);
     setShowScore(true);
 
-    await fetch(`http://localhost:3000/api/updateScore/${session.user.id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/updateScore/${session.user.id}`, {
       method: "PUT",
       body: JSON.stringify(getScore()),
     });
-    await fetch(`http://localhost:3000/api/updateState/${session.user.id}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/updateState/${session.user.id}`, {
       method: "PUT",
       body: JSON.stringify(getState()),
     });
