@@ -54,7 +54,7 @@ export default function PracticeTest() {
             ${isTablet && "w-10/12"} ${isLaptop && "w-8/12"}`}
             >
               {/* card */}
-              <IndicatorCards value='3' />
+              <IndicatorCards value='4' />
             </div>
           </div>
         </div>
