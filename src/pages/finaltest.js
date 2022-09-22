@@ -22,9 +22,8 @@ export default function Finaltest() {
         ${isTablet && "gap-10 "} ${isLaptop && "gap-14  min-h-screen"} `}
         >
           <div
-            className={`flex flex-col h-52 rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-end text-center gap-4 w-full  ${
-              isLaptop && "w-9/12"
-            } 
+            className={`flex flex-col h-52 rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-end text-center gap-4 w-full  ${isLaptop &&
+              "w-9/12"} 
             ${isTablet && "w-11/12"} 
            `}
           >
@@ -35,9 +34,8 @@ export default function Finaltest() {
             </span>
 
             <span
-              className={`${
-                isTablet && "text-xl"
-              } text-lg text-skin-muted dark:theme-dark italic`}
+              className={`${isTablet &&
+                "text-xl"} text-lg text-skin-muted dark:theme-dark italic`}
             >
               Let's start the Unit test
             </span>
