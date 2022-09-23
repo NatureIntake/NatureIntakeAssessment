@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FormContext from "./FormContext";
 
-
-
 export default function FormProvider(props) {
   const [isForm, setIsForm] = useState(false);
   const [formData, setformData] = useState([]);

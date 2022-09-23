@@ -4,15 +4,20 @@ import FormContext from "../../components/context/FormContext";
 import Field from "../../components/Form/field";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { getSession, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import schema from "../../components/Form/yupSchema";
 import Submitted from "../../components/Form/submitted";
 import SidebarBehave from "../../components/utils/sidebarBehave";
 
-export default function Form({ session }) {
+export default function Form() {
   const { data: session } = useSession();
   const { isForm } = useContext(FormContext);
   const errorStyle = "text-[0.7rem]  text-red-500";
+  let userId;
+  if (typeof window !== "undefined") {
+    userId = JSON.parse(localStorage.getItem("userId"));
+  }
+
   const methods = useForm({
     resolver: yupResolver(schema),
     mode: "all",
@@ -24,7 +29,6 @@ export default function Form({ session }) {
 
   const onSubmit = async (data, e) => {
     e.preventDefault();
-
     await fetch(`${process.env.NEXT_PUBLIC_URL}/api/UserForm`, {
       method: "POST",
       body: JSON.stringify({
@@ -35,7 +39,7 @@ export default function Form({ session }) {
         city: data.city,
         school: data.school,
         class: data.class,
-        slug: session.user.id,
+        slug: userId,
       }),
     });
     await fetch(`${process.env.NEXT_PUBLIC_URL}/api/UserState`, {
@@ -45,7 +49,7 @@ export default function Form({ session }) {
         unitTest_2: "1",
         unitTest_3: "1",
         finalTest_1: "1",
-        slug: session.user.id,
+        slug: userId,
       }),
     });
     await fetch(`${process.env.NEXT_PUBLIC_URL}/api/UserScore`, {
@@ -55,7 +59,7 @@ export default function Form({ session }) {
         unitTest_2_score: "",
         unitTest_3_score: "",
         finalTest_1_score: "",
-        slug: session.user.id,
+        slug: userId,
       }),
     });
     Router.reload();
@@ -82,7 +86,7 @@ export default function Form({ session }) {
                   />
                 </div> */}
                 <span className='text-xl text-skin-base dark:theme-dark'>
-                  Please fill the form, {session.user.name}
+                  Please fill the form, {session?.user.name}
                 </span>
               </div>
             </div>
@@ -163,11 +167,4 @@ export default function Form({ session }) {
       )}
     </SidebarBehave>
   );
-}
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      session: await getSession(context),
-    },
-  };
 }
