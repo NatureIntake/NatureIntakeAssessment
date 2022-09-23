@@ -1,14 +1,16 @@
-import React,{ useContext } from "react";
+import React, { useContext } from "react";
+import Router from "next/router";
 import FormContext from "../../components/context/FormContext";
 import Field from "../../components/Form/field";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import schema from "../../components/Form/yupSchema";
 import Submitted from "../../components/Form/submitted";
 import SidebarBehave from "../../components/utils/sidebarBehave";
 
 export default function Form({ session }) {
+  const { data: session } = useSession();
   const { isForm } = useContext(FormContext);
   const errorStyle = "text-[0.7rem]  text-red-500";
   const methods = useForm({
@@ -56,6 +58,7 @@ export default function Form({ session }) {
         slug: session.user.id,
       }),
     });
+    Router.reload();
   };
 
   return (
@@ -79,7 +82,7 @@ export default function Form({ session }) {
                   />
                 </div> */}
                 <span className='text-xl text-skin-base dark:theme-dark'>
-                  Please fill the required fields{" "}
+                  Please fill the form, {session.user.name}
                 </span>
               </div>
             </div>

@@ -47,16 +47,19 @@ export default function Quiz({ session }) {
   };
 
   const handleNext = () => {
-    const nextQues = currentQuestion + 1;
-    nextQues < QuestionState?.length && setCurrentQuestion(nextQues);
+   
+    if(selectedOptions[currentQuestion]){
+      const nextQues = currentQuestion + 1;
+      nextQues < QuestionState?.length && setCurrentQuestion(nextQues);
+    }
   };
 
   const handleSubmitButton = async () => {
+    if(selectedOptions[currentQuestion]){
     let newScore = 0;
     for (let i = 0; i < QuestionState?.length; i++) {
       QuestionState[i].options.map(
         (answer) =>{
-
           answer.isCorrect &&
           answer.answer === selectedOptions[i]?.answerByUser &&
           newScore++
@@ -65,7 +68,7 @@ export default function Quiz({ session }) {
     }
     setScore(newScore);
     setShowScore(true);
-
+    
     await fetch(`${process.env.NEXT_PUBLIC_URL}/api/updateScore/${session.user.id}`, {
       method: "PUT",
       body: JSON.stringify(getScore()),
@@ -74,6 +77,7 @@ export default function Quiz({ session }) {
       method: "PUT",
       body: JSON.stringify(getState()),
     });
+  }
   };
   const getScore = () => {
     if (QuizId === "1") return { unitTest_1_score: score.toString() };
@@ -83,9 +87,9 @@ export default function Quiz({ session }) {
   };
 
   const getState = () => {
-    if (QuizId === "1") return { unitTest_1: scoreState() };
-    else if (QuizId === "2") return { unitTest_2: scoreState() };
-    else if (QuizId === "3") return { unitTest_3: scoreState() };
+    if (QuizId === "1") return { unitTest_1: scoreState() , unitTest_2: '0'};
+    else if (QuizId === "2") return { unitTest_2: scoreState(), unitTest_3: '0' };
+    else if (QuizId === "3") return { unitTest_3: scoreState(), finalTest_1: '0' };
     else if (QuizId === "4") return { finalTest_1: scoreState() };
   };
 
@@ -172,17 +176,17 @@ export default function Quiz({ session }) {
               <div className='flex justify-between w-full mt-4 text-white px-5 gap-6 '>
                 <button
                   onClick={handlePrevious}
-                  className='w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md'
+                  className={`${ currentQuestion !== 0 ? "" : "opacity-50 cursor-not-allowed"} w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md`}
                 >
                   Previous
                 </button>
                 <button
-                  onClick={
-                    currentQuestion + 1 === QuestionState?.length
-                      ? handleSubmitButton
-                      : handleNext
+                  onClick={            
+                      currentQuestion + 1 === QuestionState?.length
+                        ? handleSubmitButton
+                        : handleNext   
                   }
-                  className='w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md'
+                  className={`${ selectedOptions[currentQuestion] ? "" : "opacity-50 cursor-not-allowed"} w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md`}
                 >
                   {currentQuestion + 1 === QuestionState?.length
                     ? "Submit"
