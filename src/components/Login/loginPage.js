@@ -42,10 +42,4 @@ export default function LoginPage() {
   );
 }
 
-export async function getServerSideProps(context) {
-  return requireAuth(context, ({ session }) => {
-    return {
-      props: { session },
-    };
-  });
-}
+

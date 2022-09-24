@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TestContext from "./TestContext";
 
-
 const TestProvider = (props) => {
   const [UnitTest1, setUnitTest1] = useState("");
   const [UnitTest2, setUnitTest2] = useState("");
@@ -14,6 +13,7 @@ const TestProvider = (props) => {
 
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("userId"));
+    console.log("id", id);
     if (id) {
       async function fetchState() {
         const res = await fetch(

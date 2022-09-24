@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useMediaQuery from "../components/hooks/useMediaQuery";
 import IndicatorCards from "../components/indicatorCards";
 import { requireAuth } from "../components/utils/requireAuth";
-import { formAuth } from "../components/utils/formAuth";
 import SidebarBehave from "../components/utils/sidebarBehave";
 
 export default function PracticeTest() {
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
 
-  useEffect(() => {
-    formAuth();
-  }, []);
   return (
     <>
       {/* <FormAuth /> */}
@@ -23,9 +19,8 @@ export default function PracticeTest() {
         ${isTablet && "gap-10 "} ${isLaptop && "gap-14  min-h-screen"} `}
         >
           <div
-            className={`flex flex-col h-52   rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-end text-center  gap-4  w-full  ${
-              isLaptop && "w-9/12"
-            } 
+            className={`flex flex-col h-52   rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-end text-center  gap-4  w-full  ${isLaptop &&
+              "w-9/12"} 
             ${isTablet && "w-11/12"} 
            `}
           >
@@ -36,9 +31,8 @@ export default function PracticeTest() {
             </span>
 
             <span
-              className={`${
-                isTablet && "text-xl"
-              } text-lg text-skin-muted dark:theme-dark italic `}
+              className={`${isTablet &&
+                "text-xl"} text-lg text-skin-muted dark:theme-dark italic `}
             >
               Let's start the Final Test
             </span>

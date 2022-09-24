@@ -1,20 +1,27 @@
 import { useEffect, useContext } from "react";
 import LoginPage from "../../components/Login/loginPage";
+import { requireAuth } from "../../components/utils/requireAuth";
 import Router from "next/router";
 import FormContext from "../../components/context/FormContext";
 import { getSession } from "next-auth/react";
+import { formAuth } from "../../components/utils/formAuth";
 
 export default function Login({ session }) {
-  const { isForm } = useContext(FormContext);
-
+  let isForm;
   useEffect(() => {
     if (session) {
       localStorage.setItem("userId", JSON.stringify(session.user.id));
+      console.log("index",session.user.id)
     }
   }, []);
-
   useEffect(() => {
-    if (session && !isForm) {
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/isForm/${session?.user.id}`)
+      .then((newData) => newData.json())
+      .then((data) => {
+        isForm = data;
+        localStorage.setItem("isForm", JSON.stringify(data));
+      });
+    if (!isForm) {
       Router.push("/login/form");
     }
   }, []);
@@ -39,9 +46,9 @@ export default function Login({ session }) {
 }
 
 export async function getServerSideProps(context) {
-  return {
-    props: {
-      session: await getSession(context),
-    },
-  };
+ const  session  = await getSession(context)
+    return {
+      props: { session },
+    };
+  
 }

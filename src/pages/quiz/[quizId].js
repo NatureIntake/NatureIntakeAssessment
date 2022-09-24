@@ -15,7 +15,6 @@ export default function Quiz({ session }) {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [QuestionState, setQuestionState] = useState([]);
-
   useEffect(() => {
     const getQuestionLength = () => {
       return QuizId > 3 ? 20 : 15;
