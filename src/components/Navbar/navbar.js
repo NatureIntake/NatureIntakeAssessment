@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Toggle from "./Toggle";
 import SidebarContext from "../context/SidebarContext";
 import useMediaQuery from "../hooks/useMediaQuery";
 import Title from "./navbarTitle";
 import { useRouter } from "next/router";
-import { signOut } from "next-auth/react";
+import Image from "next/image";
+import LogoutALert from "../logoutAlert";
+import TestContext from "../context/TestContext";
 
 const Navbar = () => {
-  const { Open, setOpen } = React.useContext(SidebarContext);
+  const { setlogoutAlert } = useContext(TestContext);
+  const { Open, setOpen } = useContext(SidebarContext);
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const router = useRouter();
@@ -17,9 +20,9 @@ const Navbar = () => {
       className={`w-full fixed top-0 inset-x-0 z-50 ml-auto font-heebo font-semibold shadow-md dark:shadow-none border-b border-skin-base dark:theme-dark`}
     >
       {/* Navbar */}
-      <div className='h-16 py-6 bg-skin-base dark:theme-dark transition duration-200 ease-in-out dark:shadow-none '>
+      <div className='h-16 py-6 bg-skin-base dark:theme-dark dark:shadow-none '>
         <div
-          className={`md:px-10 px-1  flex flex-row items-center justify-between  -mt-10 `}
+          className={`flex flex-row items-center justify-between md:px-10 px-1  -mt-10 `}
         >
           {/* Hamburger */}
           {!isLaptop && (
@@ -33,7 +36,7 @@ const Navbar = () => {
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   className={`${
-                    isTablet ? "h-8 w-8" : "h-5 w-5"
+                    isTablet ? "h-8 w-8" : "h-7 w-7"
                   } text-skin-inverted`}
                   viewBox='0 0 20 20'
                   fill='currentColor'
@@ -54,7 +57,7 @@ const Navbar = () => {
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   className={`${
-                    isTablet ? "h-8 w-8" : "h-5 w-5"
+                    isTablet ? "h-8 w-8" : "h-7 w-7"
                   }  text-skin-inverted `}
                   viewBox='0 0 20 20'
                   fill='currentColor'
@@ -74,10 +77,13 @@ const Navbar = () => {
           {/* logo */}
           <div className='flex-none justify-between'>
             <a href='/' title='Nature Intake'>
-              <img
+              <Image
                 src='/images/logo2.png'
-                className={`${isTablet && "w-36 h-30"} w-32 h-24 `}
+                width={120}
+                height={90}
+                quality={80}
                 alt='Nature Intake'
+                className={`${isTablet && "w-36 h-30"} w-32 h-24 `}
               />
             </a>
           </div>
@@ -100,8 +106,7 @@ const Navbar = () => {
             {/* logout */}
             <button
               onClick={() => {
-                signOut();
-                window?.localStorage?.clear()
+                setlogoutAlert(true);
               }}
               aria-label='logout'
               className=' dark:theme-dark  dark:shadow-none  bg-skin-btn-accent hover:bg-skin-btn-hover active:bg-skin-btn-accent shadow-sm shadow-gray-400 p-2  focus:outline-none text-lg rounded-full  ring-transparent cursor-pointer transition duration-100 ease-in-out '
@@ -109,7 +114,7 @@ const Navbar = () => {
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 className={`${
-                  isTablet ? "h-8 w-8" : "h-5 w-5"
+                  isTablet ? "h-8 w-8" : "h-6 w-6"
                 } text-skin-inverted `}
                 fill='none'
                 viewBox='0 0 24 24'

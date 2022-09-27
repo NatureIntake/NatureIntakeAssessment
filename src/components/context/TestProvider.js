@@ -10,10 +10,11 @@ const TestProvider = (props) => {
   const [UnitScore2, setUnitScore2] = useState("");
   const [UnitScore3, setUnitScore3] = useState("");
   const [FinalScore, setFinalScore] = useState("");
+  const [FinalTestChance, setFinalTestChance] = useState("");
+  const [logoutAlert, setlogoutAlert] = useState(false);
 
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("userId"));
-    console.log("id", id);
     if (id) {
       async function fetchState() {
         const res = await fetch(
@@ -24,6 +25,7 @@ const TestProvider = (props) => {
         setUnitTest2(data[0].unitTest_2);
         setUnitTest3(data[0].unitTest_3);
         setFinalTest(data[0].finalTest_1);
+        setFinalTestChance(data[0].finalTestChance);
       }
       async function fetchScore() {
         const res = await fetch(
@@ -51,6 +53,9 @@ const TestProvider = (props) => {
         UnitScore2,
         UnitScore3,
         FinalScore,
+        FinalTestChance,
+        logoutAlert,
+        setlogoutAlert,
       }}
     >
       {props.children}

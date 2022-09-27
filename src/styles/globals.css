@@ -7,7 +7,10 @@
     --color-base: 255, 253, 252;
     --color-muted: 242, 242, 242;
     --color-dull: 210, 210, 210;
-    --color-green-hue: 243, 249, 249;
+    --color-green-hue: 216, 235, 231;
+    --color-green-hover: 184, 212, 206;
+    --color-gold-hue: 63,50,1;
+    --color-gold-hover: 90,73,3;
     --color-inverted: 50, 50, 50;
     /* Text */
     --color-text-base: 0, 0, 0;
@@ -34,8 +37,10 @@
     --color-gradient-base2: 255, 221, 156;
     --color-gradient-completed1: 237, 255, 252;
     --color-gradient-completed2: 176, 255, 242;
-    --color-gradient-wrong1: 252, 177, 191;
-    --color-gradient-wrong2: 255, 117, 143;
+    --color-gradient-wrong1: 252, 177, 191, 0.9;
+    --color-gradient-wrong2: 237, 111, 135, 0.9;
+    --color-gradient-locked1: 209, 209, 209, 0.5;
+    --color-gradient-locked2: 168, 168, 168, 0.5;
     --color-gradient-login1: 2, 2, 2, 0.7;
     --color-gradient-login2: 0, 0, 0, 0.7;
   }
@@ -99,11 +104,9 @@
     --color-text-base: 255, 255, 255;
   }
   .theme-locked {
-    --color-gradient-base1: 255, 240, 211, 0.6;
-    --color-gradient-base2: 255, 221, 156, 0.6;
     /* Buttons */
-    --color-button-accent: 232, 192, 116;
-    --color-button-hover: 232, 192, 116;
+    --color-button-accent: 146, 185, 185;
+    --color-button-hover: 146, 185, 185;
     --color-button-muted: 254, 117, 75;
     /* Text */
     --color-text-base: 0, 0, 0;

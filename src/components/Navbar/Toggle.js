@@ -18,7 +18,7 @@ function Toggle () {
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className={`${
-              isTablet ? "h-8 w-8" : "h-5 w-5"
+              isTablet ? "h-8 w-8" : "h-6 w-6"
             } text-skin-inverted `}
             viewBox='0 0 20 20'
             fill='currentColor'
@@ -38,7 +38,7 @@ function Toggle () {
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className={`${
-              isTablet ? "h-8 w-8" : "h-5 w-5"
+              isTablet ? "h-8 w-8" : "h-6 w-6"
             } text-skin-inverted `}
             viewBox='0 0 20 20'
             fill='currentColor'

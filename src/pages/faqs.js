@@ -34,7 +34,7 @@ export default function UnitTest() {
               isTablet && "text-xl"
             } text-lg text-skin-muted dark:theme-dark italic `}
           >
-            Let's start the Unit test
+           Here are your frequently asked questions.
           </span>
         </div>
         <div
@@ -50,12 +50,12 @@ export default function UnitTest() {
                 {({ open }) => (
                   <>
                     <Disclosure.Button
-                      className={`flex w-full h-12 justify-between rounded-lg bg-amber-100 px-5 py-2  hover:bg-amber-200 focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75 `}
+                      className={`flex w-full h-12 px-5 py-2  justify-between rounded-xl bg-skin-hue hover:bg-skin-hue-hover dark:bg-skin-gold  dark:hover:bg-skin-gold-hover  focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75 `}
                     >
-                      <span className="text-lg text-black ">{menu.question}</span>
+                      <span className="text-lg text-skin-base ">{menu.question}</span>
                       <ChevronUpIcon
                         className={`${
-                          open ? "rotate-180 transform" : ""
+                          !open ? "rotate-180 transform" : ""
                         } h-5 w-5 text-skin-base`}
                       />
                     </Disclosure.Button>

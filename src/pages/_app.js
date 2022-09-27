@@ -6,6 +6,7 @@ import SideBar from "../components/Sidebar/sideBar";
 import Navbar from "../components/Navbar/navbar";
 import { SessionProvider } from "next-auth/react";
 import FormProvider from "../components/context/FormProvider";
+import LogoutALert from "../components/logoutAlert";
 
 function MyApp({ Component, pageProps, session }) {
   return (
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps, session }) {
               <ThemeProvider>
                 <SideBar />
                 <Navbar />
+                <LogoutALert/>
                 <Component {...pageProps} />
               </ThemeProvider>
             </TestProvider>

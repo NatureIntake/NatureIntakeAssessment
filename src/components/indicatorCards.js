@@ -6,8 +6,9 @@ import useMediaQuery from "./hooks/useMediaQuery";
 
 export default function IndicatorCards(props) {
   const isLaptop = useMediaQuery("(min-width: 1024px)");
-  const { UnitTest1, UnitTest2, UnitTest3, FinalTest } =
-    useContext(TestContext);
+  const { UnitTest1, UnitTest2, UnitTest3, FinalTest } = useContext(
+    TestContext
+  );
   const UnitMenu = [
     {
       index: "1",
@@ -45,17 +46,16 @@ export default function IndicatorCards(props) {
       {handleMenu()
         .filter((Menu) => Menu.index <= props.value)
         .map((menu) => (
-          <div className=' flex-1  '>
+          <div className=' flex-1 '>
             <div
-              className={`flex flex-col transform  h-48 cursor-pointer transition duration-200 ease-in-out px-3 py-4 shadow-md rounded-3xl gap-7 ${
-                isLaptop && "hover:scale-105"
-              } ${indicator[menu.states]?.grad} ${
+              className={`flex flex-col transform   cursor-pointer transition duration-200 ease-in-out px-3 py-3 shadow-md rounded-3xl gap-7 ${isLaptop &&
+                "hover:scale-105"} ${indicator[menu.states]?.grad} ${
                 indicator[menu.states]?.theme
               }`}
             >
               {/* title */}
 
-              <span className=' text-skin-black text-3xl font-bold py-3 text-center'>
+              <span className=' text-skin-black text-3xl font-bold py-2 text-center'>
                 {menu.titles}
               </span>
 
@@ -64,9 +64,9 @@ export default function IndicatorCards(props) {
                 <button
                   className={`${
                     indicator[menu.states]?.theme
-                  } bg-skin-btn-accent hover:bg-skin-btn-hover  px-2 py-3 rounded-3xl shadow-md `}
+                  } bg-skin-btn-accent hover:bg-skin-btn-hover  px-2 py-2 rounded-3xl shadow-md `}
                 >
-                  <div className='flex flex-row gap-2 justify-center '>
+                  <div className='inline-flex gap-2 justify-center '>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-9 w-9 text-skin-accent mt-1'

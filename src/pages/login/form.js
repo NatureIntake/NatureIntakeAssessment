@@ -1,18 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import Router from "next/router";
-import FormContext from "../../components/context/FormContext";
 import Field from "../../components/Form/field";
 import { formAuth } from "../../components/utils/formAuth";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSession } from "next-auth/react";
 import schema from "../../components/Form/yupSchema";
-import Submitted from "../../components/Form/submitted";
 import SidebarBehave from "../../components/utils/sidebarBehave";
 
 export default function Form() {
   const { data: session } = useSession();
-  const { isForm } = useContext(FormContext);
   const errorStyle = "text-[0.7rem]  text-red-500";
   let userId;
   if (typeof window !== "undefined") {
@@ -50,6 +47,7 @@ export default function Form() {
         unitTest_2: "1",
         unitTest_3: "1",
         finalTest_1: "1",
+        finalTestChance: 2,
         slug: userId,
       }),
     });

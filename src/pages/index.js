@@ -1,16 +1,15 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import DashBoard from "../components/Dashboard/dashboard";
 import { requireAuth } from "../components/utils/requireAuth";
-import FormContext from "../components/context/FormContext";
 
-export default function App() {
-  const {formData}  = useContext(FormContext)
- 
-  console.log(formData)
-
-  // useEffect(() => {
-  //   formAuth();
-  // }, []);
+export default function App({ session }) {
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/getForm/${session?.user.id}`)
+      .then((newData) => newData.json())
+      .then((data) => {
+        localStorage.setItem("formData", JSON.stringify(data));
+      });
+  }, []);
 
   return (
     <>

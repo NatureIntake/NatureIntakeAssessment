@@ -3,11 +3,13 @@ import { useRouter } from "next/router";
 import { requireAuth } from "../../components/utils/requireAuth";
 import SidebarContext from "../../components/context/SidebarContext";
 import useMediaQuery from "../../components/hooks/useMediaQuery";
+import TestContext from "../../components/context/TestContext";
 
 export default function Quiz({ session }) {
   const Router = useRouter();
   const QuizId = Router.query.quizId;
   const { Open } = useContext(SidebarContext);
+  const { FinalTestChance } = useContext(TestContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px)");
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -15,18 +17,21 @@ export default function Quiz({ session }) {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [QuestionState, setQuestionState] = useState([]);
+
+  useEffect(() => {
+    if(FinalTestChance <= 0){
+      Router.push("/")
+    }
+  }, [])
+  
+  
   useEffect(() => {
     const getQuestionLength = () => {
       return QuizId > 3 ? 20 : 15;
     };
-    const form = JSON.parse(window.localStorage.getItem("formData"));
-
+    const form = JSON.parse(localStorage.getItem("formData"));
     
-    fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/getQuestion/${
-        form[0]?.class
-      }/${QuizId}/${getQuestionLength()}`
-    )
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/getQuestion/${form[0]?.class}/${QuizId}/${getQuestionLength()}`)
       .then((res) => res.json())
       .then((data) => {
         setQuestionState(data);
@@ -89,7 +94,7 @@ export default function Quiz({ session }) {
     if (QuizId === "1") return { unitTest_1: scoreState() , unitTest_2: '0'};
     else if (QuizId === "2") return { unitTest_2: scoreState(), unitTest_3: '0' };
     else if (QuizId === "3") return { unitTest_3: scoreState(), finalTest_1: '0' };
-    else if (QuizId === "4") return { finalTest_1: scoreState() };
+    else if (QuizId === "4") return { finalTest_1: scoreState(), finalTestChance :  FinalTestChance -1};
   };
 
   const scoreState = () => {

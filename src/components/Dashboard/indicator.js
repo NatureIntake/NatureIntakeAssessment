@@ -10,7 +10,7 @@ const indicator = [
   },
   {
     index: "2",
-    grad: "bg-gradient-to-tr from-skin-base1 to-skin-base2",
+    grad: "bg-gradient-to-tr from-skin-locked1 to-skin-locked2",
     label: "Locked",
     theme: "theme-locked",
     viewBox: "0 0 20 20",
@@ -28,7 +28,7 @@ const indicator = [
   },
   {
     index: "4",
-    grad: "bg-gradient-to-tr from-skin-base1 to-skin-base2",
+    grad: "bg-gradient-to-tr from-skin-wrong1 to-skin-wrong2",
     label: "Retake",
     theme: "theme-red",
     viewBox: "0 0 24 24",
