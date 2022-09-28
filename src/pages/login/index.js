@@ -4,23 +4,24 @@ import Router from "next/router";
 import { getSession } from "next-auth/react";
 
 export default function Login({ session }) {
-  let isForm;
   useEffect(() => {
-    if (session) {
-      localStorage.setItem("userId", JSON.stringify(session.user.id));
-      console.log("index", session.user.id);
-    }
+    if(session)
+    localStorage.setItem("userId", JSON.stringify(session.user.id));
+    else 
+    localStorage.setItem("userId", JSON.stringify(null));
   }, []);
   useEffect(() => {
+    let isForm;
     fetch(`${process.env.NEXT_PUBLIC_URL}/api/isForm/${session?.user.id}`)
       .then((newData) => newData.json())
       .then((data) => {
         isForm = data;
         localStorage.setItem("isForm", JSON.stringify(data));
       });
-    if (!isForm) {
+    if (!isForm) 
       Router.push("/login/form");
-    }
+    else
+    Router.reload()
   }, []);
 
   return (

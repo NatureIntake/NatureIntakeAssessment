@@ -69,19 +69,19 @@ export default function Card() {
   const marksMenu = [
     {
       title: "Unit 1",
-      marks: `${UnitScore1}`,
+      marks: UnitScore1,
     },
     {
       title: "Unit 2",
-      marks: `${UnitScore2}`,
+      marks: UnitScore2,
     },
     {
       title: "Unit 3",
-      marks: `${UnitScore3}`,
+      marks: UnitScore3,
     },
     {
       title: "Final test",
-      marks: `${FinalScore}`,
+      marks: FinalScore,
     },
   ];
   const gradeMenu = [
@@ -163,7 +163,7 @@ export default function Card() {
                       {menu.title}
                     </span>
                     <span className='h-9 py-1 text-center text-skin-base text-xl font-semibold '>
-                      {menu.marks ? menu.marks : "--"}
+                      {menu.marks !== "" ? menu.marks : "--"}
                     </span>
                   </div>
                 </div>

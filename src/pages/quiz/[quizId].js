@@ -83,17 +83,17 @@ export default function Quiz({ session }) {
   }
   };
   const getScore = () => {
-    if (QuizId === 1) return { unitTest_1_score: score.toString() };
-    else if (QuizId === 2) return { unitTest_2_score: score.toString() };
-    else if (QuizId === 3) return { unitTest_3_score: score.toString() };
-    else if (QuizId === 4) return { finalTest_1_score: score.toString() };
+    if (QuizId === "1") return { unitTest_1_score: score.toString() };
+    else if (QuizId === "2") return { unitTest_2_score: score.toString() };
+    else if (QuizId === "3") return { unitTest_3_score: score.toString() };
+    else if (QuizId === "4") return { finalTest_1_score: score.toString() };
   };
 
   const getState = () => {
-    if (QuizId === 1) return { unitTest_1: scoreState() , unitTest_2: testState()};
-    else if (QuizId === 2) return { unitTest_2: scoreState(), unitTest_3: testState() };
-    else if (QuizId === 3) return { unitTest_3: scoreState(), finalTest_1: testState() };
-    else if (QuizId === 4) return { finalTest_1: scoreState(), finalTestChance :  FinalTestChance -1};
+    if (QuizId === "1") return { unitTest_1: scoreState() , unitTest_2: testState()};
+    else if (QuizId === "2") return { unitTest_2: scoreState(), unitTest_3: testState() };
+    else if (QuizId === "3") return { unitTest_3: scoreState(), finalTest_1: testState() };
+    else if (QuizId === "4") return { finalTest_1: scoreState(), finalTestChance :  FinalTestChance -1};
   };
 
   const scoreState = () => {
