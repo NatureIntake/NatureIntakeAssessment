@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import DashBoard from "../components/Dashboard/dashboard";
 import { requireAuth } from "../components/utils/requireAuth";
 
-export default function App({ session }) {
+export default function App() {
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/getForm/${session?.user.id}`)
+    let id = localStorage.getItem("userId");
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/getForm/${id}`)
       .then((newData) => newData.json())
       .then((data) => {
         localStorage.setItem("formData", JSON.stringify(data));

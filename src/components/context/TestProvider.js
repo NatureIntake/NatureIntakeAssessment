@@ -15,7 +15,8 @@ const TestProvider = (props) => {
 
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("userId"));
-    if (id) {
+    let isForm = JSON.parse(localStorage.getItem("isForm"));
+    if (isForm) {
       async function fetchState() {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_URL}/api/getState/${id}`

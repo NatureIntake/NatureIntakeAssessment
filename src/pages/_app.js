@@ -5,7 +5,6 @@ import TestProvider from "../components/context/TestProvider";
 import SideBar from "../components/Sidebar/sideBar";
 import Navbar from "../components/Navbar/navbar";
 import { SessionProvider } from "next-auth/react";
-import FormProvider from "../components/context/FormProvider";
 import LogoutALert from "../components/logoutAlert";
 
 function MyApp({ Component, pageProps, session }) {
@@ -13,16 +12,14 @@ function MyApp({ Component, pageProps, session }) {
     <SessionProvider session={session}>
       <div className='font-raleway bg-skin-muted dark:bg-gradient-to-r from-[#141414] to-[#2c2c2e]'>
         <SidebarProvider>
-          <FormProvider>
-            <TestProvider>
-              <ThemeProvider>
-                <SideBar />
-                <Navbar />
-                <LogoutALert/>
-                <Component {...pageProps} />
-              </ThemeProvider>
-            </TestProvider>
-          </FormProvider>
+          <TestProvider>
+            <ThemeProvider>
+              <SideBar />
+              <Navbar />
+              <LogoutALert />
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </TestProvider>
         </SidebarProvider>
       </div>
     </SessionProvider>

@@ -1,14 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { requireAuth } from "../../components/utils/requireAuth";
-import SidebarContext from "../../components/context/SidebarContext";
 import useMediaQuery from "../../components/hooks/useMediaQuery";
 import TestContext from "../../components/context/TestContext";
+import SidebarBehave from "../../components/utils/sidebarBehave";
 
 export default function Quiz({ session }) {
   const Router = useRouter();
   const QuizId = Router.query.quizId;
-  const { Open } = useContext(SidebarContext);
   const { FinalTestChance } = useContext(TestContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px)");
@@ -19,11 +18,11 @@ export default function Quiz({ session }) {
   const [QuestionState, setQuestionState] = useState([]);
 
   useEffect(() => {
-    if(FinalTestChance <= 0){
-      Router.push("/")
+    if(QuizId === 4){
+      if(FinalTestChance <= 0)
+        Router.push("/") 
     }
   }, [])
-  
   
   useEffect(() => {
     const getQuestionLength = () => {
@@ -84,34 +83,30 @@ export default function Quiz({ session }) {
   }
   };
   const getScore = () => {
-    if (QuizId === "1") return { unitTest_1_score: score.toString() };
-    else if (QuizId === "2") return { unitTest_2_score: score.toString() };
-    else if (QuizId === "3") return { unitTest_3_score: score.toString() };
-    else if (QuizId === "4") return { finalTest_1_score: score.toString() };
+    if (QuizId === 1) return { unitTest_1_score: score.toString() };
+    else if (QuizId === 2) return { unitTest_2_score: score.toString() };
+    else if (QuizId === 3) return { unitTest_3_score: score.toString() };
+    else if (QuizId === 4) return { finalTest_1_score: score.toString() };
   };
 
   const getState = () => {
-    if (QuizId === "1") return { unitTest_1: scoreState() , unitTest_2: '0'};
-    else if (QuizId === "2") return { unitTest_2: scoreState(), unitTest_3: '0' };
-    else if (QuizId === "3") return { unitTest_3: scoreState(), finalTest_1: '0' };
-    else if (QuizId === "4") return { finalTest_1: scoreState(), finalTestChance :  FinalTestChance -1};
+    if (QuizId === 1) return { unitTest_1: scoreState() , unitTest_2: testState()};
+    else if (QuizId === 2) return { unitTest_2: scoreState(), unitTest_3: testState() };
+    else if (QuizId === 3) return { unitTest_3: scoreState(), finalTest_1: testState() };
+    else if (QuizId === 4) return { finalTest_1: scoreState(), finalTestChance :  FinalTestChance -1};
   };
 
   const scoreState = () => {
     if ((score / QuestionState?.length) * 100 >= 40) return "2";
     else return "3";
   };
-
-  function srink() {
-    return Open ? "pl-[20rem] px-20" : "pl-[10rem] px-20 ";
-  }
+  const testState = () => {
+    if (scoreState() === "2") return "0";
+    else return "1";
+  };
 
   return (
-    <div
-      className={` ${isLaptop && srink()} ${
-        isTablet && "px-10"
-      } px-2  mt-16 pt-10 min-h-screen min-w-screen  flex  justify-center`}
-    >
+    <SidebarBehave>
       {/* main page */}
 
       <div
@@ -201,7 +196,7 @@ export default function Quiz({ session }) {
           </>
         )}
       </div>
-    </div>
+      </SidebarBehave>
   );
 }
 

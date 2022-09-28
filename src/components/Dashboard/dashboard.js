@@ -4,7 +4,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import Card from "./Card";
 import Middle from "./Middle";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
+
 
 export default function DashBoard() {
   const { data: session } = useSession();

@@ -73,18 +73,19 @@ export default function Form() {
           onSubmit={handleSubmit(onSubmit)}
           class='container max-w-2xl mx-auto  md:w-3/4'
         >
-          <div class='p-4  border-t-2 border-amber-400 rounded-lg bg-opacity-5 shadow-sm dark:theme-dark'>
+          <div class='py-3 border-t-2 border-amber-400 rounded-lg bg-opacity-5 shadow-sm dark:theme-dark'>
             <div class=' md:w-full text-center'>
-              {/* <div class='inline-flex items-center space-x-4'>
-                  <img
-                    alt='profil'
-                    src=''
-                    class='mx-auto object-cover rounded-full h-16 w-16 '
-                  />
-                </div> */}
-              <span className='text-xl text-skin-base dark:theme-dark'>
-                Please fill the form, {session?.user.name}
-              </span>
+              {/* message and user img */}
+              <div class='inline-flex items-center gap-1 sm:gap-2'>
+                <img
+                  src={session?.user.image}
+                  alt='user img'
+                  className={`w-10 h-10 sm:w-14 sm:h-14 shadow-md dark:theme-dark justify-center align-middle rounded-full object-cover`}
+                />
+                <span className='bg-skin-hue dark:bg-skin-gold-hover py-1 px-2 sm:py-2 sm:px-4 rounded-2xl text-sm sm:text-xl text-skin-base dark:theme-dark font-bold'>
+                  Please fill the form, {session?.user.name}
+                </span>
+              </div>
             </div>
           </div>
           <div className=' flex-auto space-y-1 bg-skin-base dark:bg-gray-800 rounded-lg'>
@@ -124,7 +125,7 @@ export default function Form() {
                 <p className={errorStyle}>{errors.phonenumber?.message}</p>
               </div>
             </div>
-            <hr className='' />
+            <hr/>
             <div class='items-center w-full p-8 space-y-1 text-gray-500 md:inline-flex md:space-y-0'>
               <h2 class='max-w-sm mx-auto md:w-1/3 text-skin-muted text-2xl dark:theme-dark'>
                 Education
@@ -149,7 +150,7 @@ export default function Form() {
             <div class='w-full px-4 py-3 ml-auto text-gray-500 md:w-1/3'>
               <button
                 type='submit'
-                class='py-2 px-4  bg-emerald-600 hover:bg-emerald-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg disabled:cursor-not-allowed cursor-pointer'
+                class='py-2 px-4  bg-emerald-600 hover:bg-emerald-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-xl disabled:cursor-not-allowed cursor-pointer'
               >
                 Save
               </button>

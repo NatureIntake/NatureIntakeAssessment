@@ -11,17 +11,10 @@ export const formAuth = async (context, cb) => {
       });
   }
 
-  if (!session) {
+  if (!session || isForm) {
     return {
       redirect: {
         destination: "/login",
-        permanent: false,
-      },
-    };
-  } else if (isForm) {
-    return {
-      redirect: {
-        destination: "/",
         permanent: false,
       },
     };
