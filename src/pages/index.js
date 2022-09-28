@@ -4,7 +4,7 @@ import { requireAuth } from "../components/utils/requireAuth";
 
 export default function App() {
   useEffect(() => {
-    let id = localStorage.getItem("userId");
+    let id = JSON.parse(localStorage.getItem("userId"));
     fetch(`${process.env.NEXT_PUBLIC_URL}/api/getForm/${id}`)
       .then((newData) => newData.json())
       .then((data) => {
