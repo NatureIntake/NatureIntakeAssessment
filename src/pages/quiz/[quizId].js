@@ -26,7 +26,7 @@ export default function Quiz({ session }) {
   
   useEffect(() => {
     const getQuestionLength = () => {
-      return QuizId > 3 ? 20 : 5;
+      return QuizId > 3 ? 20 : 15;
     };
     const form = JSON.parse(localStorage.getItem("formData"));
     
