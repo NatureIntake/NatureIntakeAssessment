@@ -50,10 +50,10 @@ export default function LogoutALert() {
                     </p>
                   </div>
 
-                  <div className='mt-7 px-8 flex justify-between'>
+                  <div className='mt-7 px-1 sm:px-8 flex justify-between'>
                     <button
                       type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center rounded-2xl border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                       onClick={() => {
                         closeModal();
                         signOut();
@@ -63,7 +63,7 @@ export default function LogoutALert() {
                     </button>
                     <button
                       type='button'
-                      className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center rounded-2xl border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                       onClick={closeModal}
                     >
                       Cancel

@@ -5,7 +5,6 @@ const Title = {
   "/faqs": "FAQs",
   "/login": "Login",
   "/login/form": "Login Form",
-  "/quiz/1": "Quiz",
  
 };
 

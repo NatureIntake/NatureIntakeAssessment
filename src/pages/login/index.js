@@ -20,8 +20,7 @@ export default function Login({ session }) {
       });
     if (!isForm) 
       Router.push("/login/form");
-    else
-    Router.reload()
+   
   }, []);
 
   return (

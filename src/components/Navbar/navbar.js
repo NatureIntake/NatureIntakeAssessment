@@ -5,7 +5,6 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import Title from "./navbarTitle";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import LogoutALert from "../logoutAlert";
 import TestContext from "../context/TestContext";
 
 const Navbar = () => {

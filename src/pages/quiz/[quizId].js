@@ -26,7 +26,7 @@ export default function Quiz({ session }) {
   
   useEffect(() => {
     const getQuestionLength = () => {
-      return QuizId > 3 ? 20 : 15;
+      return QuizId > 3 ? 20 : 5;
     };
     const form = JSON.parse(localStorage.getItem("formData"));
     
@@ -72,36 +72,37 @@ export default function Quiz({ session }) {
     setScore(newScore);
     setShowScore(true);
     
+    
     await fetch(`${process.env.NEXT_PUBLIC_URL}/api/updateScore/${session.user.id}`, {
       method: "PUT",
-      body: JSON.stringify(getScore()),
+      body: JSON.stringify(getScore(newScore)),
     });
     await fetch(`${process.env.NEXT_PUBLIC_URL}/api/updateState/${session.user.id}`, {
       method: "PUT",
-      body: JSON.stringify(getState()),
+      body: JSON.stringify(getState(newScore)),
     });
   }
   };
-  const getScore = () => {
-    if (QuizId === "1") return { unitTest_1_score: score.toString() };
-    else if (QuizId === "2") return { unitTest_2_score: score.toString() };
-    else if (QuizId === "3") return { unitTest_3_score: score.toString() };
-    else if (QuizId === "4") return { finalTest_1_score: score.toString() };
+  const getScore = (newScore) => {
+    if (QuizId === "1") return { unitTest_1_score: newScore.toString() };
+    else if (QuizId === "2") return { unitTest_2_score: newScore.toString() };
+    else if (QuizId === "3") return { unitTest_3_score: newScore.toString() };
+    else if (QuizId === "4") return { finalTest_1_score: newScore.toString() };
   };
 
-  const getState = () => {
-    if (QuizId === "1") return { unitTest_1: scoreState() , unitTest_2: testState()};
-    else if (QuizId === "2") return { unitTest_2: scoreState(), unitTest_3: testState() };
-    else if (QuizId === "3") return { unitTest_3: scoreState(), finalTest_1: testState() };
-    else if (QuizId === "4") return { finalTest_1: scoreState(), finalTestChance :  FinalTestChance -1};
+  const getState = (newScore) => {
+    if (QuizId === "1") return { unitTest_1: scoreState(newScore) , unitTest_2: testState(newScore)};
+    else if (QuizId === "2") return { unitTest_2: scoreState(newScore), unitTest_3: testState(newScore) };
+    else if (QuizId === "3") return { unitTest_3: scoreState(newScore), finalTest_1: testState(newScore) };
+    else if (QuizId === "4") return { finalTest_1: scoreState(newScore), finalTestChance :  FinalTestChance -1};
   };
 
-  const scoreState = () => {
+  const scoreState = (score) => {
     if ((score / QuestionState?.length) * 100 >= 40) return "2";
     else return "3";
   };
-  const testState = () => {
-    if (scoreState() === "2") return "0";
+  const testState = (score) => {
+    if (scoreState(score) === "2") return "0";
     else return "1";
   };
 

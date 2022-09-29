@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useSession, signIn } from "next-auth/react";
 import Image from "next/image";
-import TestContext from "../context/TestContext";
 
 export default function LoginPage() {
   const { data: session } = useSession();
