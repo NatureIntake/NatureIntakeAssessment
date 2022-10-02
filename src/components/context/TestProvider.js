@@ -13,6 +13,7 @@ const TestProvider = (props) => {
   const [FinalScore, setFinalScore] = useState("");
   const [FinalTestChance, setFinalTestChance] = useState("");
   const [logoutAlert, setlogoutAlert] = useState(false);
+  const [isAgreed, setisAgreed] = useState(false);
   const Router = useRouter();
 
   useEffect(() => {
@@ -59,6 +60,8 @@ const TestProvider = (props) => {
         FinalTestChance,
         logoutAlert,
         setlogoutAlert,
+        isAgreed,
+        setisAgreed
       }}
     >
       {props.children}

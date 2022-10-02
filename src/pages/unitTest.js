@@ -18,11 +18,9 @@ export default function PracticeTest() {
           className={`flex flex-col  w-screen  gap-12 pb-10 px-1 items-center
         ${isTablet && "gap-10 "} ${isLaptop && "gap-14  min-h-screen"} `}
         >
+          {/* title */}
           <div
-            className={`flex flex-col h-52   rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-end text-center  gap-4  w-full  ${isLaptop &&
-              "w-9/12"} 
-            ${isTablet && "w-11/12"} 
-           `}
+            className={`flex flex-col h-52 rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-end text-center  gap-4  w-full sm:w-11/12 md:w-9/12 `}
           >
             <span
               className={` text-3xl text-skin-base bg-skin-muted border-2 border-skin-base px-3 py-3 w-9/12 rounded-xl shadow-sm  dark:theme-dark font-bold capitalize `}
@@ -31,12 +29,12 @@ export default function PracticeTest() {
             </span>
 
             <span
-              className={`${isTablet &&
-                "text-xl"} text-lg text-skin-muted dark:theme-dark italic `}
+              className={` text-lg sm:text-xl text-skin-muted dark:theme-dark italic `}
             >
-              Let's start the Unit test
+              Let's start the Final Test
             </span>
           </div>
+
           <div
             className={` flex  border-2 border-skin-muted dark:theme-dark  rounded-3xl bg-skin-base dark:bg-gradient-to-bl from-gray-900 to-gray justify-center  w-full px-5 py-5 
               ${isTablet && "px-5 py-10 w-8/12"} 
