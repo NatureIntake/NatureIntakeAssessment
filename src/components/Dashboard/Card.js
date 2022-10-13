@@ -109,12 +109,12 @@ export default function Card() {
     <div className={` flex `}>
       <div
         className={`${isLaptop ? " flex-row  " : " flex-col"} ${isTablet &&
-          "px-10"} flex px-1  w-full mx-6 gap-6`}
+          "px-10"} flex  w-full gap-6`}
       >
         {/* Progress */}
         <div className=' flex-1 '>
           <div
-            className={`flex flex-col transform h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${
+            className={`flex flex-col transform h-80 cursor-pointer transition duration-200 ease-in-out px-2  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${
               Color[0]
             }  gap-4 dark:theme-dark ${isLaptop && "hover:scale-105"}`}
           >
@@ -144,7 +144,7 @@ export default function Card() {
         {/* Marks */}
         <div className=' flex-1 '>
           <div
-            className={`flex flex-col transform h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${
+            className={`flex flex-col transform h-80 cursor-pointer transition duration-200 ease-in-out px-2  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${
               Color[0]
             }  gap-4 dark:theme-dark ${isLaptop && "hover:scale-105"}`}
           >
@@ -175,7 +175,7 @@ export default function Card() {
         {/* Grades */}
         <div className=' flex-1 '>
           <div
-            className={`flex flex-col  h-80 cursor-pointer transition duration-200 ease-in-out px-4  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${
+            className={`flex flex-col  h-80 cursor-pointer transition duration-200 ease-in-out px-2  py-4 shadow-md border-2 border-skin-muted  rounded-3xl bg-skin-base  dark:bg-gradient-to-bl ${
               Color[0]
             }  gap-4 dark:theme-dark ${isLaptop && "hover:scale-105"}`}
           >
@@ -186,10 +186,10 @@ export default function Card() {
               </span>
             </div>
             {/* ranking */}
-            <div className=' h-full flex flex-col gap-2  px-3 py-3 rounded-2xl'>
+            <div className=' h-full flex flex-col gap-2   py-3 rounded-2xl'>
               {/* Unit test */}
               {gradeMenu.map((menu) => (
-                <div className='flex justify-between gap-3 bg-skin-hue dark:bg-skin-gold  px-10 py-4 rounded-2xl '>
+                <div className='flex justify-between gap-3 bg-skin-hue dark:bg-skin-gold px-3  sm:px-10 py-4 rounded-2xl '>
                   <span className='my-auto text-skin-base dark:theme-dark text-xl font-bold '>
                     {menu.title}
                   </span>

@@ -5,7 +5,6 @@ import Card from "./Card";
 import Middle from "./Middle";
 import { useSession } from "next-auth/react";
 
-
 export default function DashBoard() {
   const { data: session } = useSession();
   const { Open } = React.useContext(SidebarContext);
@@ -51,7 +50,9 @@ export default function DashBoard() {
             className={`w-12 h-12 sm:w-20 sm:h-20 shadow-md dark:theme-dark justify-center align-middle rounded-full object-cover`}
           />
           {/* Greet text*/}
-          <div className={` flex flex-col justify-center gap-1 bg-skin-hue dark:bg-skin-gold px-3 py-2 sm:px-8 rounded-3xl`}>
+          <div
+            className={` flex flex-col justify-center gap-1 bg-skin-hue dark:bg-skin-gold px-3 py-2 sm:px-8 rounded-3xl`}
+          >
             <div className={` inline-flex items-baseline gap-2`}>
               <span
                 className={` text-[0.8rem] sm:text-[1rem] md:text-lg text-skin-muted dark:theme-dark font-semibold  `}
@@ -74,7 +75,7 @@ export default function DashBoard() {
         <div className={`w-full sm:w-4/6 md:w-5/6 px-1`}>
           <Middle />
         </div>
-        <div className="w-full h-3/6">
+        <div className='w-full h-3/6 px-1'>
           <Card />
         </div>
       </div>
