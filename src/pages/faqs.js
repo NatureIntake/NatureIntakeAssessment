@@ -20,13 +20,13 @@ export default function UnitTest() {
            `}
         >
           <span
-            className={` text-3xl text-skin-base bg-skin-muted border-2 border-skin-base px-3 py-3 w-9/12 rounded-xl shadow-sm  dark:bg-zinc-700 font-bold capitalize `}
+            className={` text-3xl text-skin-base bg-skin-muted border-2 border-skin-base px-3 py-3 w-full  shadow-sm  dark:theme-dark font-bold capitalize `}
           >
             FAQs
           </span>
 
           <span
-            className={` text-sm sm:text-md text-skin-muted dark:theme-dark italic `}
+            className={` text-sm sm:text-md lg:text-lg text-skin-muted dark:theme-dark italic `}
           >
             Here are your frequently asked questions.
           </span>
