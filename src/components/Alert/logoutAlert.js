@@ -1,7 +1,7 @@
 import { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { signOut } from "next-auth/react";
-import TestContext from "./context/TestContext";
+import TestContext from "../context/TestContext";
 
 export default function LogoutALert() {
   const { logoutAlert, setlogoutAlert } = useContext(TestContext);
@@ -50,10 +50,10 @@ export default function LogoutALert() {
                     </p>
                   </div>
 
-                  <div className='mt-7 px-1 sm:px-8 flex justify-between'>
+                  <div className='mt-7 px-1 sm:px-8 flex justify-between dark:theme-dark'>
                     <button
                       type='button'
-                      className='inline-flex justify-center rounded-2xl border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center rounded-2xl border border-transparent bg-blue-100 hover:bg-blue-200 dark:bg-skin-gold  dark:hover:bg-skin-gold-hover px-4 py-2 text-sm font-medium text-blue-900 dark:text-skin-base  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                       onClick={() => {
                         closeModal();
                         signOut();
@@ -63,7 +63,7 @@ export default function LogoutALert() {
                     </button>
                     <button
                       type='button'
-                      className='inline-flex justify-center rounded-2xl border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                      className='inline-flex justify-center rounded-2xl border border-transparent bg-skin-btn-mt hover:bg-skin-btn-mt-hover px-4 py-2 text-sm font-medium text-white  focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 '
                       onClick={closeModal}
                     >
                       Cancel

@@ -13,14 +13,10 @@ export default function UnitTest() {
     <SidebarBehave>
       {/* main page */}
       <div
-        className={`flex flex-col  w-screen  gap-12 pb-10 px-1 items-center
-        ${isTablet && "gap-10 "} ${isLaptop && "gap-14  min-h-screen"} `}
+        className={`flex flex-col  w-screen  gap-12 lg:gap-16  px-1 items-center`}
       >
         <div
-          className={`flex flex-col h-52   rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-end text-center  gap-4  w-full  ${
-            isLaptop && "w-8/12"
-          } 
-            ${isTablet && "w-10/12"} 
+          className={`flex flex-col h-52   rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-7 items-center justify-center text-center  gap-4  w-full sm:w-5/6 lg:w-4/6   
            `}
         >
           <span
@@ -30,19 +26,18 @@ export default function UnitTest() {
           </span>
 
           <span
-            className={`${
-              isTablet && "text-xl"
-            } text-lg text-skin-muted dark:theme-dark italic `}
+            className={` text-sm sm:text-md text-skin-muted dark:theme-dark italic `}
           >
-           Here are your frequently asked questions.
+            Here are your frequently asked questions.
           </span>
         </div>
+
+        {/* bars*/}
         <div
-          className={` flex  border-2 border-skin-muted dark:theme-dark  rounded-3xl bg-skin-base dark:bg-gradient-to-bl from-gray-900 to-gray justify-center  w-full px-5 py-5 
-              ${isTablet && "px-5 py-12 w-10/12"} 
-              ${isLaptop && "px-14 w-9/12"}`}
+          className={` flex  border-2 border-skin-muted dark:theme-dark  rounded-3xl bg-skin-base dark:bg-gradient-to-bl from-gray-900 to-gray justify-center  w-full px-2 py-2
+              ${isTablet && "px-4 py-8 w-10/12"} 
+              ${isLaptop && "px-10 w-7/12"}`}
         >
-          {/* selection card */}
           <div className={`flex flex-col gap-4 w-full`}>
             {/* card */}
             {faq.map((menu) => (
@@ -50,16 +45,18 @@ export default function UnitTest() {
                 {({ open }) => (
                   <>
                     <Disclosure.Button
-                      className={`flex w-full h-12 px-5 py-2  justify-between rounded-xl bg-skin-hue hover:bg-skin-hue-hover dark:bg-skin-gold  dark:hover:bg-skin-gold-hover  focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75 `}
+                      className={`flex w-full px-2 sm:px-3 lg:px-5 py-2 gap-2  justify-between rounded-xl bg-skin-hue hover:bg-skin-hue-hover dark:bg-skin-gold  dark:hover:bg-skin-gold-hover  focus:outline-none focus-visible:ring dark:focus-visible:ring-amber-500 focus-visible:ring-opacity-75 `}
                     >
-                      <span className="text-lg text-skin-base ">{menu.question}</span>
+                      <span className='text-md sm:text-lg text-skin-base '>
+                        {menu.question}
+                      </span>
                       <ChevronUpIcon
-                        className={`${
+                        className={` transition delay-100 ease-in-out ${
                           !open ? "rotate-180 transform" : ""
-                        } h-5 w-5 text-skin-base`}
+                        } h-6 w-6 text-skin-base`}
                       />
                     </Disclosure.Button>
-                    <Disclosure.Panel className='px-4 pt-4 pb-2 text-md text-skin-base dark:theme-dark'>
+                    <Disclosure.Panel className='px-4 py-5 text-md sm:text-lg text-skin-base bg-skin-muted rounded-xl dark:theme-dark'>
                       {menu.answer}
                     </Disclosure.Panel>
                   </>

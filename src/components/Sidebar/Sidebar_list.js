@@ -3,29 +3,27 @@ import SidebarContext from "../context/SidebarContext";
 import useMediaQuery from "../hooks/useMediaQuery";
 import Menu from "./Sidebar_menu";
 
-export default function SideBar_list(props) {
-  const { Open} = React.useContext(SidebarContext);
+export default function SideBar_list() {
+  const { Open } = React.useContext(SidebarContext);
   const isLaptop = useMediaQuery("(min-width: 1024px)");
   const isTablet = useMediaQuery("(min-width: 768px )");
 
-  function srink() {
-    return Open ? "space-y-7" : "space-y-10";
-  }
   function hide() {
     return !Open && "hidden";
   }
 
   return (
-    <ul className={`${isLaptop ? srink() : hide()}  space-y-4 tracking-wide `}>
+    <ul
+      className={`${isLaptop ? "space-y-7" : hide()}  space-y-4 tracking-wide `}
+    >
       {Menu.filter((Menu) => Menu.index < 6).map((Menu) => (
         <li>
           <a
             href={Menu.link}
             className={` ${
               Open ? "px-5 justify-start" : "px-4 justify-center"
-            }  rounded-3xl py-3 flex justify-start items-center space-x-4  hover:bg-skin-btn-muted transition ease-in duration-100 hover:shadow-lg font-semibold text-xl dark:hover:bg-skin-gold-hover focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75 dark:theme-dark   ${
-              isTablet && "text-md"
-            } `}
+            }  rounded-3xl py-3 flex justify-start items-center space-x-4  hover:bg-skin-hue transition ease-in duration-100 hover:shadow-lg font-semibold text-xl dark:hover:bg-skin-gold-hover focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75 dark:theme-dark   ${isTablet &&
+              "text-md"} `}
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'

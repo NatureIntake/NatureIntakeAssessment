@@ -1,26 +1,30 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import { requireAuth } from "../../components/utils/requireAuth";
-import useMediaQuery from "../../components/hooks/useMediaQuery";
 import TestContext from "../../components/context/TestContext";
 import SidebarBehave from "../../components/utils/sidebarBehave";
 import { getScore, getState } from "../../components/Quiz/getQuizStats";
 import Agree from "../../components/Quiz/agree";
 import Score from "../../components/Quiz/score";
+import Timer from "../../components/Quiz/timer";
+import { useLeavePageConfirm } from "../../components/utils/use-leave";
 
 export default function Quiz({ session }) {
+  useLeavePageConfirm(true);
   const Router = useRouter();
   const QuizId = Router.query.quizId;
-  const { FinalTestChance, isAgreed } = useContext(TestContext);
-  const isLaptop = useMediaQuery("(min-width: 1024px)");
-  const isTablet = useMediaQuery("(min-width: 768px)");
+  const { FinalTestChance, isAgreed, showScore, setShowScore } = useContext(
+    TestContext
+  );
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [score, setScore] = useState(0);
-  const [showScore, setShowScore] = useState(false);
   const [QuestionState, setQuestionState] = useState([]);
   const [QuestionOptions, setQuestionOptions] = useState([]);
 
+  const duration = () => {
+    return QuizId < 4 ? 15 * 60 * 1000 : 25 * 60 * 1000;
+  };
   useEffect(() => {
     if (QuizId === 4) {
       if (FinalTestChance <= 0) Router.push("/");
@@ -28,17 +32,24 @@ export default function Quiz({ session }) {
   }, []);
 
   useEffect(() => {
-    const getQuestionLength = () => {
-      return QuizId > 3 ? 20 : 15;
-    };
     const form = JSON.parse(localStorage.getItem("formData"));
-
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/getQuestion/${form[0]?.class}/${QuizId}/${getQuestionLength()}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setQuestionState(data);
-      });
+    if (QuizId != 4) {
+      fetch(
+        `${process.env.NEXT_PUBLIC_URL}/api/getQuestion/${form[0]?.class}/${QuizId}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setQuestionState(data);
+        });
+    } else {
+      fetch(`${process.env.NEXT_PUBLIC_URL}/api/getFinal/${form[0]?.class}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setQuestionState(data);
+        });
+    }
   }, []);
+  
 
   useEffect(() => {
     setQuestionOptions(shuffleArray());
@@ -59,12 +70,13 @@ export default function Quiz({ session }) {
     });
     return arr;
   };
-  const handleAnswerOption = (answer) => {
+  function handleAnswerOption(answer, e) {
+    e.preventDefault();
     setSelectedOptions([
       (selectedOptions[currentQuestion] = { answerByUser: answer }),
     ]);
     setSelectedOptions([...selectedOptions]);
-  };
+  }
 
   const handlePrevious = () => {
     const prevQues = currentQuestion - 1;
@@ -79,6 +91,7 @@ export default function Quiz({ session }) {
   };
 
   const handleSubmitButton = async () => {
+    console.log("running");
     if (selectedOptions[currentQuestion]) {
       let newScore = 0;
       for (let i = 0; i < QuestionState?.length; i++) {
@@ -113,101 +126,96 @@ export default function Quiz({ session }) {
   return (
     <SidebarBehave>
       {/* main page */}
-      {!isAgreed ? <Agree /> : showScore ? (
-        <Score score={score} length = {QuestionState?.length} />
+      {!isAgreed ? (
+        <Agree />
+      ) : showScore ? (
+        <Score score={score} length={QuestionState?.length} />
       ) : (
-        
         <div
-        className={`flex flex-col  w-screen  gap-12 pb-10 px-1 items-center
-        ${isTablet && "gap-10 "} ${isLaptop && "gap-14  min-h-screen"} `}
+          className={`flex flex-col  w-screen  gap-6 md:gap-10 pb-10 px-1 items-center`}
         >
-        {/* title & timer area */}
-            <div
+          {/* title & timer area */}
+          <div
             className={`flex flex-col  rounded-3xl bg-skin-base dark:bg-gradient-to-r from-[#323232] to-[#292929] dark:theme-dark shadow-md py-5 pt-8 items-center justify-center text-center  gap-4  w-full sm:w-11/12 md:w-9/12 `}
           >
             <span
               className={` text-3xl text-skin-base bg-skin-muted border-2 border-skin-base px-3 py-3 w-9/12 rounded-xl shadow-sm  dark:theme-dark font-bold capitalize `}
             >
-        {QuizId <= 3 ? `Unit- ${QuizId}` : "Final-Test"}
-
+              {QuizId <= 3 ? `Unit- ${QuizId}` : "Final-Test"}
             </span>
 
-            <span
-              className={` text-lg sm:text-xl text-skin-muted dark:theme-dark italic `}
-            >
-             timer
-            </span>
+            <Timer duration={duration} submit={() => handleSubmitButton()} />
           </div>
-              
-              {/* quiz area */}
-            <div className='flex flex-col w-full md:w-7/12 gap-8 py-4 px-3 sm:px-5 rounded-xl justify-center shadow-sm  bg-skin-base dark:bg-gradient-to-r from-[#222222] to-[#1a1a1a]'>
 
-              {/* question */}
+          {/* quiz area */}
+          <div className='flex flex-col w-full md:w-7/12 gap-8 py-4 px-3 sm:px-5 rounded-xl justify-center shadow-sm  bg-skin-base dark:bg-gradient-to-r from-[#222222] to-[#1a1a1a]'>
+            {/* question */}
+            <div
+              className={`flex flex-col items-center rounded-xl border-2 border-skin-base bg-skin-muted dark:theme-dark px-2 sm:px-6 md:px-10 py-2 sm:py-3 md:py-5 text-center`}
+            >
+              <span className='px-2 py-2 text-sm sm:text-md md:text-lg w-full md:w-4/6 text-skin-muted rounded-xl bg-skin-dull dark:theme-dark '>
+                Question {currentQuestion + 1} of {QuestionState?.length}
+              </span>
               <div
-                className={`flex flex-col items-center rounded-xl border-2 border-skin-base bg-skin-muted dark:theme-dark px-2 sm:px-6 md:px-10 py-2 sm:py-3 md:py-5 text-center`}
+                className={`mt-4 text-md md:text-xl text-center text-skin-base dark:theme-dark font-bold`}
               >
-                <span className='px-2 py-2 text-sm sm:text-md md:text-lg w-full md:w-4/6 text-skin-muted rounded-xl bg-skin-dull dark:theme-dark '>
-                  Question {currentQuestion + 1} of {QuestionState?.length}
-                </span>
-                <div
-                  className={`mt-4 text-md md:text-xl text-center text-skin-base dark:theme-dark font-bold`}
-                >
-                  {QuestionState[currentQuestion]?.question}
-                </div>
-              </div>
-
-              {/* options */}
-              <div className='flex flex-col justify-center w-full gap-3'>
-                {QuestionState?.length > 0 &&
-                  QuestionOptions[currentQuestion]?.map((answer, index) => (
-                    <div
-                      key={index}
-                      className='flex items-center w-full py-3 pl-5 border-2 cursor-pointer border-skin-muted rounded-3xl bg-skin-muted dark:theme-dark shadow-sm hover:bg-skin-btn-hover-muted '
-                      onClick={(e) => handleAnswerOption(answer.answer)}
-                    >
-                      <input
-                        type='radio'
-                        name={answer.answer}
-                        value={answer.answer}
-                        checked={
-                          answer.answer ===
-                          selectedOptions[currentQuestion]?.answerByUser
-                        }
-                        onChange={(e) => handleAnswerOption(answer.answer)}
-                        className='w-6 h-6 bg-black'
-                      />
-                      <span className='ml-6 text-skin-base text-md md:tex-lg font-medium '>{answer.answer}</span>
-                    </div>
-                  ))}
-              </div>
-              <div className='flex justify-between w-full mt-4 text-white px-5 gap-6 '>
-                <button
-                  onClick={handlePrevious}
-                  className={`${
-                    currentQuestion !== 0 ? "" : "opacity-50 cursor-not-allowed"
-                  } w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md`}
-                >
-                  Previous
-                </button>
-                <button
-                  onClick={
-                    currentQuestion + 1 === QuestionState?.length
-                      ? handleSubmitButton
-                      : handleNext
-                  }
-                  className={`${
-                    selectedOptions[currentQuestion]
-                      ? ""
-                      : "opacity-50 cursor-not-allowed"
-                  } w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md`}
-                >
-                  {currentQuestion + 1 === QuestionState?.length
-                    ? "Submit"
-                    : "Next"}
-                </button>
+                {QuestionState[currentQuestion]?.question}
               </div>
             </div>
-          
+
+            {/* options */}
+            <div className='flex flex-col justify-center w-full gap-3'>
+              {QuestionState?.length > 0 &&
+                QuestionOptions[currentQuestion]?.map((answer, index) => (
+                  <div
+                    key={index}
+                    className='flex items-center w-full py-3 pl-5 border-2 cursor-pointer border-skin-muted rounded-3xl bg-skin-muted dark:theme-dark shadow-sm hover:bg-skin-btn-hover-muted '
+                    onClick={(e) => handleAnswerOption(answer.answer, e)}
+                  >
+                    <input
+                      type='radio'
+                      name={answer.answer}
+                      value={answer.answer}
+                      checked={
+                        answer.answer ===
+                        selectedOptions[currentQuestion]?.answerByUser
+                      }
+                      onChange={(e) => handleAnswerOption(answer.answer, e)}
+                      className='w-6 h-6 bg-black'
+                    />
+                    <span className='ml-6 text-skin-base text-md md:tex-lg font-medium '>
+                      {answer.answer}
+                    </span>
+                  </div>
+                ))}
+            </div>
+            <div className='flex justify-between w-full mt-4 text-white px-5 gap-6 '>
+              <button
+                onClick={handlePrevious}
+                className={`${
+                  currentQuestion !== 0 ? "" : "opacity-50 cursor-not-allowed"
+                } w-[49%] py-3 bg-skin-btn-mt hover:bg-skin-btn-mt-hover rounded-3xl text-xl shadow-md`}
+              >
+                Previous
+              </button>
+              <button
+                onClick={
+                  currentQuestion + 1 === QuestionState?.length
+                    ? handleSubmitButton
+                    : handleNext
+                }
+                className={`${
+                  selectedOptions[currentQuestion]
+                    ? ""
+                    : "opacity-50 cursor-not-allowed"
+                } w-[49%] py-3 bg-[#099ab3] hover:bg-[#017185] rounded-3xl text-xl shadow-md`}
+              >
+                {currentQuestion + 1 === QuestionState?.length
+                  ? "Submit"
+                  : "Next"}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </SidebarBehave>

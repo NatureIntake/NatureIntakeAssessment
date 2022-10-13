@@ -23,7 +23,7 @@ export default function agree() {
               ${isTablet && "px-5 py-10 w-9/12"} 
               ${isLaptop && "px-14 w-7/12"}`}
       >
-        <ul className='list-disc space-y-3 sm:space-y-5 md:text-lg sm:px-2 text-skin-base dark:theme-dark' >
+        <ul className='list-disc space-y-3 sm:space-y-5 md:text-lg sm:px-2 text-skin-base dark:theme-dark'>
           <li>
             Now this is a story all about how, my life got flipped-turned upside
             down
@@ -42,7 +42,7 @@ export default function agree() {
       <div className='mt-7 px-3 sm:px-5 md:px-8 flex justify-between w-full sm:w-8/12 md:w-7/12'>
         <button
           type='button'
-          className='inline-flex justify-center rounded-2xl border border-transparent px-5 py-2 text-sm font-bold shadow-sm text-skin-base dark:theme-dark bg-skin-hue-hover hover:bg-skin-hue dark:bg-skin-gold  dark:hover:bg-skin-gold-hover  focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75'
+          className='inline-flex justify-center rounded-2xl border border-transparent px-5 py-2 text-sm font-bold shadow-sm text-skin-base dark:theme-dark bg-skin-hue hover:bg-skin-hue-hover dark:bg-skin-gold  dark:hover:bg-skin-gold-hover  focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75'
           onClick={() => {
             Router.push("/");
           }}
@@ -51,7 +51,7 @@ export default function agree() {
         </button>
         <button
           type='button'
-          className='inline-flex justify-center rounded-2xl border border-transparent px-4 py-2 text-sm font-bold text-skin-base dark:theme-dark bg-skin-hue hover:bg-skin-hue-hover dark:bg-skin-gold-hover  dark:hover:bg-skin-gold focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75'
+          className='inline-flex justify-center rounded-2xl border border-transparent px-4 py-2 text-sm font-bold text-white dark:theme-dark bg-skin-btn-mt hover:bg-skin-btn-mt-hover focus:outline-none focus-visible:ring focus-visible:ring-cyan-600 focus-visible:ring-opacity-75'
           onClick={() => {
             setisAgreed(true);
           }}

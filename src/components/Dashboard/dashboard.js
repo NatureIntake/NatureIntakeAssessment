@@ -43,7 +43,7 @@ export default function DashBoard() {
       >
         {/* profile badge */}
         <div
-          className={`flex flex-row justify-center items-center rounded-3xl bg-skin-base  dark:bg-gradient-to-r from-[#323232] to-[#292929] shadow-md py-3 w-full sm:w-4/6 md:w-3/6 gap-2 sm:gap-4 `}
+          className={`flex flex-row justify-center items-center rounded-3xl bg-skin-base  dark:bg-gradient-to-r from-[#323232] to-[#292929] shadow-md py-3 w-full sm:w-4/6 lg:w-5/12 gap-2 sm:gap-4 `}
         >
           <img
             src={session?.user.image}

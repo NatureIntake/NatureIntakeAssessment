@@ -38,7 +38,7 @@ export default function IndicatorCards(props) {
     return props.value !== "4" ? UnitMenu : FinalMenu;
   };
   const handleLock = (state, link) => {
-    return state !== "1" && "2" ? link : "";
+    return state !== "1"  ? link : "";
   };
 
   return (

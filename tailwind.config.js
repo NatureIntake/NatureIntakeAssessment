@@ -42,7 +42,8 @@ module.exports = {
           highlight: withOpacity("--color-highlight-base"),
           "btn-accent": withOpacity("--color-button-accent"),
           "btn-hover": withOpacity("--color-button-hover"),
-          "btn-muted": withOpacity("--color-button-muted"),
+          "btn-mt": withOpacity("--color-button-muted"),
+          "btn-mt-hover": withOpacity("--color-button-muted-hover"),
         },
       },
       borderColor: {

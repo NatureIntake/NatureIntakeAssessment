@@ -11,6 +11,8 @@ const TestProvider = (props) => {
   const [UnitScore2, setUnitScore2] = useState("");
   const [UnitScore3, setUnitScore3] = useState("");
   const [FinalScore, setFinalScore] = useState("");
+  const [showScore, setShowScore] = useState(false);
+  const [timer, setTimer] = useState(false);
   const [FinalTestChance, setFinalTestChance] = useState("");
   const [logoutAlert, setlogoutAlert] = useState(false);
   const [isAgreed, setisAgreed] = useState(false);
@@ -61,7 +63,11 @@ const TestProvider = (props) => {
         logoutAlert,
         setlogoutAlert,
         isAgreed,
-        setisAgreed
+        setisAgreed,
+        showScore,
+        setShowScore,
+        timer,
+        setTimer,
       }}
     >
       {props.children}

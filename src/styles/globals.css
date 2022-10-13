@@ -9,8 +9,8 @@
     --color-dull: 210, 210, 210;
     --color-green-hue: 216, 235, 231;
     --color-green-hover: 184, 212, 206;
-    --color-gold-hue: 63,50,1;
-    --color-gold-hover: 90,73,3;
+    --color-gold-hue: 63, 50, 1;
+    --color-gold-hover: 90, 73, 3;
     --color-inverted: 50, 50, 50;
     /* Text */
     --color-text-base: 0, 0, 0;
@@ -20,7 +20,8 @@
     /* Buttons */
     --color-button-accent: 56, 168, 146;
     --color-button-hover: 0, 102, 0;
-    --color-button-muted: 222, 252, 247;
+    --color-button-muted: 9, 154, 179;
+    --color-button-muted-hover: 1, 113, 133;
     /* svg */
     --color-svg-accent: 75, 85, 99;
     --color-svg-accent-muted: 193, 197, 201;
@@ -49,7 +50,7 @@
     --color-base: 31, 31, 33;
     --color-muted: 57, 57, 59;
     --color-dull: 47, 47, 49;
-    --color-green-hue: 0, 0, 0;
+    --color-green-hue: 216, 235, 231;
     --color-inverted: 160, 160, 160;
     /* Text */
     --color-text-base: 255, 255, 255;
@@ -59,7 +60,8 @@
     /* Buttons */
     --color-button-accent: 0, 102, 0;
     --color-button-hover: 56, 168, 146;
-    --color-button-muted: 0, 102, 0;
+    --color-button-muted: 9, 154, 179;
+    --color-button-muted-hover: 1, 113, 133;
     /* svg */
     --color-svg-accent: 34, 211, 238;
     --color-svg-accent-muted: 209, 213, 219;
