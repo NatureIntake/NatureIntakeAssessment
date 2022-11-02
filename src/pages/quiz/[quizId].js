@@ -75,7 +75,9 @@ export default function Quiz({ session }) {
     setSelectedOptions([
       (selectedOptions[currentQuestion] = { answerByUser: answer }),
     ]);
+    console.log(selectedOptions);
     setSelectedOptions([...selectedOptions]);
+    console.log(selectedOptions);
   }
 
   const handlePrevious = () => {
@@ -91,7 +93,7 @@ export default function Quiz({ session }) {
   };
 
   const handleSubmitButton = async () => {
-    console.log("running");
+    
     if (selectedOptions[currentQuestion]) {
       let newScore = 0;
       for (let i = 0; i < QuestionState?.length; i++) {
@@ -122,7 +124,7 @@ export default function Quiz({ session }) {
       );
     }
   };
-
+console.log(QuestionOptions)
   return (
     <SidebarBehave>
       {/* main page */}
@@ -166,25 +168,25 @@ export default function Quiz({ session }) {
             {/* options */}
             <div className='flex flex-col justify-center w-full gap-3'>
               {QuestionState?.length > 0 &&
-                QuestionOptions[currentQuestion]?.map((answer, index) => (
+                QuestionOptions[currentQuestion]?.map((item, index) => (
                   <div
                     key={index}
                     className='flex items-center w-full py-3 pl-5 border-2 cursor-pointer border-skin-muted rounded-3xl bg-skin-muted dark:theme-dark shadow-sm hover:bg-skin-btn-hover-muted '
-                    onClick={(e) => handleAnswerOption(answer.answer, e)}
+                    onClick={(e) => handleAnswerOption(item.answer, e)}
                   >
                     <input
-                      type='radio'
-                      name={answer.answer}
-                      value={answer.answer}
+                      type='radio' 
+                      name={item.answer}
+                      value={item.answer}
                       checked={
-                        answer.answer ===
+                        item.answer ===
                         selectedOptions[currentQuestion]?.answerByUser
                       }
-                      onChange={(e) => handleAnswerOption(answer.answer, e)}
+                      onChange={(e) => handleAnswerOption(item.answer, e)}
                       className='w-6 h-6 bg-black'
                     />
                     <span className='ml-6 text-skin-base text-md md:tex-lg font-medium '>
-                      {answer.answer}
+                      {item.answer}
                     </span>
                   </div>
                 ))}
