@@ -5,6 +5,7 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 
 export default NextAuth({
+  
   adapter: MongoDBAdapter(clientPromise),
 
   providers: [
